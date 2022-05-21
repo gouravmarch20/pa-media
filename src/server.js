@@ -1,43 +1,39 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { posts } from "./backend/db/posts";
+import { users } from "./backend/db/users";
 import {
   loginHandler,
   signupHandler,
 } from "./backend/controllers/AuthController";
 import {
-  getHistoryVideosHandler,
-  addVideoToHistoryHandler,
-  removeVideoFromHistoryHandler,
-  clearHistoryHandler,
-} from "./backend/controllers/HistoryController";
+  createPostHandler,
+  getAllpostsHandler,
+  getPostHandler,
+  deletePostHandler,
+  editPostHandler,
+  likePostHandler,
+  dislikePostHandler,
+  getAllUserPostsHandler,
+} from "./backend/controllers/PostController";
 import {
-  getAllVideosHandler,
-  getVideoHandler,
-} from "./backend/controllers/VideoController";
-import { videos } from "./backend/db/videos";
-import { categories } from "./backend/db/categories";
+  getPostCommentsHandler,
+  addPostCommentHandler,
+  editPostCommentHandler,
+  deletePostCommentHandler,
+  upvotePostCommentHandler,
+  downvotePostCommentHandler,
+} from "./backend/controllers/CommentsController";
 import {
-  getAllCategoriesHandler,
-  getCategoryHandler,
-} from "./backend/controllers/CategoryController";
-import {
-  getLikedVideosHandler,
-  addItemToLikedVideos,
-  removeItemFromLikedVideos,
-} from "./backend/controllers/LikeController";
-import {
-  getAllPlaylistsHandler,
-  addNewPlaylistHandler,
-  removePlaylistHandler,
-  getVideosFromPlaylistHandler,
-  addVideoToPlaylistHandler,
-  removeVideoFromPlaylistHandler,
-} from "./backend/controllers/PlaylistController";
-import { users } from "./backend/db/users";
-import {
-  addItemToWatchLaterVideos,
-  getWatchLaterVideosHandler,
-  removeItemFromWatchLaterVideos,
-} from "./backend/controllers/WatchLaterController";
+  followUserHandler,
+  getAllUsersHandler,
+  getUserHandler,
+  getBookmarkPostsHandler,
+  bookmarkPostHandler,
+  removePostFromBookmarkHandler,
+  unfollowUserHandler,
+  editUserHandler,
+} from "./backend/controllers/UserController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -46,31 +42,22 @@ export function makeServer({ environment = "development" } = {}) {
     environment,
     // TODO: Use Relationships to have named relational Data
     models: {
-      video: Model,
-      category: Model,
+      post: Model,
       user: Model,
-      like: Model,
-      history: Model,
-      playlist: Model,
-      watchlater: Model,
     },
 
     // Runs on the start of the server
     seeds(server) {
       server.logging = false;
-      videos.forEach((item) => {
-        server.create("video", { ...item });
-      });
-      categories.forEach((item) => server.create("category", { ...item }));
       users.forEach((item) =>
         server.create("user", {
           ...item,
-          likes: [],
-          watchlater: [],
-          history: [],
-          playlists: [],
+          followers: [],
+          following: [],
+          bookmarks: [],
         })
       );
+      posts.forEach((item) => server.create("post", { ...item }));
     },
 
     routes() {
@@ -79,58 +66,56 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
 
-      // video routes (public)
-      this.get("/videos", getAllVideosHandler.bind(this));
-      this.get("video/:videoId", getVideoHandler.bind(this));
+      // post routes (public)
+      this.get("/posts", getAllpostsHandler.bind(this));
+      this.get("/posts/:postId", getPostHandler.bind(this));
+      this.get("/posts/user/:username", getAllUserPostsHandler.bind(this));
 
-      // TODO: POST VIDEO TO DB
+      // post routes (private)
+      this.post("/posts", createPostHandler.bind(this));
+      this.delete("/posts/:postId", deletePostHandler.bind(this));
+      this.post("/posts/edit/:postId", editPostHandler.bind(this));
+      this.post("/posts/like/:postId", likePostHandler.bind(this));
+      this.post("/posts/dislike/:postId", dislikePostHandler.bind(this));
 
-      // categories routes (public)
-      this.get("/categories", getAllCategoriesHandler.bind(this));
-      this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+      //post comments routes (public)
+      this.get("/comments/:postId", getPostCommentsHandler.bind(this));
 
-      // likes routes (private)
-      this.get("/user/likes", getLikedVideosHandler.bind(this));
-      this.post("/user/likes", addItemToLikedVideos.bind(this));
-      this.delete("/user/likes/:videoId", removeItemFromLikedVideos.bind(this));
-
-      // watch later routes (private)
-      this.get("/user/watchlater", getWatchLaterVideosHandler.bind(this));
-      this.post("/user/watchlater", addItemToWatchLaterVideos.bind(this));
-      this.delete(
-        "/user/watchlater/:videoId",
-        removeItemFromWatchLaterVideos.bind(this)
-      );
-
-      // playlist routes (private)
-      this.get("/user/playlists", getAllPlaylistsHandler.bind(this));
-      this.post("/user/playlists", addNewPlaylistHandler.bind(this));
-      this.delete(
-        "/user/playlists/:playlistId",
-        removePlaylistHandler.bind(this)
-      );
-
-      this.get(
-        "/user/playlists/:playlistId",
-        getVideosFromPlaylistHandler.bind(this)
+      //post comments routes (private)
+      this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
+      this.post(
+        "/comments/edit/:postId/:commentId",
+        editPostCommentHandler.bind(this)
       );
       this.post(
-        "/user/playlists/:playlistId",
-        addVideoToPlaylistHandler.bind(this)
+        "/comments/delete/:postId/:commentId",
+        deletePostCommentHandler.bind(this)
       );
-      this.delete(
-        "/user/playlists/:playlistId/:videoId",
-        removeVideoFromPlaylistHandler.bind(this)
+      this.post(
+        "/comments/upvote/:postId/:commentId",
+        upvotePostCommentHandler.bind(this)
       );
+      this.post(
+        "/comments/downvote/:postId/:commentId",
+        downvotePostCommentHandler.bind(this)
+      );
+      // user routes (public)
+      this.get("/users", getAllUsersHandler.bind(this));
+      this.get("/users/:userId", getUserHandler.bind(this));
 
-      // history routes (private)
-      this.get("/user/history", getHistoryVideosHandler.bind(this));
-      this.post("/user/history", addVideoToHistoryHandler.bind(this));
-      this.delete(
-        "/user/history/:videoId",
-        removeVideoFromHistoryHandler.bind(this)
+      // user routes (private)
+      this.post("users/edit", editUserHandler.bind(this));
+      this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
+      this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
+      this.post(
+        "/users/remove-bookmark/:postId/",
+        removePostFromBookmarkHandler.bind(this)
       );
-      this.delete("/user/history/all", clearHistoryHandler.bind(this));
+      this.post("/users/follow/:followUserId/", followUserHandler.bind(this));
+      this.post(
+        "/users/unfollow/:followUserId/",
+        unfollowUserHandler.bind(this)
+      );
     },
   });
 }
