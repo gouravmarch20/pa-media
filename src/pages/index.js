@@ -1,0 +1,7 @@
+export { Home } from './home/Home'
+export { SinglePost } from './singlePost/SinglePost'
+export { Profile } from './profile/Profile'
+export { Signin } from './auth/Signin'
+export { Signup } from './auth/Signup'
+export { Explore } from './explore/Explore'
+export { Bookmark } from './bookmark/Bookmark'
