@@ -10,7 +10,7 @@ import {
   Bookmark,
   Explore,
   Home,
-  Signin,
+  Login,
   Profile,
   Signup,
   SinglePost
@@ -26,6 +26,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/explore' element={<Explore />} />
         <Route path='/bookmarks' element={<Bookmark />} />
+        <Route path='login' element={<Login />} />
         <Route path='/mock' element={<Mockman />} />
         <Route path='*' element={<Navigate replace to='/' />} />
         {/* </Route>{' '} */}
