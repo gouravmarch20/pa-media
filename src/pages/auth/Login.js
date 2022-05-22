@@ -18,17 +18,14 @@ export const Login = () => {
 
   const submitLoginFormData = () => {
     if (username !== '' && password !== '') {
-      // dispatch(loginUser({ username, password }));
+      dispatch(loginUser({ username, password }))
     }
   }
 
   const submitLoginWithCredentials = () => {
     setUsername('adarshbalika')
     setPassword('adarshBalika123')
-    console.log("first")
-    dispatch(loginUser({ username, password }))
-
-    // loginHandler('adarshbalika@gmail.com', 'adarshBalika123')
+    // plealse login now -> tost
   }
 
   return (
@@ -68,9 +65,9 @@ export const Login = () => {
         </div>
 
         <div className=''>
-          {/* <button className='signup-btn' onClick={submitLoginData}>
-        Login Now
-      </button> */}
+          <button className='signup-btn' onClick={submitLoginFormData}>
+            Login Now
+          </button>
         </div>
         <div className=''>
           <button

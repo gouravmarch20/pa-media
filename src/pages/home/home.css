@@ -1,0 +1,15 @@
+.navbarLeft-container-wrapper {
+  display: flex;
+}
+
+.container-wrapper {
+  background-color: #ffffff;
+  width: 80vw;
+}
+.nav-left {
+  position: fixed;
+  width: 20vw;
+  min-height: 90vh;
+
+  background-color: #13455b;
+}

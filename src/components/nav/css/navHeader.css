@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+  background-color: #207398;
+  height: 10vh;
+  /* font-size: 2.3rem; */
+}
+
+.header > a {
+  width: 2vmax;
+  height: 2vmax;
+  margin: 1vmax 4vmax;
+}
+.header > a > svg {
+  font-size: 2.3rem;
+
+  transition: all 0.5s;
+  color: rgba(0, 0, 0, 0.445);
+}
+
+.header > a > svg:hover {
+  color: black;
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 600px) {
+  .header > a {
+    width: 8vw;
+    height: 8vw;
+    margin: 2vw 8vw;
+  }
+  .header > a > svg {
+    font-size: 8vw;
+  }
+}
+
+.navbar-warpper {
+  display: flex;
+
+  padding: 1rem;
+  flex-wrap: wrap;
+  background-color: #207398;
+  height: 10vh;
+  font-size: 2.3rem;
+}
+
+.navbar-search-btn {
+  padding: 0.4rem;
+}
+.navbar-link {
+  margin-left: 0.8rem;
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-decoration: none;
+  color: white;
+}
+.navbar-link-icon {
+  margin: 0rem 0.8rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.relative {
+  position: relative;
+}
+.badge-counter {
+  position: absolute;
+  background-color: red;
+  right: -8px;
+  top: -7px;
+  font-size: 18px;
+  padding: 0rem 0.2rem;
+}
+.btn-auth {
+  color: white;
+  background-color: #758283;
+  font-size: 18px;
+  padding: 0.4rem;
+  border-radius: 1rem;
+}
+.userinfo-signout-toggle {
+  color: white;
+  padding: 0.3rem 0.2rem;
+  width: 12vw;
+  max-height: 7vh;
+}
+.avatar-icon {
+  margin: 0.2rem 0.5rem;
+  padding: 0.1rem;
+}
+.dropdown-box-container {
+  background-color: #9ca2fb;
+  width: 100%;
+  height: 20vh;
+  padding: 1rem;
+}
+.dropdown-box-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn-signout {
+  margin: 1rem;
+  border: none;
+  padding: 0.6rem 1rem;
+}

@@ -6,6 +6,7 @@ import { ToasterWrapper } from './utils'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Mockman from 'mockman-js'
 import { useSelector } from 'react-redux'
+import { NavHeader, NewPost, Search, Account } from './components/'
 import {
   Bookmark,
   Explore,
@@ -15,10 +16,15 @@ import {
   Signup,
   SinglePost
 } from './pages'
+
 const App = () => {
-  // const { token } = useSelector(state => state.auth)
+  const { user } = useSelector(state => state)
+  console.log(user)
   return (
     <div>
+      <ToasterWrapper />
+      <NavHeader />
+      {/* <CreatePost /> */}
       <Routes>
         {/* <Route path='/' element={<PrivateRoute />}> */}
         <Route path='/' element={<Home />} />
@@ -27,8 +33,11 @@ const App = () => {
         <Route path='/explore' element={<Explore />} />
         <Route path='/bookmarks' element={<Bookmark />} />
         <Route path='login' element={<Login />} />
+        <Route path='newpost' element={<NewPost />} />
+        <Route path='search' element={<Search />} />
+        <Route path='account' element={<Account />} />
         <Route path='/mock' element={<Mockman />} />
-        <Route path='*' element={<Navigate replace to='/' />} />
+        {/* <Route path='*' element={<Navigate replace to='/' />} /> */}
         {/* </Route>{' '} */}
       </Routes>
     </div>

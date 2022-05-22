@@ -2,13 +2,22 @@ import React, { useState } from 'react'
 import './css/signin.css'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { useSelector, useDispatch } from 'react-redux'
 
 export const SignIn = () => {
-
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { token, isLoggedIn, authError } = useSelector(state => state.auth)
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (token !== '' && isLoggedIn) {
+      // tostify alreaduy login
+      navigate('/')
+    }
+  })
   const submitLoginWithCredentials = () => {
     setEmail('adarshbalika@gmail.com')
     setPassword('adarshBalika123')

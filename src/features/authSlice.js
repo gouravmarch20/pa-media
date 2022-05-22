@@ -15,6 +15,7 @@ export const loginUser = createAsyncThunk(
   async ({ username, password }, { rejectWithValue }) => {
     try {
       const res = await loginService(username, password)
+      console.log(res)
       return res.data
     } catch (error) {
       return rejectWithValue(error.response.data)
@@ -55,6 +56,7 @@ const authSlice = createSlice({
   extraReducers: {
     [loginUser.pending]: state => {
       state.authStatus = 'loading'
+      toast('Hello Darkness!')
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.authStatus = 'success'
@@ -70,7 +72,7 @@ const authSlice = createSlice({
     [loginUser.rejected]: (state, { payload }) => {
       state.authStatus = 'failed'
       state.authError = payload.errors
-      toast.error('Some error occured. Try Again.')
+      toast.error('invalid userdata. Try Again.')
     },
     [signupUser.pending]: state => {
       state.authStatus = 'loading'
