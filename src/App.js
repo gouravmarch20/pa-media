@@ -19,7 +19,6 @@ import {
 
 const App = () => {
   const user = useSelector(state => state)
-  console.log(user)
   return (
     <div>
       <ToasterWrapper />
@@ -37,6 +36,7 @@ const App = () => {
         <Route path='search' element={<Search />} />
         <Route path='account' element={<Account />} />
         <Route path='/mock' element={<Mockman />} />
+        <Route path="/post/:postId" element={<SinglePost />} />
         {/* <Route path='*' element={<Navigate replace to='/' />} /> */}
         {/* </Route>{' '} */}
       </Routes>

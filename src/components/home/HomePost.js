@@ -39,16 +39,17 @@ import {
   dislikePost
 } from '../../features/postSlice'
 import CommentCard from '../card/CommentCard'
+import { addComment } from '../../features/postSlice'
+import { useNavigate } from 'react-router-dom'
 
 export const HomePost = ({ postData }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
-  const [commentValue, setCommentValue] = useState('')
-  console.log(bookmarkPosts)
-  const addCommentHandler = e => {
-    e.preventDefault()
-  }
+  const [commentData, setCommentData] = useState({ text: '' })
+
+  const navigate = useNavigate()
+
   const dispatch = useDispatch()
 
   const {
@@ -63,6 +64,14 @@ export const HomePost = ({ postData }) => {
     comments,
     createdAt
   } = postData
+
+  const addCommentHandler = e => {
+    e.preventDefault()
+    dispatch(addComment({ postId: _id, commentData, token }))
+    setCommentData({ text: '' })
+    // commentToggle(false)
+    navigate(`/post/${id}`)
+  }
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
@@ -72,7 +81,6 @@ export const HomePost = ({ postData }) => {
   return (
     <div className='post'>
       <div className='postHeader'>
-        <h1>sdaf</h1>
         <p>
           {' '}
           {firstName} {lastName}
@@ -81,7 +89,6 @@ export const HomePost = ({ postData }) => {
       <span>@{username}</span>
       <hr />
       <p>{content}</p>
-
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <Button>
@@ -130,8 +137,8 @@ export const HomePost = ({ postData }) => {
             <form className='commentForm' onSubmit={addCommentHandler}>
               <input
                 type='text'
-                value={commentValue}
-                onChange={e => setCommentValue(e.target.value)}
+                value={commentData.text}
+                onChange={e => setCommentData({ text: e.target.value })}
                 placeholder='Comment Here...'
                 required
               />
@@ -140,17 +147,20 @@ export const HomePost = ({ postData }) => {
                 Add
               </Button>
             </form>
-            {console.log(_id)}
             {/* ADD KEY */}
-            {/* {comments?.length > 0 ? (
-              comments.map(item  => (
-                <CommentCard
-                
-                />
-              ))
+
+            {comments?.length > 0 ? (
+              // comments.map((item, index) => {
+              // return (
+              // <div key={index}>
+              <CommentCard commmentData={comments} />
             ) : (
+              // </div>
+              // )
+              // })
+
               <Typography>No comments Yet</Typography>
-            )} */}
+            )}
           </div>
         </Dialog>
       </div>

@@ -86,34 +86,7 @@ export const deleteCommentService = (postId, commentId, token) =>
     }
   )
 // --- BOOKMARK
-// export const getAllBookmarkPostService = token =>
-//   axios.get('/api/users/bookmark/', {
-//     headers: {
-//       authorization: token
-//     }
-//   })
 
-// export const addToBookmarkService = (postId, token) =>
-//   axios.post(
-//     `/api/users/bookmark/:${postId}`,
-//     {},
-//     {
-//       headers: {
-//         authorization: token
-//       }
-//     }
-//   )
-// export const removeFromBookmarkService = (postId, token) =>
-//   axios.post(
-//     `/api/users/remove-bookmark/:${postId}`,
-//     {},
-//     {
-//       headers: {
-//         authorization: token
-//       }
-//     }
-//   )
-// ADD POST TO USER BOOKMARKS
 export const bookmarkPostService = (postId, token) =>
   axios.post(
     `/api/users/bookmark/${postId}`,
@@ -125,7 +98,6 @@ export const bookmarkPostService = (postId, token) =>
     }
   )
 
-// DELETE POST FROM USER BOOKMARKS
 export const deleteBookmarkPostService = (postId, token) =>
   axios.post(
     `/api/users/remove-bookmark/${postId}`,
@@ -137,11 +109,30 @@ export const deleteBookmarkPostService = (postId, token) =>
     }
   )
 
-// GET ALL BOOKMARKED POSTS
 export const getAllBookmarkPostService = token =>
   axios.get('/api/users/bookmark/', {
     headers: {
       authorization: token
     }
   })
-// 
+// vote
+export const downvoteCommentService = (postId, commentId, token) =>
+  axios.post(
+    `/api/comments/downvote/${postId}/${commentId}`,
+    {},
+    {
+      headers: {
+        authorization: token
+      }
+    }
+  )
+export const upvoteCommentService = (postId, commentId, token) =>
+  axios.post(
+    `/api/comments/upvote/${postId}/${commentId}`,
+    {},
+    {
+      headers: {
+        authorization: token
+      }
+    }
+  )

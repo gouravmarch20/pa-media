@@ -7,18 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { deleteCommentOnPost } from '../../Actions/Post'
 // import { getFollowingPosts, getMyPosts } from '../../Actions/User'
 
-const CommentCard = ({
-  userId,
-  name,
-  avatar,
-  comment,
-  commentId,
-  postId,
-  isAccount
-}) => {
-//   const { user } = useSelector(state => state.user)
-  const dispatch = useDispatch()
+const CommentCard = ({ commmentData }) => {
+  //   const { user } = useSelector(state => state.user)
 
+ 
   const deleteCommentHandle = () => {
     // dispatch(deleteCommentOnPost(postId, commentId))
 
@@ -31,22 +23,32 @@ const CommentCard = ({
 
   return (
     <div className='commentUser'>
-      <Link to={`/user/$1`}>
-        <img src='./' alt={'avatar'} />
-        <Typography style={{ minWidth: '6vmax' }}>name</Typography>
-      </Link>
-      <Typography>comment</Typography>
+      {commmentData.map(comment => {
+        const { firstName, avatar, text } = comment
+        return (
+          <>
+            <Link to={`/user/$1`}>
+              <img src={avatar} alt={'avatar'} />
+              <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
+              <Typography>{text}</Typography>
+            </Link>
+          </>
+        )
+      })}
 
-      {true ? (
+      {/* <Typography>{text}</Typography> */}
+
+      {/* {true ? (
         <Delete />
-      ) : //     <Button onClick={deleteCommentHandle}>
-      //     </Button>
-      //   ) : userId === user._id ? (
-      //     <Button onClick={deleteCommentHandle}>
-      //       <Delete />
-      //     </Button>
-      //   )
-      null}
+      ) : 
+          <Button onClick={deleteCommentHandle}>
+        </Button>
+        ) : userId === user._id ? (
+          <Button onClick={deleteCommentHandle}>
+            <Delete />
+          </Button>
+        )
+      null} */}
     </div>
   )
 }
