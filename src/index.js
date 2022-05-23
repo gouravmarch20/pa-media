@@ -7,7 +7,6 @@ import './styles/index.css'
 import App from './App'
 
 import { store } from './store'
-// console.log(store.getState())
 import { makeServer } from './server'
 
 // Call make Server

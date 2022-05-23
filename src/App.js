@@ -18,7 +18,8 @@ import {
 } from './pages'
 
 const App = () => {
-  const { user } = useSelector(state => state)
+  const user = useSelector(state => state)
+  console.log(user)
   return (
     <div>
       <ToasterWrapper />

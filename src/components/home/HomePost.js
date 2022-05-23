@@ -32,15 +32,22 @@ import {
   checkLikeHelper,
   checkBookmarkHelper
 } from '../../helpers/checkerHelper'
-import { likePost, dislikePost } from '../../features/postSlice'
-// import CommentCard from '../card/CommentCard'
+import {
+  removeBookmarkPost,
+  bookmarkPost,
+  likePost,
+  dislikePost
+} from '../../features/postSlice'
+import CommentCard from '../card/CommentCard'
 
 export const HomePost = ({ postData }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
-  const addCommentHandler = () => {
-    ''
+  const [commentValue, setCommentValue] = useState('')
+  console.log(bookmarkPosts)
+  const addCommentHandler = e => {
+    e.preventDefault()
   }
   const dispatch = useDispatch()
 
@@ -57,7 +64,11 @@ export const HomePost = ({ postData }) => {
     createdAt
   } = postData
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
-  const isPostAlreadyBookmarked = checkBookmarkHelper(_id, bookmarkPosts)
+
+  const isPostAlreadyBookmarked = bookmarkPosts?.find(
+    bookmarkPostId => bookmarkPostId === _id
+  )
+
   return (
     <div className='post'>
       <div className='postHeader'>
@@ -81,30 +92,33 @@ export const HomePost = ({ postData }) => {
         ) : (
           <Button>
             <MdThumbUpOffAlt
-            onClick={() => dispatch(likePost({ postId: _id, token }))}
+              onClick={() => dispatch(likePost({ postId: _id, token }))}
             />
           </Button>
         )}
 
-        {/* {isPostAlreadyBookmarked ? (
+        {isPostAlreadyBookmarked ? (
           <Button>
             {' '}
             <MdBookmarkAdded
-              onClick={() => dispatch(likePost({ postId: _id, token }))}
+              onClick={() =>
+                dispatch(removeBookmarkPost({ postId: _id, token }))
+              }
             />{' '}
-            <Favorite style={{ color: 'red' }} />
           </Button>
         ) : (
           <Button>
             <MdBookmarkBorder
-              onClick={() => dispatch(likePost({ postId: _id, token }))}
+              onClick={() => {
+                dispatch(bookmarkPost({ postId: _id, token }))
+              }}
             />
           </Button>
-        )} */}
+        )}
 
-        {/* <Button onClick={() => setCommentToggle(!commentToggle)}>
+        <Button onClick={() => setCommentToggle(!commentToggle)}>
           <ChatBubbleOutline />
-        </Button> */}
+        </Button>
         {/* comment componnet as modal */}
         <Dialog
           open={commentToggle}
@@ -116,8 +130,8 @@ export const HomePost = ({ postData }) => {
             <form className='commentForm' onSubmit={addCommentHandler}>
               <input
                 type='text'
-                // value={commentValue}
-                // onChange={e => setCommentValue(e.target.value)}
+                value={commentValue}
+                onChange={e => setCommentValue(e.target.value)}
                 placeholder='Comment Here...'
                 required
               />
@@ -126,6 +140,7 @@ export const HomePost = ({ postData }) => {
                 Add
               </Button>
             </form>
+            {console.log(_id)}
             {/* ADD KEY */}
             {/* {comments?.length > 0 ? (
               comments.map(item  => (

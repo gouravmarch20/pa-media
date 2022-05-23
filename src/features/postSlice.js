@@ -2,7 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast'
 
 import { getAllPostsService } from '../services'
-import { dislikePostService, likePostService } from '../services/postsServices'
+import {
+  dislikePostService,
+  likePostService,
+  bookmarkPostService,
+  getAllBookmarkPostService,
+  deleteBookmarkPostService,
+  addCommentService,
+  deleteCommentService
+} from '../services/postsServices'
 const initialState = {
   allPosts: [],
   singlePost: {},
@@ -48,7 +56,73 @@ export const dislikePost = createAsyncThunk(
     }
   }
 )
+export const getAllBookmarkPosts = createAsyncThunk(
+  'posts/getAllBookmarkPosts',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await getAllBookmarkPostService(token)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const bookmarkPost = createAsyncThunk(
+  'posts/bookmarkPost',
+  async ({ postId, token }, { rejectWithValue }) => {
+    try {
+      const response = await bookmarkPostService(postId, token)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const removeBookmarkPost = createAsyncThunk(
+  'posts/removeBookmarkPost',
+  async ({ postId, token }, { rejectWithValue }) => {
+    try {
+      const response = await deleteBookmarkPostService(postId, token)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const getAllComments = createAsyncThunk(
+  'posts/getAllComments',
+  async ({ postId }, { rejectWithValue }) => {
+    try {
+      const response = await addCommentService(postId)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const addComment = createAsyncThunk(
+  'posts/addComment',
+  async ({ postId, token, commentData }, { rejectWithValue }) => {
+    try {
+      const response = await addCommentService(postId, commentData, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
+export const deleteComment = createAsyncThunk(
+  'posts/deleteComment',
+  async ({ postId, commentId, token }, { rejectWithValue }) => {
+    try {
+      const response = await deleteCommentService(postId, commentId, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 const postSlice = createSlice({
   name: 'posts',
   initialState,
@@ -80,7 +154,51 @@ const postSlice = createSlice({
     [dislikePost.rejected]: (state, { payload }) => {
       state.postError = payload
       toast.error('Some error occured. Try Again.')
+    },
+
+    //
+    [bookmarkPost.fulfilled]: (state, { payload }) => {
+      state.bookmarkPosts = payload.bookmarks
+      toast.success('Post bookmarked successfully.')
+    },
+    [bookmarkPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [removeBookmarkPost.fulfilled]: (state, { payload }) => {
+      state.bookmarkPosts = payload.bookmarks
+      toast.success('Post removed from bookmark.')
+    },
+    [removeBookmarkPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [getAllBookmarkPosts.fulfilled]: (state, { payload }) => {
+      state.bookmarkPosts = payload.bookmarks
+    },
+    [getAllBookmarkPosts.rejected]: (state, { payload }) => {
+      state.postError = payload
+    },
+
+    //
+    [addComment.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('You commented!')
+    },
+    [addComment.rejected]: (state, { payload }) => {
+      state.postError = payload.errors
+      toast.error('Some error occured. Try Again.')
+    },
+    // delete
+    [deleteComment.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('comment deleted!')
+    },
+    [deleteComment.rejected]: (state, { payload }) => {
+      state.postError = payload.errors
+      toast.error('Some error occured. Try Again.')
     }
+    //
   }
 })
 export default postSlice.reducer

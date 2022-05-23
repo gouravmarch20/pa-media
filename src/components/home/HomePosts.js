@@ -4,7 +4,7 @@ import './css/posts.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { HomePost } from './HomePost'
 
-import { getAllPosts } from '../../features/postSlice'
+import {  getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getSortedPosts } from '../../helpers/getSortedPosts'
 export const HomePosts = () => {
   const { allPosts, bookmarkPosts } = useSelector(state => state.posts)
@@ -13,6 +13,7 @@ export const HomePosts = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllPosts())
+    dispatch(getAllBookmarkPosts(token));
   }, [])
   const homeShortedPosts = getSortedPosts(allPosts, userInfo)
 

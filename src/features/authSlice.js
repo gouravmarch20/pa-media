@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 import { loginService, signupService } from '../services/authService'
 
 const initialState = {
-  token: '',
+  token: '' || JSON.parse(localStorage.getItem('token')),
   userInfo: null || JSON.parse(localStorage.getItem('user')),
   isLoggedIn: false,
   authStatus: 'idle',
