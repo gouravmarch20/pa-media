@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast'
-import { getAllPostsService } from '../services'
 
+import { getAllPostsService } from '../services'
+import { dislikePostService, likePostService } from '../services/postsServices'
 const initialState = {
   allPosts: [],
   singlePost: {},
@@ -17,7 +18,30 @@ export const getAllPosts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await getAllPostsService()
-      console.log(response)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+
+export const likePost = createAsyncThunk(
+  'posts/likePost',
+  async ({ postId, token }, { rejectWithValue }) => {
+    try {
+      const response = await likePostService(postId, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+
+export const dislikePost = createAsyncThunk(
+  'posts/dislikePost',
+  async ({ postId, token }, { rejectWithValue }) => {
+    try {
+      const response = await dislikePostService(postId, token)
       return response.data.posts
     } catch (error) {
       return rejectWithValue(error.response.data)
@@ -28,12 +52,7 @@ export const getAllPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    //   setPostModalOpen: (state, { payload }) => {
-    //     state.isPostModalOpen = payload.isOpen;
-    //     state.editPostData = payload.editPostData;
-    //   },
-  },
+  reducers: {},
   extraReducers: {
     [getAllPosts.pending]: state => {
       state.postStatus = 'loading'
@@ -45,6 +64,22 @@ const postSlice = createSlice({
     [getAllPosts.rejected]: (state, { payload }) => {
       state.postStatus = 'failed'
       state.postError = payload.errors
+    },
+    [likePost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('You liked the post')
+    },
+    [likePost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [dislikePost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('You disliked the post')
+    },
+    [dislikePost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
     }
   }
 })

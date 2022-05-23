@@ -50,6 +50,14 @@ export const NavHeader = () => {
               <AccountCircleOutlined />
             )}
           </Link>
+
+          <Link to='/login' onClick={() => setTab('/login')}>
+            {tab === '/login' ? (
+              <button className='auth-btn'>Signin</button>
+            ) : (
+              <button className='auth-btn'>Signin</button>
+            )}
+          </Link>
         </div>
       </div>
     </>
