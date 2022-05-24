@@ -39,7 +39,7 @@ import {
   addComment
 } from '../../features/postSlice'
 import { useNavigate } from 'react-router-dom'
-import CommentCard from '../../components/card/CommentCard'
+import CommentCard from '../card/CommentCard'
 import { useSelector, useDispatch } from 'react-redux'
 
 export const ProfilePost = ({ userpost }) => {
@@ -71,7 +71,7 @@ export const ProfilePost = ({ userpost }) => {
     // commentToggle(false)
     navigate(`/post/${id}`)
   }
-    // FIXME: NOT WOKING
+  // FIXME: NOT WOKING
 
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
@@ -91,7 +91,7 @@ export const ProfilePost = ({ userpost }) => {
         <hr />
         <p>{content}</p>
         <div className='postFooter'>
-          {isPostAlreadyLiked ? (
+          {/* {isPostAlreadyLiked ? (
             <Button>
               <MdThumbUp
                 onClick={() => dispatch(dislikePost({ postId: _id, token }))}
@@ -103,7 +103,7 @@ export const ProfilePost = ({ userpost }) => {
                 onClick={() => dispatch(likePost({ postId: _id, token }))}
               />
             </Button>
-          )}
+          )} */}
 
           {isPostAlreadyBookmarked ? (
             <Button>
