@@ -58,19 +58,7 @@ export const NavLeft = () => {
         <span className='navLeft-link-span'>Liked</span>
       </NavLink>
       <hr />
-      <NavLink
-        to='/watch-later'
-        className={({ isActive }) =>
-          isActive ? 'nav-link-active' : 'nav-link-sleep'
-        }
-      >
-        {/* <i className='navLeft-icon'>
-          <MdWatchLater />
-        </i> */}
-
-        <span className='navLeft-link-span'>Create Post</span>
-      </NavLink>
-      <hr />
+    
 
       <hr />
     </div>

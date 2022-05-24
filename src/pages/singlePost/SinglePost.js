@@ -32,7 +32,6 @@ export const SinglePost = () => {
           {updatedPost.comments.map(comment => {
             return (
               <div key={comment._id}>
-                {/* {console.log(comment)} */}
                 <ComentVote commentData={comment} postId={updatedPost._id} />
               </div>
             )

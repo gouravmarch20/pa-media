@@ -51,7 +51,6 @@ export const HomePost = ({ postData }) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  console.log(postData)
   const {
     _id,
     id,
@@ -72,7 +71,9 @@ export const HomePost = ({ postData }) => {
     // commentToggle(false)
     navigate(`/post/${id}`)
   }
+
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
+
 
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
     bookmarkPostId => bookmarkPostId === _id

@@ -30,7 +30,17 @@ export const getAllUsers = createAsyncThunk(
     }
   }
 )
-
+export const getUserPostsByUsername = createAsyncThunk(
+  'users/getUserPostsByUsername',
+  async ({ username }, { rejectWithValue }) => {
+    try {
+      const response = await getPostByUsernameService(username)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 export const getSingleUser = createAsyncThunk(
   'users/getSingleUser',
   async ({ username }, { rejectWithValue }) => {
@@ -74,6 +84,17 @@ const userSlice = createSlice({
     [getSingleUser.rejected]: (state, { payload }) => {
       state.singleUserStatus = 'failed'
       state.userError = payload.errors
+    },
+    [getUserPostsByUsername.pending]: state => {
+      state.userPostsStatus = 'loading'
+    },
+    [getUserPostsByUsername.fulfilled]: (state, { payload }) => {
+      state.userPostsStatus = 'success'
+      state.userPosts = payload
+    },
+    [getUserPostsByUsername.rejected]: (state, { payload }) => {
+      state.userPostsStatus = 'failed'
+      state.userPostsError = payload.errors
     }
   }
 })

@@ -3,10 +3,13 @@ import axios from "axios";
 // GET ALL USERS
 export const getAllUsersService = () => axios.get("/api/users");
 
+
 // GET A USER
 export const getSingleUserService = username =>
   axios.get(`/api/users/${username}`);
-
+// GET POST BY USERNAME
+export const getPostByUsernameService = username =>
+  axios.get(`/api/posts/user/${username}`);
 // EDIT USER DATA
 export const editUserProfileService = (userData, token) =>
   axios.post(

@@ -1,6 +1,6 @@
 export { Home } from './home/Home'
 export { SinglePost } from './singlePost/SinglePost'
-export { Profile } from './profile/Profile'
+export { ProfilePage } from './profile/ProfilePage'
 export { Login } from './auth/Login'
 export { Signup } from './auth/Signup'
 export { Explore } from './explore/Explore'

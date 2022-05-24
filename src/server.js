@@ -49,15 +49,12 @@ export function makeServer({ environment = "development" } = {}) {
     // Runs on the start of the server
     seeds(server) {
       server.logging = false;
-      users.forEach((item) =>
+      users.forEach(item =>
         server.create("user", {
           ...item,
-          followers: [],
-          following: [],
-          bookmarks: [],
         })
       );
-      posts.forEach((item) => server.create("post", { ...item }));
+      posts.forEach(item => server.create("post", { ...item }));
     },
 
     routes() {
@@ -101,7 +98,7 @@ export function makeServer({ environment = "development" } = {}) {
       );
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));
-      this.get("/users/:userId", getUserHandler.bind(this));
+      this.get("/users/:username", getUserHandler.bind(this));
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));

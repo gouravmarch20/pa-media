@@ -24,7 +24,6 @@ export const NewPost = ({ editPostData }) => {
   const dispatch = useDispatch()
 
   const createPostHandler = () => {
-    console.log('createPostHandler')
     let postData = postContent
     dispatch(createNewPost({ postData, token }))
     setPostContent({ content: '' })
@@ -32,7 +31,6 @@ export const NewPost = ({ editPostData }) => {
   }
 
   const editPostHandler = () => {
-    console.log('handler')
     let postData = { ...editPostData, content: postContent.content }
     dispatch(editPost({ postData, token }))
     setPostContent({ content: '' })

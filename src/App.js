@@ -12,7 +12,7 @@ import {
   Explore,
   Home,
   Login,
-  Profile,
+  ProfilePage,
   Signup,
   SinglePost
 } from './pages'
@@ -28,7 +28,7 @@ const App = () => {
         {/* <Route path='/' element={<PrivateRoute />}> */}
         <Route path='/' element={<Home />} />
         <Route path='/post/:postId' element={<SinglePost />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/:username' element={<ProfilePage />} />
         <Route path='/explore' element={<Explore />} />
         <Route path='/bookmarks' element={<Bookmark />} />
         <Route path='login' element={<Login />} />
@@ -36,7 +36,7 @@ const App = () => {
         <Route path='search' element={<Search />} />
         <Route path='account' element={<Account />} />
         <Route path='/mock' element={<Mockman />} />
-        <Route path="/post/:postId" element={<SinglePost />} />
+        <Route path='/post/:postId' element={<SinglePost />} />
         {/* <Route path='*' element={<Navigate replace to='/' />} /> */}
         {/* </Route>{' '} */}
       </Routes>
