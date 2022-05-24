@@ -1,12 +1,12 @@
 .nav-left {
-  width: 20vw;
+  min-width: 10vw;
 
   background-color: #13455b;
 }
 
 .navLeft-fixed {
   position: fixed;
-  width: 20%;
+  width: 10%;
 }
 
 .nav-link-active {
