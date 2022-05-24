@@ -2,51 +2,77 @@ import { Button, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 // import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-// import { createNewPost } from '../../Actions/Post'
-// import { loadUser } from '../../Actions/User'
+import { createNewPost, editPost } from '../../features/postSlice'
+import { Link } from 'react-router-dom'
+import { getAllUsers } from '../../features/userSlice'
+import { useNavigate } from 'react-router-dom'
+
 import './newPost.css'
-export const NewPost = () => {
-  const [image, setImage] = useState(null)
-  const [caption, setCaption] = useState('')
+export const NewPost = ({ editPostData }) => {
+  const navigate = useNavigate()
 
-  // const { loading, error, message } = useSelector(state => state.like)
+  const [postContent, setPostContent] = useState({
+    content: editPostData?.content || ''
+  })
+
+  const { token, userInfo } = useSelector(state => state.auth)
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [])
+  const { allUsers } = useSelector(state => state.users)
+
   const dispatch = useDispatch()
-  // const alert = useAlert()
 
-  const handleImageChange = e => {
-    const file = e.target.files[0]
-
-    const Reader = new FileReader()
-    Reader.readAsDataURL(file)
-
-    Reader.onload = () => {
-      if (Reader.readyState === 2) {
-        setImage(Reader.result)
-      }
-    }
+  const createPostHandler = () => {
+    let postData = postContent
+    dispatch(createNewPost({ postData, token }))
+    setPostContent({ content: '' })
+    navigate('/')
   }
+
+  const editPostHandler = () => {
+    let postData = { ...editPostData, content: postContent.content }
+    dispatch(editPost({ postData, token }))
+    setPostContent({ content: '' })
+  }
+  const currentUser = allUsers?.find(
+    user => user.username === userInfo.username
+  )
+  // const handleImageChange = e => {
+  //   const file = e.target.files[0]
+
+  //   const Reader = new FileReader()
+  //   Reader.readAsDataURL(file)
+
+  //   Reader.onload = () => {
+  //     if (Reader.readyState === 2) {
+  //       setImage(Reader.result)
+  //     }
+  //   }
+  // }
 
   const submitHandler = async e => {
     e.preventDefault()
   }
-
-  useEffect(() => {}, [dispatch])
 
   return (
     <div className='newPost'>
       <form className='newPostForm' onSubmit={submitHandler}>
         <Typography variant='h3'>New Post</Typography>
 
-        {image && <img src={image} alt='post' />}
-        <input type='file' accept='image/*' onChange={handleImageChange} />
+        {/* {image && <img src={image} alt='post' />}
+        <input type='file' accept='image/*' onChange={handleImageChange} /> */}
         <input
           type='text'
-          placeholder='Caption...'
-          value={caption}
-          onChange={e => setCaption(e.target.value)}
+          placeholder='enter content...'
+          value={postContent.content}
+          onChange={e => setPostContent({ content: e.target.value })}
         />
-        <Button type='submit'>
-          {/* best tow dispa */}
+        <Button
+          type='submit'
+          disabled={postContent.content === ''}
+          onClick={editPostData ? editPostHandler : createPostHandler}
+        >
           {/* <Button disabled={loading} type='submit'> */}
           Post
         </Button>

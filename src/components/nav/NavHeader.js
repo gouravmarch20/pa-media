@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/navHeader.css'
+import {  useSelector } from "react-redux";
+
 import {
   Home,
   HomeOutlined,
@@ -13,7 +15,9 @@ import {
 } from '@mui/icons-material'
 
 export const NavHeader = () => {
+  // TODO: REPLACE SETTAB USING USEEFFECT
   const [tab, setTab] = useState(window.location.pathname)
+  const { userInfo } = useSelector(state => state.auth);
 
   return (
     <>
@@ -43,7 +47,10 @@ export const NavHeader = () => {
             )}
           </Link>
 
-          <Link to='/account' onClick={() => setTab('/account')}>
+          <Link
+            to={`/profile/${userInfo?.username}`}
+            onClick={() => setTab('/account')}
+          >
             {tab === '/account' ? (
               <AccountCircle style={{ color: 'black' }} />
             ) : (

@@ -9,7 +9,11 @@ import {
   getAllBookmarkPostService,
   deleteBookmarkPostService,
   addCommentService,
-  deleteCommentService
+  deleteCommentService,
+  getSinglePostService,
+  downvoteCommentService,
+  upvoteCommentService,
+  editPostService,createNewPostService
 } from '../services/postsServices'
 const initialState = {
   allPosts: [],
@@ -21,6 +25,18 @@ const initialState = {
   isPostModalOpen: false,
   editPostData: {}
 }
+
+export const createNewPost = createAsyncThunk(
+  'posts/createNewPost',
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await createNewPostService(postData, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 export const getAllPosts = createAsyncThunk(
   'posts/getAllPosts',
   async (_, { rejectWithValue }) => {
@@ -123,11 +139,72 @@ export const deleteComment = createAsyncThunk(
     }
   }
 )
+export const getSinglePost = createAsyncThunk(
+  'posts/getSinglePost',
+  async (postId, { rejectWithValue }) => {
+    try {
+      const response = await getSinglePostService(postId)
+      return response.data.post
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+
+export const downvoteComment = createAsyncThunk(
+  'posts/downvoteComment',
+  async ({ postId, commentId, token }, { rejectWithValue }) => {
+    try {
+      const response = await downvoteCommentService(postId, commentId, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const upvoteComment = createAsyncThunk(
+  'posts/upvoteComment',
+  async ({ postId, commentId, token }, { rejectWithValue }) => {
+    try {
+      const response = await upvoteCommentService(postId, commentId, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
+export const editPost = createAsyncThunk(
+  "posts/editPost",
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await editPostService(postData, token);
+      return response.data.posts;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {},
   extraReducers: {
+    [createNewPost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('Post created successfully!')
+    },
+    [createNewPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [editPost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('Post edited successfully!')
+    },
+    [editPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
     [getAllPosts.pending]: state => {
       state.postStatus = 'loading'
     },
@@ -155,7 +232,18 @@ const postSlice = createSlice({
       state.postError = payload
       toast.error('Some error occured. Try Again.')
     },
-
+    //
+    [getSinglePost.pending]: state => {
+      state.singlePostStatus = 'loading'
+    },
+    [getSinglePost.fulfilled]: (state, { payload }) => {
+      state.singlePostStatus = 'success'
+      state.singlePost = payload
+    },
+    [getSinglePost.rejected]: (state, { payload }) => {
+      state.singlePostStatus = 'failed'
+      state.postError = payload.errors
+    },
     //
     [bookmarkPost.fulfilled]: (state, { payload }) => {
       state.bookmarkPosts = payload.bookmarks
@@ -197,8 +285,25 @@ const postSlice = createSlice({
     [deleteComment.rejected]: (state, { payload }) => {
       state.postError = payload.errors
       toast.error('Some error occured. Try Again.')
-    }
+    },
+
     //
+    [upvoteComment.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('You upvoted!')
+    },
+    [upvoteComment.rejected]: (state, { payload }) => {
+      state.postError = payload.errors
+      toast.error('Some error occured. Try Again.')
+    },
+    [downvoteComment.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('You downvoted!')
+    },
+    [downvoteComment.rejected]: (state, { payload }) => {
+      state.postError = payload.errors
+      toast.error('Some error occured. Try Again.')
+    }
   }
 })
 export default postSlice.reducer

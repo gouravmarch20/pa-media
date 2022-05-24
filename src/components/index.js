@@ -5,4 +5,5 @@ export { Search } from './search/Search'
 export { Account } from './account/Account'
 export { OtherUsers } from './home/OtherUsers'
 export { HomePosts } from './home/HomePosts'
- 
+export { Profile } from './profile/Profile'
+export { ProfilePost } from './profile/ProfilePost'

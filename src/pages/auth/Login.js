@@ -23,8 +23,8 @@ export const Login = () => {
   }
 
   const submitLoginWithCredentials = () => {
-    setUsername('adarshbalika')
-    setPassword('adarshBalika123')
+    setUsername('adminkumar')
+    setPassword('admin@123')
     // plealse login now -> tost
   }
 
