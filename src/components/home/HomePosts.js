@@ -18,7 +18,7 @@ export const HomePosts = () => {
   const homeShortedPosts = getSortedPosts(allPosts, userInfo)
 
   return (
-    <div className='posts'>
+    <div className=''>
       {homeShortedPosts ? (
         homeShortedPosts?.map((post, id) => {
           return (

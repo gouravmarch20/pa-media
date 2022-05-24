@@ -5,24 +5,21 @@
   overflow-x: hidden !important;
 }
 
-/* .container-wrapper {
-  background-color: #ffffff;
-  width: 80vw;
-} */
+
 .nav-left {
-  /* position: sticky; */
-  /* max-width: 20vw; */
-  /* max-width: 20vw; */
+
   min-height: 90vh;
   background-color: #13455b;
 }
 .home-posts {
-  max-width: 50vw;
-
-  background-color: red;
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cec1ff;
 }
 .home-otherUser {
-  width: 18vw;
+  width: 25vw;
   background-color: grey;
   position: fixed;
   right: 0;
