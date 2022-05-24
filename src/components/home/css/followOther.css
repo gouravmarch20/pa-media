@@ -1,0 +1,15 @@
+.follow-other-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+.img-avatar-follow {
+  width: 50px;
+  border-radius: 50%;
+}
+.bg-red {
+  width: 80%;
+  background-color: whitesmoke;
+  padding: 1rem;
+}

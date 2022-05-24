@@ -5,9 +5,7 @@
   overflow-x: hidden !important;
 }
 
-
 .nav-left {
-
   min-height: 90vh;
   background-color: #13455b;
 }
@@ -19,19 +17,21 @@
   background-color: #cec1ff;
 }
 .home-otherUser {
-  width: 25vw;
-  background-color: grey;
+  width: 26vw;
+  /* background-color: grey; */
+  background-image: linear-gradient(to left, #d6ce9f, #cec1ff);
+
   position: fixed;
   right: 0;
   top: 10vh;
-  height: 90vh;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-/* .home-otherUser::-webkit-scrollbar {
+.home-otherUser::-webkit-scrollbar {
   width: 10px;
   height: 10%;
 }
 .home-otherUser:hover::-webkit-scrollbar-thumb {
   background: skyblue;
-} */
+}

@@ -74,7 +74,6 @@ export const HomePost = ({ postData }) => {
 
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
-
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
     bookmarkPostId => bookmarkPostId === _id
   )

@@ -52,7 +52,28 @@ export const getSingleUser = createAsyncThunk(
     }
   }
 )
-
+export const followUser = createAsyncThunk(
+  'users/followUser',
+  async ({ followUserId, token }, { rejectWithValue }) => {
+    try {
+      const response = await followUserService(followUserId, token)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response)
+    }
+  }
+)
+export const unfollowUser = createAsyncThunk(
+  'users/unfollowUser',
+  async ({ followUserId, token }, { rejectWithValue }) => {
+    try {
+      const response = await unfollowUserService(followUserId, token)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 const userSlice = createSlice({
   name: 'users',
   initialState,
@@ -95,6 +116,36 @@ const userSlice = createSlice({
     [getUserPostsByUsername.rejected]: (state, { payload }) => {
       state.userPostsStatus = 'failed'
       state.userPostsError = payload.errors
+    },
+    [followUser.fulfilled]: (state, { payload }) => {
+      const { user, followUser } = payload
+      state.allUsers = state.allUsers.map(currUser =>
+        currUser.username === user.username ? user : currUser
+      )
+      state.allUsers = state.allUsers.map(currUser =>
+        currUser.username === followUser.username ? followUser : currUser
+      )
+      state.singleUser = payload.followUser
+      toast.success('You followed!')
+    },
+    [followUser.rejected]: (state, { payload }) => {
+      state.userError = payload.errors
+      toast.error('Some error occured. Try Again.')
+    },
+    [unfollowUser.fulfilled]: (state, { payload }) => {
+      const { user, followUser } = payload
+      state.allUsers = state.allUsers.map(currUser =>
+        currUser.username === user.username ? user : currUser
+      )
+      state.allUsers = state.allUsers.map(currUser =>
+        currUser.username === followUser.username ? followUser : currUser
+      )
+      state.singleUser = payload.followUser
+      toast.success('You unfollowed!')
+    },
+    [unfollowUser.rejected]: (state, { payload }) => {
+      state.userError = payload.errors
+      toast.error('Some error occured. Try Again.')
     }
   }
 })

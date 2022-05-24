@@ -8,7 +8,7 @@ import Mockman from 'mockman-js'
 import { useSelector } from 'react-redux'
 import { NavHeader, NewPost, Search, Account } from './components/'
 import {
-  Bookmark,
+  BookmarkPage,
   Explore,
   Home,
   Login,
@@ -30,7 +30,7 @@ const App = () => {
         <Route path='/post/:postId' element={<SinglePost />} />
         <Route path='/profile/:username' element={<ProfilePage />} />
         <Route path='/explore' element={<Explore />} />
-        <Route path='/bookmarks' element={<Bookmark />} />
+        <Route path='/bookmarks' element={<BookmarkPage />} />
         <Route path='login' element={<Login />} />
         <Route path='newpost' element={<NewPost />} />
         <Route path='search' element={<Search />} />
