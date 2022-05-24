@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux'
 const CommentCard = ({ commmentData }) => {
   //   const { user } = useSelector(state => state.user)
 
- 
   const deleteCommentHandle = () => {
     // dispatch(deleteCommentOnPost(postId, commentId))
 
@@ -23,11 +22,12 @@ const CommentCard = ({ commmentData }) => {
 
   return (
     <div className='commentUser'>
-      {commmentData.map(comment => {
+      {commmentData.map((comment, index) => {
         const { firstName, avatar, text } = comment
+
         return (
           <>
-            <Link to={`/user/$1`}>
+            <Link to={`/user/$1`} key={index}>
               <img src={avatar} alt={'avatar'} />
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
               <Typography>{text}</Typography>

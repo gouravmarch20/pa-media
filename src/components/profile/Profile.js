@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -44,7 +43,6 @@ export const Profile = () => {
           <h2> {currentUser?.bio} </h2>
           <h2> {currentUser?.followers.length} </h2>
           <h2> {currentUser?.following.length} </h2>
-          {/* {console.log(userPosts)} */}
           <div className='posts'>
             {userPosts ? (
               userPosts.map((userpost, id) => {

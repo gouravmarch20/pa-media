@@ -14,7 +14,7 @@ import {
   Login,
   ProfilePage,
   Signup,
-  SinglePost
+  SinglePost,LikedPage
 } from './pages'
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
         <Route path='login' element={<Login />} />
         <Route path='newpost' element={<NewPost />} />
         <Route path='search' element={<Search />} />
-        <Route path='account' element={<Account />} />
+        <Route path='/liked' element={<LikedPage />} />
         <Route path='/mock' element={<Mockman />} />
         <Route path='/post/:postId' element={<SinglePost />} />
         {/* <Route path='*' element={<Navigate replace to='/' />} /> */}

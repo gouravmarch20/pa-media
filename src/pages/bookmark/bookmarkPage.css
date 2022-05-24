@@ -1,0 +1,7 @@
+.bookmark-container {
+  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}

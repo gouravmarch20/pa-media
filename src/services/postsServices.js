@@ -86,8 +86,29 @@ export const deleteCommentService = (postId, commentId, token) =>
       }
     }
   )
-// --- BOOKMARK
 
+// vote
+export const downvoteCommentService = (postId, commentId, token) =>
+  axios.post(
+    `/api/comments/downvote/${postId}/${commentId}`,
+    {},
+    {
+      headers: {
+        authorization: token
+      }
+    }
+  )
+export const upvoteCommentService = (postId, commentId, token) =>
+  axios.post(
+    `/api/comments/upvote/${postId}/${commentId}`,
+    {},
+    {
+      headers: {
+        authorization: token
+      }
+    }
+  )
+// --- BOOKMARK
 export const bookmarkPostService = (postId, token) =>
   axios.post(
     `/api/users/bookmark/${postId}`,
@@ -116,24 +137,3 @@ export const getAllBookmarkPostService = token =>
       authorization: token
     }
   })
-// vote
-export const downvoteCommentService = (postId, commentId, token) =>
-  axios.post(
-    `/api/comments/downvote/${postId}/${commentId}`,
-    {},
-    {
-      headers: {
-        authorization: token
-      }
-    }
-  )
-export const upvoteCommentService = (postId, commentId, token) =>
-  axios.post(
-    `/api/comments/upvote/${postId}/${commentId}`,
-    {},
-    {
-      headers: {
-        authorization: token
-      }
-    }
-  )

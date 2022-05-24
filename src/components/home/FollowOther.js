@@ -24,11 +24,9 @@ export const FollowOther = () => {
         )
     )
     ?.filter(user => user.username !== userInfo?.username)
-  console.log(followOtherSuggestion && followOtherSuggestion.length)
   return (
     <div>
       <h2>Other to follow</h2>
-      {console.log(followOtherSuggestion)}
       {followOtherSuggestion && followOtherSuggestion?.length !== 0 ? (
         <>
           {followOtherSuggestion.map((user, id) => {

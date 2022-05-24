@@ -12,7 +12,6 @@ export const Home = () => {
       </div>
       <div className='home-otherUser'>
         <FollowOther />
-
       </div>
     </div>
   )

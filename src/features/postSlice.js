@@ -13,7 +13,8 @@ import {
   getSinglePostService,
   downvoteCommentService,
   upvoteCommentService,
-  editPostService,createNewPostService
+  editPostService,
+  createNewPostService
 } from '../services/postsServices'
 const initialState = {
   allPosts: [],
@@ -174,16 +175,16 @@ export const upvoteComment = createAsyncThunk(
   }
 )
 export const editPost = createAsyncThunk(
-  "posts/editPost",
+  'posts/editPost',
   async ({ postData, token }, { rejectWithValue }) => {
     try {
-      const response = await editPostService(postData, token);
-      return response.data.posts;
+      const response = await editPostService(postData, token)
+      return response.data.posts
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response.data)
     }
   }
-);
+)
 const postSlice = createSlice({
   name: 'posts',
   initialState,
@@ -302,6 +303,22 @@ const postSlice = createSlice({
     },
     [downvoteComment.rejected]: (state, { payload }) => {
       state.postError = payload.errors
+      toast.error('Some error occured. Try Again.')
+    },
+    [bookmarkPost.fulfilled]: (state, { payload }) => {
+      state.bookmarkPosts = payload.bookmarks
+      toast.success('Post bookmarked successfully.')
+    },
+    [bookmarkPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [removeBookmarkPost.fulfilled]: (state, { payload }) => {
+      state.bookmarkPosts = payload.bookmarks
+      toast.success('Post removed from bookmark.')
+    },
+    [removeBookmarkPost.rejected]: (state, { payload }) => {
+      state.postError = payload
       toast.error('Some error occured. Try Again.')
     }
   }
