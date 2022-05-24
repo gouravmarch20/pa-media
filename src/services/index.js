@@ -1,2 +1,3 @@
 export { signupService, loginService } from './authService.js'
-export { getAllPostsService } from './postsServices'
+export { getAllPostsService ,createNewPostService} from './postsServices'
+export { getSingleUserService ,getAllUsersService } from './usersServices'

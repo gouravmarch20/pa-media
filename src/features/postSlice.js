@@ -12,7 +12,8 @@ import {
   deleteCommentService,
   getSinglePostService,
   downvoteCommentService,
-  upvoteCommentService
+  upvoteCommentService,
+  editPostService,createNewPostService
 } from '../services/postsServices'
 const initialState = {
   allPosts: [],
@@ -24,6 +25,18 @@ const initialState = {
   isPostModalOpen: false,
   editPostData: {}
 }
+
+export const createNewPost = createAsyncThunk(
+  'posts/createNewPost',
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await createNewPostService(postData, token)
+      return response.data.posts
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 export const getAllPosts = createAsyncThunk(
   'posts/getAllPosts',
   async (_, { rejectWithValue }) => {
@@ -160,11 +173,38 @@ export const upvoteComment = createAsyncThunk(
     }
   }
 )
+export const editPost = createAsyncThunk(
+  "posts/editPost",
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await editPostService(postData, token);
+      return response.data.posts;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {},
   extraReducers: {
+    [createNewPost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('Post created successfully!')
+    },
+    [createNewPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
+    [editPost.fulfilled]: (state, { payload }) => {
+      state.allPosts = payload
+      toast.success('Post edited successfully!')
+    },
+    [editPost.rejected]: (state, { payload }) => {
+      state.postError = payload
+      toast.error('Some error occured. Try Again.')
+    },
     [getAllPosts.pending]: state => {
       state.postStatus = 'loading'
     },

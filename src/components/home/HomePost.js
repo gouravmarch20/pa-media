@@ -51,7 +51,7 @@ export const HomePost = ({ postData }) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-
+  console.log(postData)
   const {
     _id,
     id,

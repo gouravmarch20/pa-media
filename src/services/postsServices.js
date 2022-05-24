@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const getAllPostsService = () => axios.get('/api/posts')
-
+// users
+export const getAllUsersService = () => axios.get(`/api/users`)
 export const getSinglePostService = postId => axios.get(`/api/posts/${postId}`)
 
 export const getPostByUsernameService = username =>
