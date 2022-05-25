@@ -2,7 +2,7 @@ import React from 'react'
 import './css/navLeft.css'
 import { NavLink } from 'react-router-dom'
 import { AiFillLike } from 'react-icons/ai'
-import { MdHome, MdWatchLater, MdOutlinePlaylistPlay } from 'react-icons/md'
+import { MdHome, MdWatchLater, MdOutlinePlaylistPlay,MdTrendingUp } from 'react-icons/md'
 import { BsBookmark } from 'react-icons/bs'
 import { FaHistory } from 'react-icons/fa'
 
@@ -24,13 +24,13 @@ export const NavLeft = () => {
       </NavLink>
       <hr />
       <NavLink
-        to='/liked'
+        to='/explore'
         className={({ isActive }) =>
           isActive ? 'nav-link-active' : 'nav-link-sleep'
         }
       >
         <i className='navLeft-icon'>
-          <AiFillLike />
+          <MdTrendingUp />
         </i>
         {/* <span className='navLeft-link-span'>Liked</span> */}
       </NavLink>

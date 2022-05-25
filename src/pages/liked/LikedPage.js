@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLeft } from '../../components'
+import { NavLeft, Like } from '../../components'
 
 export const LikedPage = () => {
   return (
@@ -7,7 +7,9 @@ export const LikedPage = () => {
       <div className='nav-left'>
         <NavLeft />
       </div>
-      <div className='bookmark-container'>{/* <Bookmark /> */}</div>
+      <div className='bookmark-container'>
+        <Like />
+      </div>
     </div>
   )
 }

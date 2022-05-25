@@ -14,7 +14,8 @@ import {
   Login,
   ProfilePage,
   Signup,
-  SinglePost,LikedPage
+  SinglePostPage,
+  LikedPage
 } from './pages'
 
 const App = () => {
@@ -27,17 +28,16 @@ const App = () => {
       <Routes>
         {/* <Route path='/' element={<PrivateRoute />}> */}
         <Route path='/' element={<Home />} />
-        <Route path='/post/:postId' element={<SinglePost />} />
+        <Route path='/post/:postId' element={<SinglePostPage />} />
         <Route path='/profile/:username' element={<ProfilePage />} />
         <Route path='/explore' element={<Explore />} />
         <Route path='/bookmarks' element={<BookmarkPage />} />
         <Route path='login' element={<Login />} />
         <Route path='newpost' element={<NewPost />} />
         <Route path='search' element={<Search />} />
-        <Route path='/liked' element={<LikedPage />} />
+        {/* <Route path='/liked' element={<LikedPage />} /> */}
         <Route path='/mock' element={<Mockman />} />
-        <Route path='/post/:postId' element={<SinglePost />} />
-        {/* <Route path='*' element={<Navigate replace to='/' />} /> */}
+        <Route path='*' element={<Navigate replace to='/' />} />
         {/* </Route>{' '} */}
       </Routes>
     </div>

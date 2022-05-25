@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
-import { BookmarkCard } from './BookmarkCard'
+import { LikeCard } from './LikeCard'
 import {
   getBookmarkPostsHelper,
   getSortedPosts,
@@ -9,7 +9,7 @@ import {
 } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
 
-export const Bookmark = () => {
+export const Like = () => {
   const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
     state => state.posts
   )
@@ -30,13 +30,14 @@ export const Bookmark = () => {
 
   return (
     <div>
+      {' '}
       {bookmarkFeedPosts.length === 0 ? (
-        <h1 className=''>Not any Bookmark Posts.</h1>
+        <div className=''>No Bookmark Posts.</div>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
           return (
             <div key={id}>
-              <BookmarkCard postData={post} />
+              {/* <LikeCard postData={post} /> */}
             </div>
           )
         })

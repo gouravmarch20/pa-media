@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../features/postSlice'
 import { ComentVote } from './ComentVote'
-import './commentVote.css'
+import './singlePost.css'
 export const SinglePost = () => {
   const { postId } = useParams()
   const navigate = useNavigate()
@@ -11,24 +11,35 @@ export const SinglePost = () => {
   const { singlePost, singlePostStatus, allPosts } = useSelector(
     state => state.posts
   )
-
   useEffect(() => {
     dispatch(getSinglePost(postId))
   }, [postId])
   const currentPost = allPosts?.find(post => post.id === postId)
   const updatedPost = currentPost ?? singlePost
 
+
   // const updatedPost = currentPost ?? singlePost;
+  
   return (
-    <div>
-      SinglePost
+    <div className='singlePost'>
       {singlePostStatus === 'success' && (
         <>
-          <h2>{singlePost?.content}</h2>
-          {/* <img src={singlePost?.avatar} alt='' /> */}
-          <p> {singlePost?.username}</p>
-          {/* <img src={singlePost?.firstName} alt='' /> */}
-          <p> {singlePost?.firstName}</p>
+          <div className='flex-row-center-center'>
+            <div>
+              <img
+                className='singlePostAvatar'
+                src={singlePost?.avatar}
+                alt=''
+              />
+            </div>
+            <div>
+              <p> {singlePost?.firstName}</p>
+              <p>@ {singlePost?.username}</p>
+            </div>
+          </div>
+
+          <p className='post-content'>{singlePost?.content}</p>
+          <hr />
           {updatedPost.comments.map(comment => {
             return (
               <div key={comment._id}>

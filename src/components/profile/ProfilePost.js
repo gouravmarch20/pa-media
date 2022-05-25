@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Card,
   CardActions,
@@ -91,7 +91,7 @@ export const ProfilePost = ({ userpost }) => {
         <hr />
         <p>{content}</p>
         <div className='postFooter'>
-          {/* {isPostAlreadyLiked ? (
+          {isPostAlreadyLiked ? (
             <Button>
               <MdThumbUp
                 onClick={() => dispatch(dislikePost({ postId: _id, token }))}
@@ -103,7 +103,7 @@ export const ProfilePost = ({ userpost }) => {
                 onClick={() => dispatch(likePost({ postId: _id, token }))}
               />
             </Button>
-          )} */}
+          )}
 
           {isPostAlreadyBookmarked ? (
             <Button>

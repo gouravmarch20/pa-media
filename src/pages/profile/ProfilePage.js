@@ -1,9 +1,14 @@
 import React from 'react'
-import { Profile } from '../../components'
+import { Profile, NavLeft } from '../../components'
 export const ProfilePage = () => {
   return (
-    <div>
-      <Profile />
+    <div className='navbarLeft-container-wrapper'>
+      <div className='nav-left'>
+        <NavLeft />
+      </div>
+      <div className='bookmark-container'>
+        {/* <Profile /> */}
+      </div>
     </div>
   )
 }
