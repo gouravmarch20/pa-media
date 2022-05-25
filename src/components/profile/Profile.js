@@ -67,19 +67,27 @@ export const Profile = () => {
 
           <Button
             color='primary'
+            variant='contained'
             onClick={() => setFollowingToggle(!followingToggle)}
+            className="ml-3"
           >
             <span>Following &nbsp;</span> {currentUser?.following.length}
           </Button>
           <Button
             color='secondary'
+            variant='contained'
             onClick={() => setFollowersToggle(!followersToggle)}
           >
             <span>Followers &nbsp;</span> {currentUser?.followers.length}
           </Button>
 
+          <Button variant='text'>
+            {' '}
+            <span> Posts &nbsp; </span> {userPosts.length}
+          </Button>
+
           <div className='profile-posts'>
-            {userPosts ? (
+            {userPosts && userPosts.length > 0 ? (
               userPosts.map((userpost, id) => {
                 return (
                   <div key={id}>
@@ -88,7 +96,9 @@ export const Profile = () => {
                 )
               })
             ) : (
-              <h2>no post found</h2>
+              <Typography variant='h5' style={{ margin: '2vmax' }}>
+                This have not any post
+              </Typography>
             )}
           </div>
           <Dialog
