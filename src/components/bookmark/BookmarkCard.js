@@ -36,7 +36,6 @@ export const BookmarkCard = ({ postData }) => {
     setCommentData({ text: '' })
     navigate(`/post/${id}`)
   }
-  console.log(postData)
 
   const {
     comments,

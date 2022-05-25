@@ -25,6 +25,13 @@ export const users = [
         lastName: 'Kumar',
         username: 'adminkumar',
         avatar: 'https://joeschmoe.io/api/v1/joe'
+      },
+      {
+        _id: uuid(),
+        firstName: 'gourav',
+        lastName: 'mishra',
+        username: 'gouravm',
+        avatar: 'https://joeschmoe.io/api/v1/jana'
       }
     ],
     following: [
@@ -71,6 +78,14 @@ export const users = [
         lastName: 'Balika',
         username: 'adarshbalika',
         avatar: 'https://joeschmoe.io/api/v1/jeane'
+      },
+      {
+        _id: uuid(),
+        firstName: 'apple',
+        lastName: 'x',
+        username: 'apple',
+        avatar:
+          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
       }
     ],
     followers: [
@@ -152,6 +167,13 @@ export const users = [
         lastName: 'Balika',
         username: 'adarshbalika',
         avatar: 'https://joeschmoe.io/api/v1/jeane'
+      },
+      {
+        _id: uuid(),
+        firstName: 'gourav',
+        lastName: 'mishra',
+        username: 'gouravm',
+        avatar: 'https://joeschmoe.io/api/v1/jeane'
       }
     ],
     bookmarks: []
@@ -175,6 +197,14 @@ export const users = [
         lastName: 'Gautam',
         username: 'abhishekgautam',
         avatar: 'https://joeschmoe.io/api/v1/james'
+      },
+      {
+        _id: uuid(),
+        firstName: 'apple',
+        lastName: 'x',
+        username: 'apple',
+        avatar:
+          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
       }
     ],
     followers: [

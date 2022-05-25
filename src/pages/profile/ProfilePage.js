@@ -7,7 +7,7 @@ export const ProfilePage = () => {
       <div className='nav-left'>
         <NavLeft />
       </div>
-      <div className='profile-container'>
+      <div className='profile-layout'>
         <Profile />
       </div>
     </div>

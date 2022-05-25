@@ -22,7 +22,6 @@ const CommentCard = ({ commmentData }) => {
 
   return (
     <div className='commentUser'>
-      {/* {console.log(commmentData)} */}
       {commmentData.map((comment, index) => {
         const { firstName, avatar, text, username } = comment
 

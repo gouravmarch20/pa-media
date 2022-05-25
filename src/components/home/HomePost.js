@@ -97,17 +97,22 @@ export const HomePost = ({ postData }) => {
       </p>
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
-          <Button>
-            <MdThumbUp
-              onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-            />
-          </Button>
+          <div>
+            <span>asf;</span>
+            <Button>
+              <MdThumbUp
+                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
+              />
+            </Button>
+          </div>
         ) : (
-          <Button>
-            <MdThumbUpOffAlt
-              onClick={() => dispatch(likePost({ postId: _id, token }))}
-            />
-          </Button>
+          <>
+            <Button>
+              <MdThumbUpOffAlt
+                onClick={() => dispatch(likePost({ postId: _id, token }))}
+              />
+            </Button>
+          </>
         )}
 
         {isPostAlreadyBookmarked ? (

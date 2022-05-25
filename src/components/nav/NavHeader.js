@@ -25,7 +25,6 @@ export const NavHeader = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const logOutHandler = () => {
-    console.log('first')
     dispatch(logOut())
     navigate('/login')
     localStorage.removeItem('token')
