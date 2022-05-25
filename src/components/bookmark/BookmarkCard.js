@@ -1,49 +1,27 @@
 import React, { useState } from 'react'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  ButtonBase,
-  Dialog,
-  Avatar
-} from '@mui/material'
+import { Button, Typography, Dialog } from '@mui/material'
 import {
   MdThumbUpOffAlt,
   MdThumbUp,
-  MdDeleteOutline,
-  MdDelete,
   MdBookmarkBorder,
   MdBookmarkAdded
 } from 'react-icons/md'
-import {
-  MoreVert,
-  Favorite,
-  FavoriteBorder,
-  ChatBubbleOutline,
-  DeleteOutline
-} from '@mui/icons-material'
+import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentCard from '../../components/card/CommentCard'
 
-import {
-  checkLikeHelper,
-  checkBookmarkHelper
-} from '../../helpers/checkerHelper'
+import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
   likePost,
-  dislikePost
+  dislikePost,
+  addComment
 } from '../../features/postSlice'
-import { addComment } from '../../features/postSlice'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const BookmarkCard = ({ postData }) => {
-  console.log(postData)
   const [commentToggle, setCommentToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
@@ -56,19 +34,23 @@ export const BookmarkCard = ({ postData }) => {
     e.preventDefault()
     dispatch(addComment({ postId: _id, commentData, token }))
     setCommentData({ text: '' })
-    // commentToggle(false)
     navigate(`/post/${id}`)
   }
+  console.log(postData)
 
   const {
     comments,
-    content,
     firstName,
     lastName,
+    username,
+
+    content,
     likes,
-    userName,
+
     _id,
-    id
+    id,
+
+    avatar
   } = postData
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
@@ -78,14 +60,19 @@ export const BookmarkCard = ({ postData }) => {
   return (
     <div className='post'>
       <div className='postHeader'>
-        <p>
+        <Link to={`/profile/${username}`} className='mr-auto'>
+          <img src={avatar} className='img-avatar-follow ' />{' '}
+        </Link>
+        <div>
           {' '}
           {firstName} {lastName}
-        </p>
+          <Link to={`/profile/${username}`}>
+            <p>@{username}</p>{' '}
+          </Link>
+        </div>
       </div>
-      <span>@{userName}</span>
       <hr />
-      <p>{content}</p>
+      <p className='post-content'>{content}</p>
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <Button>

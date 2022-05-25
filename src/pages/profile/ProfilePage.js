@@ -1,4 +1,5 @@
 import React from 'react'
+import './profilePage.css'
 import { Profile, NavLeft } from '../../components'
 export const ProfilePage = () => {
   return (
@@ -6,8 +7,8 @@ export const ProfilePage = () => {
       <div className='nav-left'>
         <NavLeft />
       </div>
-      <div className='bookmark-container'>
-        {/* <Profile /> */}
+      <div className='profile-container'>
+        <Profile />
       </div>
     </div>
   )

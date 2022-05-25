@@ -9,27 +9,26 @@ export const FollowOtherCard = ({ userData }) => {
   const { token } = useSelector(state => state.auth)
   const { avatar, firstName, username } = userData
   return (
-    <div className='pos'>
-      <div className='follow-other-flex'>
+    <div className=''>
+      <div className='display-flex-row'>
         <Link to={`/profile/${userData?.username}`}>
           <>
             <img src={avatar} className='img-avatar-follow' alt='avatar' />
           </>
-          <div>
+          <div className='flex-column-center-center'>
             <p>{firstName}</p>
             <p>@{username}</p>
           </div>
         </Link>
 
-        <div>
-          <Button
-            onClick={() =>
-              dispatch(followUser({ followUserId: userData?._id, token }))
-            }
-          >
-            Follow
-          </Button>
-        </div>
+        <Button
+          onClick={() =>
+            dispatch(followUser({ followUserId: userData?._id, token }))
+          }
+          className='follow-other-btn'
+        >
+          <div>Follow</div>
+        </Button>
       </div>
     </div>
   )

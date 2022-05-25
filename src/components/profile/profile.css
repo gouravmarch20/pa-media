@@ -1,0 +1,12 @@
+.img-avatar-profile {
+  width: 100px;
+}
+.bg-white {
+}
+.profile-align {
+  background-color: white;
+
+  margin: 0 auto;
+  padding: 2rem;
+  /* min-width: none; */
+}

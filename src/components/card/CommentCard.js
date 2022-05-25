@@ -22,12 +22,13 @@ const CommentCard = ({ commmentData }) => {
 
   return (
     <div className='commentUser'>
+      {/* {console.log(commmentData)} */}
       {commmentData.map((comment, index) => {
-        const { firstName, avatar, text } = comment
+        const { firstName, avatar, text, username } = comment
 
         return (
           <>
-            <Link to={`/user/$1`} key={index}>
+            <Link to={`/profile/${username}`} key={index}>
               <img src={avatar} alt={'avatar'} />
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
               <Typography>{text}</Typography>

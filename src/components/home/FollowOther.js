@@ -31,7 +31,7 @@ export const FollowOther = () => {
         <>
           {followOtherSuggestion.map((user, id) => {
             return (
-              <div key={id} className="bg-red">
+              <div key={id} className='bg-red'>
                 <FollowOtherCard userData={user} />
               </div>
             )

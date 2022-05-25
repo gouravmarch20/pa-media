@@ -40,7 +40,7 @@ import {
 } from '../../features/postSlice'
 import CommentCard from '../card/CommentCard'
 import { addComment } from '../../features/postSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const HomePost = ({ postData }) => {
   const [commentToggle, setCommentToggle] = useState(false)
@@ -68,7 +68,6 @@ export const HomePost = ({ postData }) => {
     e.preventDefault()
     dispatch(addComment({ postId: _id, commentData, token }))
     setCommentData({ text: '' })
-    // commentToggle(false)
     navigate(`/post/${id}`)
   }
 
@@ -81,14 +80,19 @@ export const HomePost = ({ postData }) => {
   return (
     <div className='post'>
       <div className='postHeader'>
+        <Link to={`/profile/${username}`} className='mr-auto'>
+          <img src={avatar} className='img-avatar-follow ' />{' '}
+        </Link>
         <p>
           {' '}
-          {firstName} {lastName}
+          <Link to={`/profile/${username}`} className='mr-auto'>
+            {firstName} {lastName}
+          </Link>
+          <div>@{username}</div>
         </p>
       </div>
-      <span>@{username}</span>
       <hr />
-      <p>{content}</p>
+      <p className='post-content'>{content}</p>
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <Button>

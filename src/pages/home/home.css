@@ -14,13 +14,12 @@
 .home-posts {
   width: 60vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  /* justify-content: center;
+  align-items: center; */
 }
 .home-otherUser {
   width: 26vw;
-  /* background-color: grey; */
-  background-image: linear-gradient(to left, #d6ce9f, #cec1ff);
 
   position: fixed;
   right: 0;

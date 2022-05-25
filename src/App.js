@@ -37,7 +37,7 @@ const App = () => {
         <Route path='search' element={<Search />} />
         {/* <Route path='/liked' element={<LikedPage />} /> */}
         <Route path='/mock' element={<Mockman />} />
-        <Route path='*' element={<Navigate replace to='/' />} />
+        {/* <Route path='*' element={<Navigate replace to='/' />} /> */}
         {/* </Route>{' '} */}
       </Routes>
     </div>
