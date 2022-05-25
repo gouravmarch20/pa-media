@@ -1,5 +1,5 @@
-import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
+import { v4 as uuid } from 'uuid'
+import { formatDate } from '../utils/authUtils'
 
 /**
  * Posts can be added here.
@@ -7,181 +7,229 @@ import { formatDate } from "../utils/authUtils";
  * */
 
 export const posts = [
+  // p1
   {
     _id: uuid(),
-    content:
-      "the introverted urge to postpone a meeting using any excuse possible",
+    content: 'A programmer finds himself in front of a committee',
     likes: {
       likeCount: 2,
       likedBy: [
         {
           _id: uuid(),
-          firstName: "Abhishek",
-          lastName: "Gautam",
-          username: "abhishekgautam",
-          avatar: "https://joeschmoe.io/api/v1/james",
+          firstName: 'Abhishek',
+          lastName: 'Gautam',
+          username: 'abhishekgautam',
+          avatar: 'https://joeschmoe.io/api/v1/james'
         },
         {
           _id: uuid(),
-          firstName: "Admin",
-          lastName: "Kumar",
-          username: "adminkumar",
-          avatar: "https://joeschmoe.io/api/v1/jai",
+          firstName: 'Admin',
+          lastName: 'Kumar',
+          username: 'adminkumar',
+          avatar: 'https://joeschmoe.io/api/v1/jai'
         },
         {
           _id: uuid(),
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatar: "https://joeschmoe.io/api/v1/jeane",
-        },
+          firstName: 'Adarsh',
+          lastName: 'Balika',
+          username: 'adarshbalika',
+          avatar: 'https://joeschmoe.io/api/v1/jeane'
+        }
       ],
-      dislikedBy: [],
+      dislikedBy: []
     },
-    firstName: "Adarsh",
-    lastName: "Balika",
-    avatar: "https://joeschmoe.io/api/v1/jeane",
-    username: "adarshbalika",
-    createdAt: new Date("May 14 2022 10:02:30"),
+    firstName: 'Adarsh',
+    lastName: 'Balika',
+    avatar: 'https://joeschmoe.io/api/v1/jeane',
+    username: 'adarshbalika',
+    createdAt: 'May 14 2022',
     updatedAt: formatDate(),
     comments: [
       {
         _id: uuid(),
-        firstName: "Abhishek",
-        lastName: "Gautam",
-        username: "abhishekgautam",
-        avatar: "https://joeschmoe.io/api/v1/james",
-        text: "Interesting",
-        createdAt: new Date("May 14 2022 11:02:30"),
+        firstName: 'gourav',
+        lastName: 'mishra',
+        username: 'gouravm',
+        avatar: 'https://joeschmoe.io/api/v1/james',
+        text: 'not understand',
+        createdAt: new Date('May 14 2022 11:02:30'),
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
+          downvotedBy: []
+        }
       },
       {
         _id: uuid(),
-        firstName: "Admin",
-        lastName: "Kumar",
-        username: "adminkumar",
-        avatar: "https://joeschmoe.io/api/v1/jai",
-        text: "Wow!",
-        createdAt: new Date("May 15 2022 08:02:30"),
+        firstName: 'Admin',
+        lastName: 'Kumar',
+        username: 'adminkumar',
+        avatar: 'https://joeschmoe.io/api/v1/jai',
+        text: '😩',
+        createdAt: new Date('May 15 2022 08:02:30'),
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+          downvotedBy: []
+        }
+      }
+    ]
   },
+
+  // p2
+
   {
     _id: uuid(),
     content:
-      "The power of networking is good, but learning and building in public is even better.",
+      'Your new superpower. Now in Green. Save with Apple Trade In      ',
     likes: {
       likeCount: 1,
       likedBy: [
         {
           _id: uuid(),
-          firstName: "Abhishek",
-          lastName: "Gautam",
-          username: "abhishekgautam",
-          avatar: "https://joeschmoe.io/api/v1/james",
-        },
+          firstName: 'Abhishek',
+          lastName: 'Gautam',
+          username: 'abhishekgautam',
+          avatar: 'https://joeschmoe.io/api/v1/james'
+        }
       ],
-      dislikedBy: [],
+      dislikedBy: []
     },
-    firstName: "Adarsh",
-    lastName: "Balika",
-    avatar: "https://joeschmoe.io/api/v1/jeane",
-    username: "adarshbalika",
-    createdAt: new Date("May 15 2022 10:02:30"),
+    firstName: 'Adarsh',
+    lastName: 'Balika',
+    avatar: 'https://joeschmoe.io/api/v1/jeane',
+    username: 'adarshbalika',
+    createdAt: 'May 15 2022',
     updatedAt: formatDate(),
     comments: [
       {
         _id: uuid(),
-        firstName: "Abhishek",
-        lastName: "Gautam",
-        username: "abhishekgautam",
-        avatar: "https://joeschmoe.io/api/v1/james",
-        text: "Interesting",
-        createdAt: new Date("May 15 2022 11:02:30"),
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james',
+        text: 'go green',
+        createdAt: new Date('May 15 2022 11:02:30'),
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
+          downvotedBy: []
+        }
       },
       {
         _id: uuid(),
-        firstName: "Admin",
-        lastName: "Kumar",
-        username: "adminkumar",
-        avatar: "https://joeschmoe.io/api/v1/jai",
-        text: "Wow!",
-        createdAt: new Date("May 15 2022 14:02:30"),
+        firstName: 'Admin',
+        lastName: 'Kumar',
+        username: 'adminkumar',
+        avatar: 'https://joeschmoe.io/api/v1/jai',
+        text: 'apple green ❤️!',
+        createdAt: new Date('May 15 2022 14:02:30'),
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-    ],
+          downvotedBy: []
+        }
+      }
+    ]
   },
   {
     _id: uuid(),
-    content:
-      "Guys I finally dropped out. Wish me luck for my future, never been this happy in my life 😭",
+    content: 'the infinity is relative',
     likes: {
       likeCount: 2,
       likedBy: [
         {
           _id: uuid(),
-          firstName: "Abhishek",
-          lastName: "Gautam",
-          username: "abhishekgautam",
-          avatar: "https://joeschmoe.io/api/v1/james",
+          firstName: 'Abhishek',
+          lastName: 'Gautam',
+          username: 'abhishekgautam',
+          avatar: 'https://joeschmoe.io/api/v1/james'
         },
         {
           _id: uuid(),
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatar: "https://joeschmoe.io/api/v1/jeane",
-        },
+          firstName: 'Adarsh',
+          lastName: 'Balika',
+          username: 'adarshbalika',
+          avatar: 'https://joeschmoe.io/api/v1/jeane'
+        }
       ],
-      dislikedBy: [],
+      dislikedBy: []
     },
-    firstName: "Admin",
-    lastName: "Kumar",
-    username: "adminkumar",
-    avatar: "https://joeschmoe.io/api/v1/jai",
+    firstName: 'Admin',
+    lastName: 'Kumar',
+    username: 'adminkumar',
+    avatar: 'https://joeschmoe.io/api/v1/jai',
     comments: [
       {
         _id: uuid(),
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatar: "https://joeschmoe.io/api/v1/jeane",
-        createdAt: new Date("May 16 2022 18:02:30"),
-        text: "Interesting",
+        firstName: 'Adarsh',
+        lastName: 'Balika',
+        username: 'adarshbalika',
+        avatar: 'https://joeschmoe.io/api/v1/jeane',
+        createdAt: new Date('May 16 2022 18:02:30'),
+        text: '∞ symbol to detone infinity',
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
+          downvotedBy: []
+        }
       },
       {
         _id: uuid(),
-        firstName: "Abhishek",
-        lastName: "Gautam",
-        username: "abhishekgautam",
-        avatar: "https://joeschmoe.io/api/v1/james",
-        text: "Wow!",
-        createdAt: new Date("May 17 2022 11:02:30"),
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james',
+        text: 'real or just a concept ?',
+        createdAt: new Date('May 17 2022 11:02:30'),
         votes: {
           upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
+          downvotedBy: []
+        }
+      }
     ],
-    createdAt: new Date("May 16 2022 16:02:30"),
-    updatedAt: formatDate(),
+    createdAt: 'May 16 2022 11:02:30',
+    updatedAt: formatDate()
   },
-];
+  {
+    _id: uuid(),
+    content: 'looking at the star & dealing with scars',
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: 'Abhishek',
+          lastName: 'Gautam',
+          username: 'abhishekgautam',
+          avatar: 'https://joeschmoe.io/api/v1/james'
+        },
+        {
+          _id: uuid(),
+          firstName: 'Adarsh',
+          lastName: 'Balika',
+          username: 'adarshbalika',
+          avatar: 'https://joeschmoe.io/api/v1/jeane'
+        }
+      ],
+      dislikedBy: []
+    },
+
+    firstName: 'gourav',
+    lastName: 'mishra',
+    username: 'gouravm',
+    avatar: 'https://joeschmoe.io/api/v1/jana',
+    comments: [
+      {
+        _id: uuid(),
+        firstName: 'Adarsh',
+        lastName: 'Balika',
+        username: 'adarshbalika',
+        avatar: 'https://joeschmoe.io/api/v1/jeane',
+        createdAt: new Date('May 20 2022 18:02:30'),
+        text: 'Interesting',
+        votes: {
+          upvotedBy: [],
+          downvotedBy: []
+        }
+      }
+    ],
+    createdAt: 'May 20 2022 16:02:30',
+    updatedAt: formatDate()
+  }
+]
