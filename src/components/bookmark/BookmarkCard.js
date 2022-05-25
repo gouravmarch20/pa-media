@@ -72,7 +72,8 @@ export const BookmarkCard = ({ postData }) => {
         </div>
       </div>
       <hr />
-      <p className='post-content'>{content}</p>
+      <p className='post-content' onClick={() => navigate(`/post/${id}`)}></p>
+
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <Button>

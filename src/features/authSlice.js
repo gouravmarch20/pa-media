@@ -55,7 +55,6 @@ const authSlice = createSlice({
   extraReducers: {
     [loginUser.pending]: state => {
       state.authStatus = 'loading'
-      toast('Hello Darkness!')
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       state.authStatus = 'success'

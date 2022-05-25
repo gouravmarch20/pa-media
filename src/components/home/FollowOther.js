@@ -14,7 +14,7 @@ export const FollowOther = () => {
   }, [dispatch])
 
   const currentUser = allUsers?.find(
-    user => user.username === userInfo.username
+    user => user?.username === userInfo?.username
   )
   const followOtherSuggestion = allUsers
     ?.filter(

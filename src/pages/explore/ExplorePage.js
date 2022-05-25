@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLeft } from '../../components'
-export const Explore = () => {
+import { NavLeft, Explore } from '../../components'
+export const ExplorePage = () => {
   return (
     <div className='navbarLeft-container-wrapper'>
       <div className='nav-left'>
@@ -9,7 +9,7 @@ export const Explore = () => {
       <div className='bookmark-container'>
         <h1>Explore page </h1>
 
-        {/* <Like /> */}
+        <Explore />
       </div>
     </div>
   )

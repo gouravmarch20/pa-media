@@ -27,13 +27,15 @@ const CommentCard = ({ commmentData }) => {
         const { firstName, avatar, text, username } = comment
 
         return (
-          <>
+          <div className='display-flex-row'>
             <Link to={`/profile/${username}`} key={index}>
               <img src={avatar} alt={'avatar'} />
+
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
-              <Typography>{text}</Typography>
             </Link>
-          </>
+
+            <Typography>{text}</Typography>
+          </div>
         )
       })}
 

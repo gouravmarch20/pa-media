@@ -92,7 +92,9 @@ export const HomePost = ({ postData }) => {
         </p>
       </div>
       <hr />
-      <p className='post-content'>{content}</p>
+      <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
+        {content}
+      </p>
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <Button>
@@ -154,15 +156,8 @@ export const HomePost = ({ postData }) => {
             {/* ADD KEY */}
 
             {comments?.length > 0 ? (
-              // comments.map((item, index) => {
-              // return (
-              // <div key={index}>
               <CommentCard commmentData={comments} />
             ) : (
-              // </div>
-              // )
-              // })
-
               <Typography>No comments Yet</Typography>
             )}
           </div>
