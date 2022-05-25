@@ -1,36 +1,15 @@
-import React, { useState } from 'react'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  ButtonBase,
-  Dialog,
-  Avatar
-} from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Button, Typography, Dialog } from '@mui/material'
 
 import {
   MdThumbUpOffAlt,
   MdThumbUp,
-  MdDeleteOutline,
-  MdDelete,
   MdBookmarkBorder,
   MdBookmarkAdded
 } from 'react-icons/md'
-import {
-  MoreVert,
-  Favorite,
-  FavoriteBorder,
-  ChatBubbleOutline,
-  DeleteOutline
-} from '@mui/icons-material'
+import { ChatBubbleOutline } from '@mui/icons-material'
 
-import {
-  checkLikeHelper,
-  checkBookmarkHelper
-} from '../../helpers/checkerHelper'
+import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
@@ -38,8 +17,9 @@ import {
   dislikePost,
   addComment
 } from '../../features/postSlice'
-import { useNavigate } from 'react-router-dom'
 import CommentCard from '../card/CommentCard'
+import { Link, useNavigate } from 'react-router-dom'
+
 import { useSelector, useDispatch } from 'react-redux'
 
 export const ProfilePost = ({ userpost }) => {
@@ -60,8 +40,7 @@ export const ProfilePost = ({ userpost }) => {
     avatar,
     content,
     likes,
-    comments,
-    createdAt
+    comments
   } = userpost
 
   const addCommentHandler = e => {
@@ -82,28 +61,34 @@ export const ProfilePost = ({ userpost }) => {
     <>
       <div className='post'>
         <div className='postHeader'>
+          <Link to={`/profile/${username}`} className='mr-auto'>
+            <img src={avatar} className='img-avatar-follow ' />{' '}
+          </Link>
           <p>
             {' '}
             {firstName} {lastName}
+            <Link to={`/profile/${username}`}>
+              <p>@{username}</p>{' '}
+            </Link>
           </p>
         </div>
-        <span>@{username}</span>
+      
         <hr />
-        <p>{content}</p>
+        <p className='post-content'>{content}</p>
         <div className='postFooter'>
-          {/* {isPostAlreadyLiked ? (
-            <Button>
-              <MdThumbUp
-                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-              />
-            </Button>
-          ) : (
-            <Button>
-              <MdThumbUpOffAlt
-                onClick={() => dispatch(likePost({ postId: _id, token }))}
-              />
-            </Button>
-          )} */}
+        {isPostAlreadyLiked ? (
+          <Button>
+            <MdThumbUp
+              onClick={() => dispatch(dislikePost({ postId: _id, token }))}
+            />
+          </Button>
+        ) : (
+          <Button>
+            <MdThumbUpOffAlt
+              onClick={() => dispatch(likePost({ postId: _id, token }))}
+            />
+          </Button>
+        )}
 
           {isPostAlreadyBookmarked ? (
             <Button>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './css/navHeader.css'
-import {  useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
+import { Button } from '@mui/material'
 
 import {
   Home,
@@ -14,11 +15,21 @@ import {
   AccountCircleOutlined
 } from '@mui/icons-material'
 
-export const NavHeader = () => {
-  // TODO: REPLACE SETTAB USING USEEFFECT
-  const [tab, setTab] = useState(window.location.pathname)
-  const { userInfo } = useSelector(state => state.auth);
+import { logOut } from '../../features/authSlice'
 
+export const NavHeader = () => {
+  const [tab, setTab] = useState(window.location.pathname)
+  const { userInfo } = useSelector(state => state.auth)
+  const { token } = useSelector(state => state.auth)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const logOutHandler = () => {
+    dispatch(logOut())
+    navigate('/login')
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+  }
   return (
     <>
       <div className='header-wrapper'>
@@ -57,14 +68,11 @@ export const NavHeader = () => {
               <AccountCircleOutlined />
             )}
           </Link>
-
-          <Link to='/login' onClick={() => setTab('/login')}>
-            {tab === '/login' ? (
-              <button className='auth-btn'>Signin</button>
-            ) : (
-              <button className='auth-btn'>Signin</button>
-            )}
-          </Link>
+          {token && (
+            <Button variant='contained' onClick={() => logOutHandler()}>
+              Signout
+            </Button>
+          )}
         </div>
       </div>
     </>

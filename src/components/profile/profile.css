@@ -1,0 +1,14 @@
+.img-avatar-profile {
+  width: 100px;
+}
+.profile-posts {
+  width: 40vw;
+  /* background-color: red; */
+}
+.p-10 {
+  padding: 0.3rem;
+  font-size: larger;
+}
+.ml-3 {
+  margin: .5rem !important;
+}

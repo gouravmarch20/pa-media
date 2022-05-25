@@ -1,14 +1,14 @@
 import React from 'react'
-import './profilePage.css'
-import { Profile, NavLeft } from '../../components'
-export const ProfilePage = () => {
+import { NavLeft, Like } from '../../components'
+
+export const LikedPage = () => {
   return (
     <div className='navbarLeft-container-wrapper'>
       <div className='nav-left'>
         <NavLeft />
       </div>
-      <div className='profile-layout'>
-        <Profile />
+      <div className='bookmark-container'>
+        <Like />
       </div>
     </div>
   )

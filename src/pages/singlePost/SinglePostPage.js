@@ -1,14 +1,13 @@
 import React from 'react'
-import './profilePage.css'
-import { Profile, NavLeft } from '../../components'
-export const ProfilePage = () => {
+import { SinglePost, NavLeft } from '../../components'
+export const SinglePostPage = () => {
   return (
     <div className='navbarLeft-container-wrapper'>
       <div className='nav-left'>
         <NavLeft />
       </div>
-      <div className='profile-layout'>
-        <Profile />
+      <div className='bookmark-container'>
+        <SinglePost />
       </div>
     </div>
   )

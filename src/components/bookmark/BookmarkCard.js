@@ -1,48 +1,27 @@
 import React, { useState } from 'react'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  ButtonBase,
-  Dialog,
-  Avatar
-} from '@mui/material'
-import './css/homePost.css'
+import { Button, Typography, Dialog } from '@mui/material'
 import {
   MdThumbUpOffAlt,
   MdThumbUp,
-  MdDeleteOutline,
-  MdDelete,
   MdBookmarkBorder,
   MdBookmarkAdded
 } from 'react-icons/md'
-import {
-  MoreVert,
-  Favorite,
-  FavoriteBorder,
-  ChatBubbleOutline,
-  DeleteOutline
-} from '@mui/icons-material'
+import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
+import CommentCard from '../../components/card/CommentCard'
 
-import {
-  checkLikeHelper,
-  checkBookmarkHelper
-} from '../../helpers/checkerHelper'
+import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
   likePost,
-  dislikePost
+  dislikePost,
+  addComment
 } from '../../features/postSlice'
-import CommentCard from '../card/CommentCard'
-import { addComment } from '../../features/postSlice'
+
 import { Link, useNavigate } from 'react-router-dom'
 
-export const HomePost = ({ postData }) => {
+export const BookmarkCard = ({ postData }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
@@ -51,19 +30,6 @@ export const HomePost = ({ postData }) => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  const {
-    _id,
-    id,
-    firstName,
-    lastName,
-    username,
-    avatar,
-    content,
-    likes,
-    comments,
-    createdAt
-  } = postData
-
   const addCommentHandler = e => {
     e.preventDefault()
     dispatch(addComment({ postId: _id, commentData, token }))
@@ -71,48 +37,55 @@ export const HomePost = ({ postData }) => {
     navigate(`/post/${id}`)
   }
 
+  const {
+    comments,
+    firstName,
+    lastName,
+    username,
+
+    content,
+    likes,
+
+    _id,
+    id,
+
+    avatar
+  } = postData
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
     bookmarkPostId => bookmarkPostId === _id
   )
-
   return (
     <div className='post'>
       <div className='postHeader'>
         <Link to={`/profile/${username}`} className='mr-auto'>
           <img src={avatar} className='img-avatar-follow ' />{' '}
         </Link>
-        <p>
+        <div>
           {' '}
-          <Link to={`/profile/${username}`} className='mr-auto'>
-            {firstName} {lastName}
+          {firstName} {lastName}
+          <Link to={`/profile/${username}`}>
+            <p>@{username}</p>{' '}
           </Link>
-          <div>@{username}</div>
-        </p>
+        </div>
       </div>
       <hr />
-      <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
-        {content}
-      </p>
+      <p className='post-content' onClick={() => navigate(`/post/${id}`)}></p>
+
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
-          <div>
-            <span>asf;</span>
-            <Button>
-              <MdThumbUp
-                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-              />
-            </Button>
-          </div>
+          <Button>
+            <MdThumbUp
+              onClick={() => dispatch(dislikePost({ postId: _id, token }))}
+            />
+          </Button>
         ) : (
-          <>
-            <Button>
-              <MdThumbUpOffAlt
-                onClick={() => dispatch(likePost({ postId: _id, token }))}
-              />
-            </Button>
-          </>
+          <Button>
+            <MdThumbUpOffAlt
+              onClick={() => dispatch(likePost({ postId: _id, token }))}
+            />
+          </Button>
         )}
 
         {isPostAlreadyBookmarked ? (
@@ -159,10 +132,19 @@ export const HomePost = ({ postData }) => {
               </Button>
             </form>
             {/* ADD KEY */}
-
+            {/* TODO: FIX KEY ISSUE */}
             {comments?.length > 0 ? (
+              // comments.map((item, index) => {
+              //   return (
+              // <div key={index}>
               <CommentCard commmentData={comments} />
             ) : (
+              // </div>
+              // )
+              // })
+              // )
+              // })
+
               <Typography>No comments Yet</Typography>
             )}
           </div>
