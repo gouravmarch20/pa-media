@@ -13,12 +13,13 @@
 .postHeader {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
   padding: 1vmax;
 }
 .postHeader > button {
-  border-radius: 100%;
-  color: rgba(0, 0, 0, 0.582);
+  /* padding: .2rem; */
+  /* border-radius: 100%; */
+  /* color: rgba(0, 0, 0, 0.582); */
 }
 
 .post > img {
