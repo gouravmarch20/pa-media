@@ -14,20 +14,27 @@ import {
   Button,
   Typography
 } from '@mui/material'
+
+import { Delete } from '@mui/icons-material'
+
 import './commentVote.css'
-import { downvoteComment, upvoteComment } from '../../features/postSlice'
+import {
+  downvoteComment,
+  upvoteComment,
+  deleteComment
+} from '../../features/postSlice'
 export const ComentVote = ({ commentData, postId }) => {
   const dispatch = useDispatch()
-
   const { _id, avatar, firstName, text, username, votes } = commentData
   const { token, userInfo } = useSelector(state => state.auth)
-
   const alreadyUpvoted = votes.upvotedBy?.find(
     user => user.username === userInfo.username
   )
   const alreadyDownvoted = votes.downvotedBy?.find(
     user => user.username === userInfo.username
   )
+
+  const isCurrentUserComment = username === userInfo.username
 
   return (
     <>
@@ -40,8 +47,6 @@ export const ComentVote = ({ commentData, postId }) => {
           </div>
         </div>
 
-   
-
         <div className='flex-row-center-center'>
           {alreadyUpvoted ? (
             <Button
@@ -50,6 +55,8 @@ export const ComentVote = ({ commentData, postId }) => {
               }
             >
               <BsFillArrowUpCircleFill className='btn' />
+
+              <span> {votes?.upvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -58,8 +65,10 @@ export const ComentVote = ({ commentData, postId }) => {
               }
             >
               <BsArrowUpCircle className='btn' />
+              <span> {votes?.upvotedBy.length}</span>
             </Button>
           )}
+
           {alreadyDownvoted ? (
             <Button
               onClick={() =>
@@ -67,6 +76,7 @@ export const ComentVote = ({ commentData, postId }) => {
               }
             >
               <BsFillArrowDownCircleFill className='btn' />
+              <span> {votes?.downvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -75,9 +85,23 @@ export const ComentVote = ({ commentData, postId }) => {
               }
             >
               <BsArrowDownCircle className='btn' />
+              <span> {votes?.downvotedBy.length}</span>
+            </Button>
+          )}
+
+          {isCurrentUserComment && (
+            <Button
+              variant='text'
+              size='small'
+              onClick={() => {
+                dispatch(deleteComment({ postId, commentId: _id, token }))
+              }}
+            >
+              <Delete />
             </Button>
           )}
         </div>
+
         <hr />
       </div>
     </>

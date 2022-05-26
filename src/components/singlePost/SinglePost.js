@@ -47,9 +47,11 @@ export const SinglePost = () => {
           <hr />
           {updatedPost.comments.map(comment => {
             return (
-              <div key={comment._id}>
-                <ComentVote commentData={comment} postId={updatedPost._id} />
-              </div>
+              <ComentVote
+                commentData={comment}
+                postId={updatedPost._id}
+                key={comment._id}
+              />
             )
           })}
         </>

@@ -24,29 +24,25 @@ const CommentCard = ({ commmentData }) => {
         const { firstName, avatar, text, username } = comment
 
         return (
-          <div className='display-flex-row' key={index}>
+          <div className='commentUser' key={index}>
             <Link to={`/profile/${username}`}>
               <img src={avatar} alt={'avatar'} />
 
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
             </Link>
-
-            <Typography>{text}</Typography>
+            <div>
+              <span className='content text-xmd mr-10'>{text}</span>
+            </div>
           </div>
         )
       })}
 
-      {/* {true ? (
-        <Delete />
-      ) : 
-          <Button onClick={deleteCommentHandle}>
-        </Button>
-        ) : userId === user._id ? (
-          <Button onClick={deleteCommentHandle}>
-            <Delete />
-          </Button>
-        )
-      null} */}
+      {/* // : userId === user._id ? ( //{' '}
+      <Button onClick={'deleteCommentHandle'}>
+        // <Delete />
+        //{' '}
+      </Button>
+      // ) : null} */}
     </div>
   )
 }
