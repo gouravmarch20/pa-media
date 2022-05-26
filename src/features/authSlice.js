@@ -1,28 +1,29 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import toast from 'react-hot-toast'
-import { loginService, signupService } from '../services/authService'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
+import { loginService, signupService } from "../services/authService";
 
 const initialState = {
-  token: '' || JSON.parse(localStorage.getItem('token')),
-  userInfo: null || JSON.parse(localStorage.getItem('user')),
+  token: JSON.parse(localStorage.getItem("token")) || null,
+  userInfo: JSON.parse(localStorage.getItem("user")) || null,
   isLoggedIn: false,
-  authStatus: 'idle',
-  authError: null
-}
+  authStatus: "idle",
+  authError: null,
+};
 
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  "auth/loginUser",
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const res = await loginService(username, password)
-      return res.data
+      const res = await loginService(username, password);
+      return res.data;
     } catch (error) {
-      return rejectWithValue(error.response.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);
+
 export const signupUser = createAsyncThunk(
-  'auth/signupUser',
+  "auth/signupUser",
   async (
     { firstName, lastName, email, password, username },
     { rejectWithValue }
@@ -34,62 +35,63 @@ export const signupUser = createAsyncThunk(
         email,
         password,
         username
-      )
-      return res.data
+      );
+      return res.data;
     } catch (error) {
-      return rejectWithValue(error.response.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     logOut: state => {
-      state.token = ''
-      state.userInfo = null
-      state.isLoggedIn = false
-    }
+      state.token = "";
+      state.userInfo = null;
+      state.isLoggedIn = false;
+    },
   },
   extraReducers: {
     [loginUser.pending]: state => {
-      state.authStatus = 'loading'
+      state.authStatus = "loading";
     },
     [loginUser.fulfilled]: (state, { payload }) => {
-      state.authStatus = 'success'
-      state.token = payload.encodedToken
-      state.userInfo = payload.foundUser
-      state.isLoggedIn = true
-      localStorage.setItem('token', JSON.stringify(payload.encodedToken))
-      localStorage.setItem('user', JSON.stringify(payload.foundUser))
+      state.authStatus = "success";
+      state.token = payload.encodedToken;
+      state.userInfo = payload.foundUser;
+      state.isLoggedIn = true;
+      localStorage.setItem("token", JSON.stringify(payload.encodedToken));
+      localStorage.setItem("user", JSON.stringify(payload.foundUser));
       toast.success(`Hello, ${payload.foundUser.firstName}. Welcome back!`, {
-        icon: '👋'
-      })
+        icon: "👋",
+      });
     },
     [loginUser.rejected]: (state, { payload }) => {
-      state.authStatus = 'failed'
-      state.authError = payload.errors
-      toast.error('invalid userdata. Try Again.')
+      state.authStatus = "failed";
+      state.authError = payload.errors;
+      toast.error("Some error occured. Try Again.");
     },
     [signupUser.pending]: state => {
-      state.authStatus = 'loading'
+      state.authStatus = "loading";
     },
     [signupUser.fulfilled]: (state, { payload }) => {
-      state.authStatus = 'success'
-      state.token = payload.encodedToken
-      state.userInfo = payload.createdUser
-      state.isLoggedIn = true
-      localStorage.setItem('token', state.token)
-      localStorage.setItem('user', JSON.stringify(state.user))
-      toast.success('Account created successfully!')
+      state.authStatus = "success";
+      state.token = payload.encodedToken;
+      state.userInfo = payload.createdUser;
+      state.isLoggedIn = true;
+      localStorage.setItem("token", JSON.stringify(payload.encodedToken));
+      localStorage.setItem("user", JSON.stringify(state.user));
+      toast.success("Account created successfully!");
     },
     [signupUser.rejected]: (state, { payload }) => {
-      state.authStatus = 'failed'
-      state.authError = payload.errors
-      toast.error('Some error occured. Try Again.')
-    }
-  }
-})
-export const { logOut } = authSlice.actions
-export default authSlice.reducer
+      state.authStatus = "failed";
+      state.authError = payload.errors;
+      toast.error("Some error occured. Try Again.");
+    },
+  },
+});
+
+export const { logOut } = authSlice.actions;
+export default authSlice.reducer;

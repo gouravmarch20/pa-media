@@ -1,6 +1,7 @@
 .bookmark-container {
-  width: 80vw;
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
+  width: 60vw;
+   /* display: flex; */
+   margin: 0 auto;
+  /* justify-content: center; */
+  /* padding-top: 2rem;  */
 }

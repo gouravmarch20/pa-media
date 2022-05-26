@@ -97,14 +97,14 @@ export const HomePost = ({ postData }) => {
       </p>
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
-          <div>
-            <span>asf;</span>
+          <>
             <Button>
               <MdThumbUp
                 onClick={() => dispatch(dislikePost({ postId: _id, token }))}
               />
             </Button>
-          </div>
+            <span>{likes?.likeCount} </span>
+          </>
         ) : (
           <>
             <Button>
@@ -112,6 +112,7 @@ export const HomePost = ({ postData }) => {
                 onClick={() => dispatch(likePost({ postId: _id, token }))}
               />
             </Button>
+            <span>{likes?.likeCount} </span>
           </>
         )}
 

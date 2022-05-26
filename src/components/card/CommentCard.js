@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import './commentCard.css'
 import { Delete } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-// import { deleteCommentOnPost } from '../../Actions/Post'
-// import { getFollowingPosts, getMyPosts } from '../../Actions/User'
 
 const CommentCard = ({ commmentData }) => {
   //   const { user } = useSelector(state => state.user)
@@ -26,8 +24,8 @@ const CommentCard = ({ commmentData }) => {
         const { firstName, avatar, text, username } = comment
 
         return (
-          <div className='display-flex-row'>
-            <Link to={`/profile/${username}`} key={index}>
+          <div className='display-flex-row' key={index}>
+            <Link to={`/profile/${username}`}>
               <img src={avatar} alt={'avatar'} />
 
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
@@ -37,8 +35,6 @@ const CommentCard = ({ commmentData }) => {
           </div>
         )
       })}
-
-      {/* <Typography>{text}</Typography> */}
 
       {/* {true ? (
         <Delete />
