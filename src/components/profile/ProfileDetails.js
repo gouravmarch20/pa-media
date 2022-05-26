@@ -53,7 +53,7 @@ export const ProfileDetails = ({ userDetails }) => {
           >
             Edit Profile
           </Button>
-        ) : isUserAlreadyFollowing ? (
+        ) : isUserAlreadyFollowing() ? (
           <Button
             color='primary'
             onClick={() => dispatch(unfollowUser({ followUserId: _id, token }))}
@@ -95,7 +95,7 @@ export const ProfileDetails = ({ userDetails }) => {
       <Button
         color='secondary'
         variant='contained'
-        onClick={() => setProfileEditToggle(!profileEditToggle)}
+        onClick={() => setFollowersToggle(!profileEditToggle)}
       >
         <span>Followers &nbsp;</span> {followers.length}
       </Button>

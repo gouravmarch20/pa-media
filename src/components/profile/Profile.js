@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -13,10 +13,11 @@ import { getAllUsers } from '../../features/userSlice'
 import { ProfilePost } from './ProfilePost'
 import { ProfileDetails } from './ProfileDetails'
 import { Avatar, Button, Dialog, Typography } from '@mui/material'
+
 export const Profile = () => {
   const { username } = useParams()
   const dispatch = useDispatch()
-
+  let location = useLocation()
   const { singleUser, userPosts, allUsers, singleUserStatus } = useSelector(
     state => state.users
   )
@@ -31,7 +32,7 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getUserPostsByUsername({ username }))
-  }, [dispatch])
+  }, [dispatch, location.pathname])
 
   const currentUser = allUsers.find(
     user => user.username === singleUser?.username
@@ -42,7 +43,7 @@ export const Profile = () => {
       {currentUser && (
         <div>
           <ProfileDetails userDetails={currentUser} />
-          {/* <div className='profile-posts'>
+          <div className='profile-posts'>
             {userPosts && userPosts.length > 0 ? (
               userPosts.map(userpost => {
                 return <PostCard userpost={userpost} key={userpost._id} />
@@ -52,7 +53,7 @@ export const Profile = () => {
                 Not any post did by him.
               </Typography>
             )}
-          </div> */}
+          </div>
         </div>
       )}
     </div>

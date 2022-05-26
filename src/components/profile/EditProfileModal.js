@@ -28,7 +28,6 @@ export const EditProfileModal = ({
   const { token } = useSelector(state => state.auth)
   const saveProfileDataHandler = () => {
     if (uploadImgFile) {
-      console.log('upload')
       const file = uploadImgFile
       let reader = new FileReader()
       reader.readAsDataURL(file)
@@ -48,7 +47,6 @@ export const EditProfileModal = ({
         }
       }
     } else {
-      console.log('kkk')
       dispatch(
         editUserProfile({
           userData: {
