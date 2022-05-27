@@ -82,8 +82,7 @@ export const HomePost = ({ postData }) => {
             color='secondary'
             onClick={() => setEditPostToggle(!editPostToggle)}
           >
-            {' '}
-            <BsThreeDots />
+            <BsThreeDots className='relative' />
           </Button>
         )}
       </div>
@@ -165,12 +164,14 @@ export const HomePost = ({ postData }) => {
             )}
           </div>
         </Dialog>
-
+      </div>
+      <div>
         <Dialog
+          className='absolure'
           open={editPostToggle}
           onClose={() => setEditPostToggle(!setEditPostToggle)}
         >
-          <EditPostModal postData={postData}  />
+          <EditPostModal postData={postData} />
         </Dialog>
       </div>
     </div>

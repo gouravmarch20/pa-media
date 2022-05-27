@@ -6,11 +6,11 @@
   align-items: center;
   background-color: #207398;
   flex-wrap: wrap;
-  z-index: 10;
-  overflow: hidden;
+
 }
 .header {
   display: flex;
+  z-index: 10;
 
   justify-content: center;
   align-items: center;

@@ -1,12 +1,17 @@
 import { Button, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { getAllUsers } from '../../Actions/User'
-// import User from '../User/User'
+import { getAllUsers } from '../../features/userSlice'
 import './search.css'
 
 export const Search = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [dispatch])
   const [name, setName] = useState()
+  const { allUsers } = useSelector(state => state.users)
 
   const submitHandler = e => {
     e.preventDefault()
@@ -29,17 +34,19 @@ export const Search = () => {
         {/* <Button disabled={loading} type='submit'> */}
         <Button type='submit'>Search</Button>
         {/* FIXME */}
-        {/* <div className='searchResults'>
-          {users &&
-            users.map(user => (
-              <User
-                key={user._id}
-                userId={user._id}
-                name={user.name}
-                avatar={user.avatar?.url}
-              />
-            ))}
-        </div> */}
+        <div className='searchResults'>
+          {allUsers &&
+            allUsers.map(
+              user =>
+                ''
+                // <User
+                //   key={user._id}
+                //   userId={user._id}
+                //   name={user.name}
+                //   avatar={user.avatar?.url}
+                // />
+            )}
+        </div>
       </form>
     </div>
   )

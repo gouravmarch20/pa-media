@@ -7,12 +7,11 @@ import {
   DialogActions,
   DialogTitle,
   Input,
+  TextField,
   IconButton
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { editUserProfile, getAllUsers } from '../../features/userSlice'
-
-import Stack from '@mui/material/Stack'
 
 export const EditProfileModal = ({
   profileData,
@@ -65,50 +64,59 @@ export const EditProfileModal = ({
       <Dialog
         open={isEditModalOpen}
         onClose={() => setIsEditModalOpen(!isEditModalOpen)}
+        className=' profile-modal-align'
       >
-        <div className='flex-column'>
-          <DialogTitle>Edit Profile</DialogTitle>
+        <div>
+          <DialogTitle class='subheading'>Edit Profile</DialogTitle>
 
-          <form className='commentForm' className='flex-column-center-center'>
-            <Stack direction='row' alignItems='center' spacing={2}>
-              <label htmlFor='contained-button-file'>
-                <Input
-                  accept='image/*'
-                  id='contained-button-file'
-                  multiple
-                  type='file'
-                  placeholder='Update image'
-                  onChange={e => setUploadImgFile(e.target.files[0])}
+          <form className='commentForm'>
+            <Input
+              accept='image/*'
+              id='contained-button-file'
+              multiple
+              type='file'
+              placeholder='Update image'
+              onChange={e => setUploadImgFile(e.target.files[0])}
+            />
+
+            <div className='mt-16 flex-column-center-center '>
+              <label htmlFor='bio' className='mt-10'>
+                <span className='content text-center'> Bio :</span>
+                <TextField
+                  id='bio'
+                  label='enter your bio'
+                  placeholder='bio'
+                  multiline
+                  type='text'
+                  // className='input-item'
+                  value={editProfileData.bio}
+                  placeholder='enter portfolio detail'
+                  onChange={e =>
+                    setEditProfileData({
+                      ...editProfileData,
+                      bio: e.target.value
+                    })
+                  }
                 />
-
-                <Button variant='contained' component='span'>
-                  Upload
-                </Button>
               </label>
-            </Stack>
-
-            <div>
-              <input
-                type='text'
-                value={editProfileData.portfolio}
-                onChange={e =>
-                  setEditProfileData({
-                    ...editProfileData,
-                    portfolio: e.target.value
-                  })
-                }
-              />
-              <input
-                type='text'
-                value={editProfileData.bio}
-                placeholder='Bio'
-                onChange={e =>
-                  setEditProfileData({
-                    ...editProfileData,
-                    bio: e.target.value
-                  })
-                }
-              />
+              <label htmlFor='portfolio ' className='mt-10'>
+                Portfolio
+                <TextField
+                  id='portfolio'
+                  label='enter  portfolio detail'
+                  placeholder='portfolio'
+                  multiline
+                  type='text'
+                  className='input-item'
+                  value={editProfileData.portfolio}
+                  onChange={e =>
+                    setEditProfileData({
+                      ...editProfileData,
+                      portfolio: e.target.value
+                    })
+                  }
+                />
+              </label>
             </div>
           </form>
           <DialogActions>

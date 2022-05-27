@@ -10,5 +10,8 @@
   font-size: larger;
 }
 .ml-3 {
-  margin: .5rem !important;
+  margin: 0.5rem !important;
+}
+.profile-modal-align {
+  background-color: #cad5e2;
 }

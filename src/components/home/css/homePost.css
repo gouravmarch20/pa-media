@@ -87,3 +87,10 @@
     font-size: 8vw;
   }
 }
+
+.relative {
+  position: relative;
+}
+.absolure {
+  position: absolute;
+}

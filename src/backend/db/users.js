@@ -25,13 +25,6 @@ export const users = [
         lastName: 'Kumar',
         username: 'adminkumar',
         avatar: 'https://joeschmoe.io/api/v1/joe'
-      },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
       }
     ],
     following: [
@@ -49,13 +42,7 @@ export const users = [
         username: 'abhishekgautam',
         avatar: 'https://joeschmoe.io/api/v1/james'
       },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      }
+    
     ],
     bookmarks: []
   },
@@ -81,11 +68,10 @@ export const users = [
       },
       {
         _id: uuid(),
-        firstName: 'apple',
-        lastName: 'x',
-        username: 'apple',
-        avatar:
-          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
     followers: [
@@ -99,7 +85,6 @@ export const users = [
     ],
     bookmarks: []
   },
-
   {
     _id: uuid(),
     firstName: 'Abhishek',
@@ -113,13 +98,7 @@ export const users = [
     bio: 'Building Frontend',
     portfolio: 'https://github.com/AbhishekkGautam',
     following: [
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      }
+    
     ],
     followers: [
       {
@@ -129,13 +108,7 @@ export const users = [
         username: 'adarshbalika',
         avatar: 'https://joeschmoe.io/api/v1/jeane'
       },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      },
+    
       {
         _id: uuid(),
         firstName: 'Admin',
@@ -149,16 +122,16 @@ export const users = [
   {
     _id: uuid(),
     firstName: 'apple',
-    lastName: 'x',
+    lastName: 'xoon',
     username: 'apple',
     email: 'apple@gmail.com',
-    password: 'apple123',
+    password: 'apple@123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar:
-      'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png',
-    bio: 'aplel',
-    portfolio: 'https://www.apple.com/in/',
+    avatar: 'https://lofrev.net/wp-content/photos/2014/09/Apple-logo.png',
+
+    bio: 'Build product',
+    portfolio: 'https://twitter.com/apple',
     following: [],
     followers: [
       {
@@ -170,10 +143,10 @@ export const users = [
       },
       {
         _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
     bookmarks: []
@@ -182,31 +155,15 @@ export const users = [
     _id: uuid(),
     firstName: 'gourav',
     lastName: 'mishra',
-    username: 'gouravm',
-    email: 'gouravm@gmail.com',
-    password: 'gouravm123',
+    username: 'gouravm20',
+    email: 'gouravm20@gmail.com',
+    password: 'gouravm20@123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
     avatar: 'https://joeschmoe.io/api/v1/jana',
-    bio: 'Developer',
-    portfolio: 'https://trixoon.com/',
-    following: [
-      {
-        _id: uuid(),
-        firstName: 'Abhishek',
-        lastName: 'Gautam',
-        username: 'abhishekgautam',
-        avatar: 'https://joeschmoe.io/api/v1/james'
-      },
-      {
-        _id: uuid(),
-        firstName: 'apple',
-        lastName: 'x',
-        username: 'apple',
-        avatar:
-          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
-      }
-    ],
+    bio: 'Mern stack developer',
+    portfolio: 'https://twitter.com/gouravmarch20',
+    following: [],
     followers: [
       {
         _id: uuid(),
@@ -214,8 +171,16 @@ export const users = [
         lastName: 'Balika',
         username: 'adarshbalika',
         avatar: 'https://joeschmoe.io/api/v1/jeane'
+      },
+      {
+        _id: uuid(),
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
     bookmarks: []
-  }
+  },
+ 
 ]

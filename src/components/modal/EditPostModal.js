@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {
   Button,
   Typography,
+  TextareaAutosize,
   Dialog,
   DialogActions,
   DialogTitle
@@ -19,7 +20,6 @@ export const EditPostModal = ({ postData }) => {
   const { token } = useSelector(state => state.auth)
 
   const editPostHandler = editData => {
-    console.log('handler')
     let postData = { ...editData, content: postContent }
     dispatch(editPost({ postData, token }))
 
@@ -28,7 +28,7 @@ export const EditPostModal = ({ postData }) => {
     setUpdatePostToggle(false)
   }
   return (
-    <div>
+    <div >
       <Button
         variant='outlined'
         startIcon={<MdDelete />}
@@ -52,16 +52,15 @@ export const EditPostModal = ({ postData }) => {
       >
         <div className='flex-column'>
           <DialogTitle>Edit Profile</DialogTitle>
-
-          <input
-            type='text'
-            name=''
-            id=''
-            placeholder='edit post'
+          <TextareaAutosize
+            aria-label='minimum height'
+            // maxRows={4}
             value={postContent}
+            placeholder='edit post'
+            style={{ width: 400 }}
             onChange={e => setPostContent(e.target.value)}
           />
-          {console.log(postContent)}
+     
           <DialogActions>
             <Button onClick={() => setUpdatePostToggle(false)}>Cancel</Button>
             <Button
