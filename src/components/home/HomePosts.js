@@ -7,7 +7,7 @@ import { HomePost } from './HomePost'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getSortedPosts } from '../../helpers/getSortedPosts'
 export const HomePosts = () => {
-  const { allPosts, bookmarkPosts } = useSelector(state => state.posts)
+  const { allPosts } = useSelector(state => state.posts)
   const { userInfo, token } = useSelector(state => state.auth)
 
   const dispatch = useDispatch()

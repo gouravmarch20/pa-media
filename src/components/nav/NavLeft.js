@@ -1,15 +1,8 @@
 import React from 'react'
 import './css/navLeft.css'
 import { NavLink } from 'react-router-dom'
-import { AiFillLike } from 'react-icons/ai'
-import {
-  MdHome,
-  MdWatchLater,
-  MdOutlinePlaylistPlay,
-  MdTrendingUp
-} from 'react-icons/md'
+
 import { BsBookmark } from 'react-icons/bs'
-import { FaHistory } from 'react-icons/fa'
 
 export const NavLeft = () => {
   return (

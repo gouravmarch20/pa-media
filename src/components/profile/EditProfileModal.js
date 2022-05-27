@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import {
-  Avatar,
   Button,
   Dialog,
-  Typography,
   DialogActions,
   DialogTitle,
   Input,
   TextField,
-  IconButton
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { editUserProfile, getAllUsers } from '../../features/userSlice'

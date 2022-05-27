@@ -10,9 +10,8 @@ import {
 import { PostCard } from '../card/PostCard'
 import './profile.css'
 import { getAllUsers } from '../../features/userSlice'
-import { ProfilePost } from './ProfilePost'
 import { ProfileDetails } from './ProfileDetails'
-import { Avatar, Button, Dialog, Typography } from '@mui/material'
+import {  Typography } from '@mui/material'
 
 export const Profile = () => {
   const { username } = useParams()

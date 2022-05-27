@@ -6,17 +6,7 @@ import { Delete } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
 
 const CommentCard = ({ commmentData }) => {
-  //   const { user } = useSelector(state => state.user)
 
-  const deleteCommentHandle = () => {
-    // dispatch(deleteCommentOnPost(postId, commentId))
-
-    if (true) {
-      //   dispatch(getMyPosts())
-    } else {
-      //   dispatch(getFollowingPosts())
-    }
-  }
 
   return (
     <div className='commentUser'>
@@ -37,12 +27,6 @@ const CommentCard = ({ commmentData }) => {
         )
       })}
 
-      {/* // : userId === user._id ? ( //{' '}
-      <Button onClick={'deleteCommentHandle'}>
-        // <Delete />
-        //{' '}
-      </Button>
-      // ) : null} */}
     </div>
   )
 }

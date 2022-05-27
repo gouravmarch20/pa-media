@@ -10,12 +10,10 @@ import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentCard from '../card/CommentCard'
 
-import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
-  likePost,
-  dislikePost,
+
   addComment
 } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'

@@ -4,8 +4,7 @@ import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { BookmarkCard } from './BookmarkCard'
 import {
   getBookmarkPostsHelper,
-  getSortedPosts,
-  getUserFeedPosts
+ 
 } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
 

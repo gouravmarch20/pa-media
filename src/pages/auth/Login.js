@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../../features/authSlice'
-import toast from 'react-hot-toast'
 
 import './css/login.css'
 export const Login = () => {

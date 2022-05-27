@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {
-  Avatar,
-  Button,
-  Dialog,
-  Typography,
-  DialogActions,
-  DialogTitle,
-  Input,
-  IconButton
-} from '@mui/material'
+import { Button, Dialog, Typography } from '@mui/material'
 
 import { User } from './User'
 import { useSelector, useDispatch } from 'react-redux'
