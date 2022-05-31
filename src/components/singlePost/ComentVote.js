@@ -6,22 +6,20 @@ import {
   BsFillArrowDownCircleFill
 } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography
-} from '@mui/material'
+import { Button } from '@mui/material'
+
+import { Delete } from '@mui/icons-material'
+
 import './commentVote.css'
-import { downvoteComment, upvoteComment } from '../../features/postSlice'
+import {
+  downvoteComment,
+  upvoteComment,
+  deleteComment
+} from '../../features/postSlice'
 export const ComentVote = ({ commentData, postId }) => {
   const dispatch = useDispatch()
-
   const { _id, avatar, firstName, text, username, votes } = commentData
   const { token, userInfo } = useSelector(state => state.auth)
-
   const alreadyUpvoted = votes.upvotedBy?.find(
     user => user.username === userInfo.username
   )
@@ -29,18 +27,19 @@ export const ComentVote = ({ commentData, postId }) => {
     user => user.username === userInfo.username
   )
 
+  const isCurrentUserComment = username === userInfo.username
+
   return (
     <>
-      <div className='mt-1'>
+      <div className='mt-10'>
         <div className='flex-row-center-center'>
           <img className='img-avatar-follow' src={avatar} alt='' />
           <div className=''>
-            <h5>@{username}</h5>
-            <p>{firstName} </p>
+            <p className='text-sm content'>@{username}</p>
+
+            <p className='text-sm '>{firstName} </p>
           </div>
         </div>
-
-   
 
         <div className='flex-row-center-center'>
           {alreadyUpvoted ? (
@@ -49,7 +48,11 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(downvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsFillArrowUpCircleFill className='btn' />
+              <i className='p-16 btn '>
+                <BsFillArrowUpCircleFill />
+              </i>
+
+              <span className='text-sm'> {votes?.upvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -57,16 +60,31 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(upvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsArrowUpCircle className='btn' />
+              <i className='p-16 btn '>
+                <BsArrowUpCircle />{' '}
+              </i>
+              <span> {votes?.upvotedBy.length}</span>
             </Button>
           )}
+          <p
+            className='  text-sm text-center '
+            style={{
+             width: '50vmin'
+            }}
+          >
+            {text}
+          </p>
           {alreadyDownvoted ? (
             <Button
               onClick={() =>
                 dispatch(upvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsFillArrowDownCircleFill className='btn' />
+              {' '}
+              <i className='p-16 btn '>
+                <BsFillArrowDownCircleFill />
+              </i>
+              <span className='text-sm '> {votes?.downvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -74,10 +92,27 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(downvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsArrowDownCircle className='btn' />
+              {' '}
+              <i className='p-16 btn'>
+                <BsArrowDownCircle />
+              </i>
+              <span> {votes?.downvotedBy.length}</span>
+            </Button>
+          )}
+
+          {isCurrentUserComment && (
+            <Button
+              variant='text'
+              size='small'
+              onClick={() => {
+                dispatch(deleteComment({ postId, commentId: _id, token }))
+              }}
+            >
+              <Delete />
             </Button>
           )}
         </div>
+
         <hr />
       </div>
     </>

@@ -15,7 +15,7 @@ export const users = [
     password: 'adarshBalika123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar: 'https://joeschmoe.io/api/v1/jeane',
+    avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
     bio: 'Software Engineer @Microsoft',
     portfolio: 'https://github.com',
     followers: [
@@ -25,13 +25,6 @@ export const users = [
         lastName: 'Kumar',
         username: 'adminkumar',
         avatar: 'https://joeschmoe.io/api/v1/joe'
-      },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
       }
     ],
     following: [
@@ -49,13 +42,7 @@ export const users = [
         username: 'abhishekgautam',
         avatar: 'https://joeschmoe.io/api/v1/james'
       },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      }
+    
     ],
     bookmarks: []
   },
@@ -77,15 +64,14 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
       {
         _id: uuid(),
-        firstName: 'apple',
-        lastName: 'x',
-        username: 'apple',
-        avatar:
-          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
     followers: [
@@ -94,12 +80,11 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       }
     ],
     bookmarks: []
   },
-
   {
     _id: uuid(),
     firstName: 'Abhishek',
@@ -113,13 +98,7 @@ export const users = [
     bio: 'Building Frontend',
     portfolio: 'https://github.com/AbhishekkGautam',
     following: [
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      }
+    
     ],
     followers: [
       {
@@ -127,15 +106,9 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
-      {
-        _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jana'
-      },
+    
       {
         _id: uuid(),
         firstName: 'Admin',
@@ -149,16 +122,47 @@ export const users = [
   {
     _id: uuid(),
     firstName: 'apple',
-    lastName: 'x',
+    lastName: 'xoon',
     username: 'apple',
     email: 'apple@gmail.com',
-    password: 'apple123',
+    password: 'apple@123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar:
-      'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png',
-    bio: 'aplel',
-    portfolio: 'https://www.apple.com/in/',
+    avatar: 'https://lofrev.net/wp-content/photos/2014/09/Apple-logo.png',
+
+    bio: 'Build product',
+    portfolio: 'https://twitter.com/apple',
+    following: [],
+    followers: [
+      {
+        _id: uuid(),
+        firstName: 'Adarsh',
+        lastName: 'Balika',
+        username: 'adarshbalika',
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+      },
+      {
+        _id: uuid(),
+        firstName: 'Abhishek',
+        lastName: 'Gautam',
+        username: 'abhishekgautam',
+        avatar: 'https://joeschmoe.io/api/v1/james'
+      }
+    ],
+    bookmarks: []
+  },
+  {
+    _id: uuid(),
+    firstName: 'gourav',
+    lastName: 'mishra',
+    username: 'gouravm20',
+    email: 'gouravm20@gmail.com',
+    password: 'gouravm20@123',
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    avatar: 'https://joeschmoe.io/api/v1/jana',
+    bio: 'Mern stack developer',
+    portfolio: 'https://twitter.com/gouravmarch20',
     following: [],
     followers: [
       {
@@ -170,52 +174,13 @@ export const users = [
       },
       {
         _id: uuid(),
-        firstName: 'gourav',
-        lastName: 'mishra',
-        username: 'gouravm',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
-      }
-    ],
-    bookmarks: []
-  },
-  {
-    _id: uuid(),
-    firstName: 'gourav',
-    lastName: 'mishra',
-    username: 'gouravm',
-    email: 'gouravm@gmail.com',
-    password: 'gouravm123',
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    avatar: 'https://joeschmoe.io/api/v1/jana',
-    bio: 'Developer',
-    portfolio: 'https://trixoon.com/',
-    following: [
-      {
-        _id: uuid(),
         firstName: 'Abhishek',
         lastName: 'Gautam',
         username: 'abhishekgautam',
         avatar: 'https://joeschmoe.io/api/v1/james'
-      },
-      {
-        _id: uuid(),
-        firstName: 'apple',
-        lastName: 'x',
-        username: 'apple',
-        avatar:
-          'https://logoeps.com/wp-content/uploads/2014/09/37150-apple-logo-icon-vector-icon-vector-eps.png'
-      }
-    ],
-    followers: [
-      {
-        _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
       }
     ],
     bookmarks: []
-  }
+  },
+ 
 ]

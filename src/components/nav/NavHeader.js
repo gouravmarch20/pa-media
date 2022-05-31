@@ -69,9 +69,16 @@ export const NavHeader = () => {
             )}
           </Link>
           {token && (
-            <Button variant='contained' onClick={() => logOutHandler()}>
+            // <Button variant='contained' onClick={() => logOutHandler()}>
+            //   Signout
+            // </Button>
+
+            <button
+              className='p-temp btn-danger-light'
+              onClick={() => logOutHandler()}
+            >
               Signout
-            </Button>
+            </button>
           )}
         </div>
       </div>

@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
-import { LikeCard } from './LikeCard'
 import {
   getBookmarkPostsHelper,
-  getSortedPosts,
-  getUserFeedPosts
+ 
 } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
 
 export const Like = () => {
-  const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
+  const { allPosts, bookmarkPosts } = useSelector(
     state => state.posts
   )
   const { userInfo, token } = useSelector(state => state.auth)

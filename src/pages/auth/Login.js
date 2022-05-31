@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { loginUser } from '../../features/authSlice'
-import toast from 'react-hot-toast'
 
 import './css/login.css'
 export const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { token, isLoggedIn, authError } = useSelector(state => state.auth)
+  const { token, isLoggedIn } = useSelector(state => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -25,16 +24,17 @@ export const Login = () => {
   }
 
   const submitLoginWithCredentials = () => {
-    setUsername('adminkumar')
-    setPassword('admin@123')
-    dispatch(loginUser({ username, password }))
+    setUsername('gouravm20')
+    setPassword('gouravm20@123')
+    // submitLoginFormData()
+    // dispatch(loginUser({ username, password }))
 
     // plealse login now -> tost
   }
 
   return (
     <div className='signin'>
-      <h2>SignIn</h2>
+      <h2 className='text-center'>SignIn</h2>
       <form className='signup-form' onSubmit={e => e.preventDefault()}>
         <div className='input-box'>
           <label htmlFor='email' className='label'>

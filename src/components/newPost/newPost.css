@@ -1,6 +1,6 @@
 .newPost {
   min-height: 90vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
 
   display: flex;
   align-items: center;

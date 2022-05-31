@@ -26,7 +26,7 @@ export const FollowOther = () => {
     ?.filter(user => user.username !== userInfo?.username)
   return (
     <div>
-      <h2>Other to follow</h2>
+      <h2 className='heading text-lg'>Other to follow</h2>
       {followOtherSuggestion && followOtherSuggestion?.length !== 0 ? (
         <>
           {followOtherSuggestion.map((user, id) => {
@@ -39,7 +39,7 @@ export const FollowOther = () => {
         </>
       ) : (
         <>
-          <h1>No suggestion found</h1>
+          <h2 className='subheading'>No suggestion found</h2>
         </>
       )}
     </div>

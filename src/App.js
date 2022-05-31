@@ -6,6 +6,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import Mockman from 'mockman-js'
 import { useSelector } from 'react-redux'
 import { NavHeader, NewPost, Search, Account } from './components/'
+// TODO: LOADER , MODAL FIX BY 
 import {
   BookmarkPage,
   ExplorePage,
@@ -29,13 +30,13 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/post/:postId' element={<SinglePostPage />} />
           <Route path='/profile/:username' element={<ProfilePage />} />
-          {/* <Route path='/explore' element={<ExplorePage />} /> */}
+          <Route path='/explore' element={<ExplorePage />} />
           <Route path='/bookmarks' element={<BookmarkPage />} />
           <Route path='newpost' element={<NewPost />} />
           <Route path='search' element={<Search />} />
-          {/* <Route path='/liked' element={<LikedPage />} /> */}
           <Route path='/mock' element={<Mockman />} />
         </Route>{' '}
+        <Route path='/signup' element={<Signup />} />
         <Route path='login' element={<Login />} />
         <Route path='*' element={<Navigate replace to='/' />} />
       </Routes>

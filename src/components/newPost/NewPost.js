@@ -1,9 +1,7 @@
 import { Button, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-// import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewPost, editPost } from '../../features/postSlice'
-import { Link } from 'react-router-dom'
 import { getAllUsers } from '../../features/userSlice'
 import { useNavigate } from 'react-router-dom'
 

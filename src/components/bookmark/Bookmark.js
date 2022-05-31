@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
-import { BookmarkCard } from './BookmarkCard'
+import { HomePost } from '../index'
 import {
   getBookmarkPostsHelper,
-  getSortedPosts,
-  getUserFeedPosts
+ 
 } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
 
@@ -31,12 +30,12 @@ export const Bookmark = () => {
   return (
     <div>
       {bookmarkFeedPosts.length === 0 ? (
-        <h1 className=''>Not any Bookmark Posts.</h1>
+        <h1 className='heading'>Not any Bookmark Posts.</h1>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
           return (
             <div key={id}>
-              <BookmarkCard postData={post} />
+                <HomePost postData={post} />
             </div>
           )
         })

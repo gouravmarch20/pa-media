@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLeft, Bookmark } from '../../components'
-import  './bookmarkPage.css'
+import './bookmarkPage.css'
 export const BookmarkPage = () => {
   return (
     <div className='navbarLeft-container-wrapper'>
@@ -10,7 +10,6 @@ export const BookmarkPage = () => {
       <div className='bookmark-container'>
         <Bookmark />
       </div>
-   
     </div>
   )
 }

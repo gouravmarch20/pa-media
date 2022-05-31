@@ -72,23 +72,23 @@ export const ProfilePost = ({ userpost }) => {
             </Link>
           </p>
         </div>
-      
+
         <hr />
         <p className='post-content'>{content}</p>
         <div className='postFooter'>
-        {isPostAlreadyLiked ? (
-          <Button>
-            <MdThumbUp
-              onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-            />
-          </Button>
-        ) : (
-          <Button>
-            <MdThumbUpOffAlt
-              onClick={() => dispatch(likePost({ postId: _id, token }))}
-            />
-          </Button>
-        )}
+          {isPostAlreadyLiked ? (
+            <Button>
+              <MdThumbUp
+                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
+              />
+            </Button>
+          ) : (
+            <Button>
+              <MdThumbUpOffAlt
+                onClick={() => dispatch(likePost({ postId: _id, token }))}
+              />
+            </Button>
+          )}
 
           {isPostAlreadyBookmarked ? (
             <Button>
@@ -136,15 +136,8 @@ export const ProfilePost = ({ userpost }) => {
               {/* ADD KEY */}
 
               {comments?.length > 0 ? (
-                // comments.map((item, index) => {
-                // return (
-                // <div key={index}>
                 <CommentCard commmentData={comments} />
               ) : (
-                // </div>
-                // )
-                // })
-
                 <Typography>No comments Yet</Typography>
               )}
             </div>

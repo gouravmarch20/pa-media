@@ -7,8 +7,6 @@ export const ExplorePage = () => {
         <NavLeft />
       </div>
       <div className='bookmark-container'>
-        <h1>Explore page </h1>
-
         <Explore />
       </div>
     </div>

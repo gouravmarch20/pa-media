@@ -28,3 +28,6 @@
 .commentUser > button {
   color: red;
 }
+.commentUser-text > span {
+  font-size: 1.1rem;
+}

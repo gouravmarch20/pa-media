@@ -1,37 +1,20 @@
 import React, { useState } from 'react'
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  ButtonBase,
-  Dialog,
-  Avatar
-} from '@mui/material'
+import { Button, Typography, Dialog } from '@mui/material'
+import { EditPostModal } from '../index'
 import './css/homePost.css'
 import {
   MdThumbUpOffAlt,
   MdThumbUp,
-  MdDeleteOutline,
-  MdDelete,
   MdBookmarkBorder,
   MdBookmarkAdded
 } from 'react-icons/md'
-import {
-  MoreVert,
-  Favorite,
-  FavoriteBorder,
-  ChatBubbleOutline,
-  DeleteOutline
-} from '@mui/icons-material'
+import { BsThreeDots } from 'react-icons/bs'
+
+import { ChatBubbleOutline } from '@mui/icons-material'
+
 import { useSelector, useDispatch } from 'react-redux'
 
-import {
-  checkLikeHelper,
-  checkBookmarkHelper
-} from '../../helpers/checkerHelper'
+import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
@@ -42,11 +25,14 @@ import CommentCard from '../card/CommentCard'
 import { addComment } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const HomePost = ({ postData }) => {
+
+export const HomePost = ({ postData , homeposts }) => {
   const [commentToggle, setCommentToggle] = useState(false)
+  const [editPostToggle, setEditPostToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
+  const isLoginUserPost = postData.username === userInfo.username
 
   const navigate = useNavigate()
 
@@ -78,33 +64,44 @@ export const HomePost = ({ postData }) => {
   )
 
   return (
-    <div className='post'>
+    <div className='post post-home'>
       <div className='postHeader'>
-        <Link to={`/profile/${username}`} className='mr-auto'>
+        <Link to={`/profile/${username}`} className=''>
           <img src={avatar} className='img-avatar-follow ' />{' '}
         </Link>
-        <p>
+
+        <div>
           {' '}
-          <Link to={`/profile/${username}`} className='mr-auto'>
+          <Link to={`/profile/${username}`} className=''>
             {firstName} {lastName}
           </Link>
           <div>@{username}</div>
-        </p>
+        </div>
+        {isLoginUserPost && (
+          <Button
+            variant='contained'
+            color='secondary'
+            onClick={() => setEditPostToggle(!editPostToggle)}
+          >
+            <BsThreeDots className='relative' />
+          </Button>
+        )}
       </div>
       <hr />
       <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
         {content}
       </p>
+
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
-          <div>
-            <span>asf;</span>
+          <>
             <Button>
               <MdThumbUp
                 onClick={() => dispatch(dislikePost({ postId: _id, token }))}
               />
             </Button>
-          </div>
+            <span>{likes?.likeCount} </span>
+          </>
         ) : (
           <>
             <Button>
@@ -112,6 +109,7 @@ export const HomePost = ({ postData }) => {
                 onClick={() => dispatch(likePost({ postId: _id, token }))}
               />
             </Button>
+            <span>{likes?.likeCount} </span>
           </>
         )}
 
@@ -166,6 +164,15 @@ export const HomePost = ({ postData }) => {
               <Typography>No comments Yet</Typography>
             )}
           </div>
+        </Dialog>
+      </div>
+      <div>
+        <Dialog
+          className='absolure'
+          open={editPostToggle}
+          onClose={() => setEditPostToggle(!setEditPostToggle)}
+        >
+          <EditPostModal postData={postData} />
         </Dialog>
       </div>
     </div>

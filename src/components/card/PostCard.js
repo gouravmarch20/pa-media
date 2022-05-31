@@ -8,25 +8,24 @@ import {
 } from 'react-icons/md'
 import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
-import CommentCard from '../../components/card/CommentCard'
+import CommentCard from '../card/CommentCard'
 
-import { checkLikeHelper } from '../../helpers/checkerHelper'
 import {
   removeBookmarkPost,
   bookmarkPost,
-  likePost,
-  dislikePost,
+
   addComment
 } from '../../features/postSlice'
-
 import { Link, useNavigate } from 'react-router-dom'
 
-export const BookmarkCard = ({ postData }) => {
+export const PostCard = ({ userpost }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
 
+  // const isUserAlreadyFollowing = () =>
+  //   followers?.find(user => user.username === userInfo.username)
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
@@ -34,27 +33,28 @@ export const BookmarkCard = ({ postData }) => {
   const {
     _id,
     id,
-
     firstName,
     lastName,
     username,
     avatar,
-    comments,
     content,
-    likes
-  } = postData
+    likes,
+    comments,
+    createdAt
+  } = userpost
 
+  // const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
+
+  const isPostAlreadyBookmarked = bookmarkPosts?.find(
+    bookmarkPostId => bookmarkPostId === _id
+  )
   const addCommentHandler = e => {
     e.preventDefault()
     dispatch(addComment({ postId: _id, commentData, token }))
     setCommentData({ text: '' })
     navigate(`/post/${id}`)
   }
-  const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
 
-  const isPostAlreadyBookmarked = bookmarkPosts?.find(
-    bookmarkPostId => bookmarkPostId === _id
-  )
   return (
     <div className='post'>
       <div className='postHeader'>
@@ -64,8 +64,8 @@ export const BookmarkCard = ({ postData }) => {
         <div>
           {' '}
           {firstName} {lastName}
-          <Link to={`/profile/${username}`}>
-            <p>@{username}</p>{' '}
+          <Link to={`/profile/${username}`} className='mr-auto'>
+            <p>@{username}</p>
           </Link>
         </div>
       </div>
@@ -73,9 +73,9 @@ export const BookmarkCard = ({ postData }) => {
       <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
         {content}
       </p>
-
       <div className='postFooter'>
-        {isPostAlreadyLiked ? (
+        {/*   NO REASON  */}
+        {/* {isPostAlreadyLiked ? (
           <>
             <Button>
               <MdThumbUp
@@ -93,8 +93,7 @@ export const BookmarkCard = ({ postData }) => {
             </Button>
             <span>{likes?.likeCount} </span>
           </>
-        )}
-
+        )} */}
         {isPostAlreadyBookmarked ? (
           <Button>
             {' '}
@@ -138,6 +137,7 @@ export const BookmarkCard = ({ postData }) => {
                 Add
               </Button>
             </form>
+            {/* ADD KEY */}
 
             {comments?.length > 0 ? (
               <CommentCard commmentData={comments} />

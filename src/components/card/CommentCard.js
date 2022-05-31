@@ -4,21 +4,9 @@ import { Link } from 'react-router-dom'
 import './commentCard.css'
 import { Delete } from '@mui/icons-material'
 import { useDispatch, useSelector } from 'react-redux'
-// import { deleteCommentOnPost } from '../../Actions/Post'
-// import { getFollowingPosts, getMyPosts } from '../../Actions/User'
 
 const CommentCard = ({ commmentData }) => {
-  //   const { user } = useSelector(state => state.user)
 
-  const deleteCommentHandle = () => {
-    // dispatch(deleteCommentOnPost(postId, commentId))
-
-    if (true) {
-      //   dispatch(getMyPosts())
-    } else {
-      //   dispatch(getFollowingPosts())
-    }
-  }
 
   return (
     <div className='commentUser'>
@@ -26,31 +14,19 @@ const CommentCard = ({ commmentData }) => {
         const { firstName, avatar, text, username } = comment
 
         return (
-          <div className='display-flex-row'>
-            <Link to={`/profile/${username}`} key={index}>
+          <div className='commentUser' key={index}>
+            <Link to={`/profile/${username}`}>
               <img src={avatar} alt={'avatar'} />
 
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
             </Link>
-
-            <Typography>{text}</Typography>
+            <div className='commentUser-text'>
+              <span className=''>{text}</span>
+            </div>
           </div>
         )
       })}
 
-      {/* <Typography>{text}</Typography> */}
-
-      {/* {true ? (
-        <Delete />
-      ) : 
-          <Button onClick={deleteCommentHandle}>
-        </Button>
-        ) : userId === user._id ? (
-          <Button onClick={deleteCommentHandle}>
-            <Delete />
-          </Button>
-        )
-      null} */}
     </div>
   )
 }
