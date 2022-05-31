@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getSinglePost } from '../../features/postSlice'
@@ -7,7 +7,6 @@ import { ComentVote } from './ComentVote'
 import './singlePost.css'
 export const SinglePost = () => {
   const { postId } = useParams()
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { singlePost, singlePostStatus, allPosts } = useSelector(
     state => state.posts

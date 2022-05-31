@@ -1,0 +1,24 @@
+.home-chip-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.home-chip {
+  background-color: #4d57f8;
+  color: white;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 0.8rem 0.4rem;
+  cursor: pointer;
+  border-radius: 1.6rem;
+  border: none;
+}
+.home-chip-selected,
+.home-chip:hover {
+  background-color: #51e1ed;
+}
+.home-chip-selected {
+  background-color: #e07c24 !important;
+}

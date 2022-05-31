@@ -49,7 +49,7 @@ export const Profile = () => {
               })
             ) : (
               <Typography variant='h5' style={{ margin: '2vmax' }}>
-                Not any post did by him.
+                Not any post did by you.
               </Typography>
             )}
           </div>

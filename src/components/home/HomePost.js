@@ -25,7 +25,8 @@ import CommentCard from '../card/CommentCard'
 import { addComment } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const HomePost = ({ postData }) => {
+
+export const HomePost = ({ postData , homeposts }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const [editPostToggle, setEditPostToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
@@ -63,7 +64,7 @@ export const HomePost = ({ postData }) => {
   )
 
   return (
-    <div className='post'>
+    <div className='post post-home'>
       <div className='postHeader'>
         <Link to={`/profile/${username}`} className=''>
           <img src={avatar} className='img-avatar-follow ' />{' '}

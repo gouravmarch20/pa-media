@@ -6,6 +6,12 @@
   padding: 0 1vmax 2vmax;
   margin: 2vmax;
 }
+.post-home {
+  /* min-width: 80%; */
+  /* background-color: yellow; */
+  min-width: 40vw;
+  max-width: 62vh;
+}
 .mr-auto {
   margin-right: auto;
   margin-left: 1vmax;

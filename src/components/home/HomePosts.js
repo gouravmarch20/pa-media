@@ -5,30 +5,49 @@ import { useSelector, useDispatch } from 'react-redux'
 import { HomePost } from './HomePost'
 
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
-import { getSortedPosts } from '../../helpers/getSortedPosts'
+import { getHomePost } from '../../helpers/'
+import { HomeChip } from './HomeChip'
 export const HomePosts = () => {
-  const { allPosts } = useSelector(state => state.posts)
+  const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
+    state => state.posts
+  )
+  const { allUsers } = useSelector(state => state.users)
+
   const { userInfo, token } = useSelector(state => state.auth)
+  const currentUser = allUsers?.find(
+    user => user.username === userInfo.username
+  )
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllPosts())
     dispatch(getAllBookmarkPosts(token))
   }, [])
-  const homeShortedPosts = getSortedPosts(allPosts, userInfo)
 
+  const homePosts = getHomePost(allPosts, currentUser, 'latest')
   return (
-    <div className=''>
-      {homeShortedPosts ? (
-        homeShortedPosts?.map((post, id) => {
-          return (
-            <div key={id}>
-              <HomePost postData={post} />
-            </div>
-          )
-        })
+    <div>
+      {homePosts && homePosts.length >= 1 ? (
+        <div>
+          {/* <HomeChip postData={homePosts} /> */}
+          {homePosts?.map((post, id) => {
+            return <HomePost postData={post} key={id} homeposts />
+          })}
+        </div>
       ) : (
-        <h2>no post found</h2>
+        <div>
+          <h2
+            className='subheading'
+            style={{
+              width: '70%',
+              fontSize: '2.5rem',
+              textShadow: '  0 0 1px #FF0000'
+            }}
+          >
+            {' '}
+            Your follower not have any post
+          </h2>
+        </div>
       )}
     </div>
   )

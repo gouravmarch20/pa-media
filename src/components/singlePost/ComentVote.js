@@ -6,7 +6,7 @@ import {
   BsFillArrowDownCircleFill
 } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 
 import { Delete } from '@mui/icons-material'
 
@@ -66,7 +66,14 @@ export const ComentVote = ({ commentData, postId }) => {
               <span> {votes?.upvotedBy.length}</span>
             </Button>
           )}
-
+          <p
+            className='  text-sm text-center '
+            style={{
+             width: '50vmin'
+            }}
+          >
+            {text}
+          </p>
           {alreadyDownvoted ? (
             <Button
               onClick={() =>

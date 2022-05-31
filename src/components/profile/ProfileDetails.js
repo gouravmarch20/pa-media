@@ -35,7 +35,11 @@ export const ProfileDetails = ({ userDetails }) => {
   return (
     <div>
       <div>
-        <img className='avatar-icon img-avatar-profile' src={avatar} alt='' />
+        <img
+          className='avatar-icon img-avatar-profile'
+          src={avatar}
+          alt='please upload image'
+        />
         {userInfo.username === username ? (
           <Button
             color='primary'
@@ -64,15 +68,17 @@ export const ProfileDetails = ({ userDetails }) => {
       <p className='p-10'>
         {firstName} {lastName}
       </p>
-      <p className='p-10'> @ {username} </p>
-      <a href={portfolio} target='_blank'>
+      <p className='text-sm mb-10'> @ {username} </p>
+      <a href={portfolio} target='_blank' className='text-decore-none text-sm'>
         {' '}
-        <span className='content'> Portfolio : </span> {portfolio}
+        <span className='content '> Portfolio : </span>{' '}
+        {portfolio === '' ? 'please  fill portfolio link ' : bio}
       </a>
 
       <p className='p-10'>
         {' '}
-        <span className='content'>Bio:</span> {bio}{' '}
+        <span className='content '>Bio:</span>{' '}
+        {bio === '' ? 'please  fill bio ' : bio}{' '}
       </p>
 
       <Button
