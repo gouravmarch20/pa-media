@@ -15,7 +15,7 @@ export const users = [
     password: 'adarshBalika123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar: 'https://joeschmoe.io/api/v1/jeane',
+    avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
     bio: 'Software Engineer @Microsoft',
     portfolio: 'https://github.com',
     followers: [
@@ -64,7 +64,7 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
       {
         _id: uuid(),
@@ -80,7 +80,7 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       }
     ],
     bookmarks: []
@@ -106,7 +106,7 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
     
       {
@@ -139,7 +139,7 @@ export const users = [
         firstName: 'Adarsh',
         lastName: 'Balika',
         username: 'adarshbalika',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
+        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
       {
         _id: uuid(),

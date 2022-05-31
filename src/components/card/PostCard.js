@@ -9,25 +9,26 @@ import {
 import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentCard from '../card/CommentCard'
+import { checkLikeHelper } from '../../helpers/checkerHelper'
 
 import {
   removeBookmarkPost,
   bookmarkPost,
-
+  likePost,
+  dislikePost,
   addComment
 } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
 export const PostCard = ({ userpost }) => {
   const [commentToggle, setCommentToggle] = useState(false)
+  const [editPostToggle, setEditPostToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
+  const isLoginUserPost = userpost.username === userInfo.username
 
-  // const isUserAlreadyFollowing = () =>
-  //   followers?.find(user => user.username === userInfo.username)
   const navigate = useNavigate()
-
   const dispatch = useDispatch()
 
   const {
@@ -43,11 +44,11 @@ export const PostCard = ({ userpost }) => {
     createdAt
   } = userpost
 
-  // const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
-
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
     bookmarkPostId => bookmarkPostId === _id
   )
+  const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
+
   const addCommentHandler = e => {
     e.preventDefault()
     dispatch(addComment({ postId: _id, commentData, token }))
@@ -75,7 +76,7 @@ export const PostCard = ({ userpost }) => {
       </p>
       <div className='postFooter'>
         {/*   NO REASON  */}
-        {/* {isPostAlreadyLiked ? (
+        {isPostAlreadyLiked ? (
           <>
             <Button>
               <MdThumbUp
@@ -93,7 +94,7 @@ export const PostCard = ({ userpost }) => {
             </Button>
             <span>{likes?.likeCount} </span>
           </>
-        )} */}
+        )}
         {isPostAlreadyBookmarked ? (
           <Button>
             {' '}

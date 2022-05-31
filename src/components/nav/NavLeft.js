@@ -3,7 +3,7 @@ import './css/navLeft.css'
 import { NavLink } from 'react-router-dom'
 
 import { BsBookmark } from 'react-icons/bs'
-
+import { BiTrendingUp } from 'react-icons/bi'
 export const NavLeft = () => {
   return (
     // <div className=''>
@@ -21,16 +21,16 @@ export const NavLeft = () => {
         {/* <span className='navLeft-link-span'>Bookmark</span> */}
       </NavLink>
       <hr />
-      {/* <NavLink
+      <NavLink
         to='/explore'
         className={({ isActive }) =>
           isActive ? 'nav-link-active' : 'nav-link-sleep'
         }
       >
         <i className='navLeft-icon'>
-          <MdTrendingUp />
+          <BiTrendingUp />
         </i>
-      </NavLink> */}
+      </NavLink>
       <hr />
 
       <hr />

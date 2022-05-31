@@ -6,7 +6,7 @@ import {
   BsFillArrowDownCircleFill
 } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 
 import { Delete } from '@mui/icons-material'
 
@@ -31,12 +31,13 @@ export const ComentVote = ({ commentData, postId }) => {
 
   return (
     <>
-      <div className='mt-1'>
+      <div className='mt-10'>
         <div className='flex-row-center-center'>
           <img className='img-avatar-follow' src={avatar} alt='' />
           <div className=''>
-            <h5>@{username}</h5>
-            <p>{firstName} </p>
+            <p className='text-sm content'>@{username}</p>
+
+            <p className='text-sm '>{firstName} </p>
           </div>
         </div>
 
@@ -47,9 +48,11 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(downvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsFillArrowUpCircleFill className='btn' />
+              <i className='p-16 btn '>
+                <BsFillArrowUpCircleFill />
+              </i>
 
-              <span> {votes?.upvotedBy.length}</span>
+              <span className='text-sm'> {votes?.upvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -57,7 +60,9 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(upvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsArrowUpCircle className='btn' />
+              <i className='p-16 btn '>
+                <BsArrowUpCircle />{' '}
+              </i>
               <span> {votes?.upvotedBy.length}</span>
             </Button>
           )}
@@ -68,8 +73,11 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(upvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsFillArrowDownCircleFill className='btn' />
-              <span> {votes?.downvotedBy.length}</span>
+              {' '}
+              <i className='p-16 btn '>
+                <BsFillArrowDownCircleFill />
+              </i>
+              <span className='text-sm '> {votes?.downvotedBy.length}</span>
             </Button>
           ) : (
             <Button
@@ -77,7 +85,10 @@ export const ComentVote = ({ commentData, postId }) => {
                 dispatch(downvoteComment({ postId, commentId: _id, token }))
               }
             >
-              <BsArrowDownCircle className='btn' />
+              {' '}
+              <i className='p-16 btn'>
+                <BsArrowDownCircle />
+              </i>
               <span> {votes?.downvotedBy.length}</span>
             </Button>
           )}

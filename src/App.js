@@ -29,7 +29,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/post/:postId' element={<SinglePostPage />} />
           <Route path='/profile/:username' element={<ProfilePage />} />
-          {/* <Route path='/explore' element={<ExplorePage />} /> */}
+          <Route path='/explore' element={<ExplorePage />} />
           <Route path='/bookmarks' element={<BookmarkPage />} />
           <Route path='newpost' element={<NewPost />} />
           <Route path='search' element={<Search />} />

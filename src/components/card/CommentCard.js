@@ -20,8 +20,8 @@ const CommentCard = ({ commmentData }) => {
 
               <Typography style={{ minWidth: '6vmax' }}>{firstName}</Typography>
             </Link>
-            <div>
-              <span className='content text-xmd mr-10'>{text}</span>
+            <div className='commentUser-text'>
+              <span className=''>{text}</span>
             </div>
           </div>
         )

@@ -6,18 +6,18 @@
   box-sizing: border-box;
   font-family: "Work Sans", sans-serif;
 }
+body {
+  background-color: #cad5e2;
+  max-width: 100vw ;
+  overflow-x: hidden;
+}
 html {
-  font-size: 90.5%;
+  font-size: 62.5%;
 }
 button {
   cursor: pointer;
-  /* overflow-x: hidden !important; */
 }
 li,
 a {
   list-style: none;
-  text-decoration: none;
-}
-.cursor-pointer-none {
-  pointer-events: none;
 }
