@@ -27,7 +27,7 @@ export const Login = () => {
     setUsername('gouravm20')
     setPassword('gouravm20@123')
     // submitLoginFormData()
-    // dispatch(loginUser({ username, password }))
+    dispatch(loginUser({ username, password }))
 
     // plealse login now -> tost
   }

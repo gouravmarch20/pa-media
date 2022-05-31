@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -11,15 +11,13 @@ import { PostCard } from '../card/PostCard'
 import './profile.css'
 import { getAllUsers } from '../../features/userSlice'
 import { ProfileDetails } from './ProfileDetails'
-import {  Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 
 export const Profile = () => {
   const { username } = useParams()
   const dispatch = useDispatch()
   let location = useLocation()
-  const { singleUser, userPosts, allUsers, singleUserStatus } = useSelector(
-    state => state.users
-  )
+  const { singleUser, userPosts, allUsers } = useSelector(state => state.users)
   useEffect(() => {
     dispatch(getSingleUser({ username }))
     dispatch(getAllUsers())

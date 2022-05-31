@@ -1,11 +1,10 @@
 import React from 'react'
 import './styles/App.css'
-import { Button, Typography } from '@mui/material'
 import { ToasterWrapper } from './utils'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Mockman from 'mockman-js'
 import { useSelector } from 'react-redux'
-import { NavHeader, NewPost, Search, Account } from './components/'
+import { NavHeader, NewPost, Search } from './components/'
 // TODO: LOADER , MODAL FIX BY 
 import {
   BookmarkPage,
@@ -14,12 +13,12 @@ import {
   Login,
   ProfilePage,
   Signup,
-  SinglePostPage,
-  LikedPage
+  SinglePostPage
 } from './pages'
 import { PrivateRoute } from './routes/PrivateRoute'
 
 const App = () => {
+  // TODO: OPTIMISE AUTH
   const user = useSelector(state => state)
   return (
     <div>

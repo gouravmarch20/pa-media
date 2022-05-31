@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Typography, Dialog } from '@mui/material'
-import {
-  MdThumbUpOffAlt,
-  MdThumbUp,
-  MdBookmarkBorder,
-  MdBookmarkAdded
-} from 'react-icons/md'
+import { MdBookmarkBorder, MdBookmarkAdded } from 'react-icons/md'
 import { ChatBubbleOutline } from '@mui/icons-material'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentCard from '../card/CommentCard'
@@ -13,14 +8,13 @@ import CommentCard from '../card/CommentCard'
 import {
   removeBookmarkPost,
   bookmarkPost,
-
   addComment
 } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
 export const PostCard = ({ userpost }) => {
   const [commentToggle, setCommentToggle] = useState(false)
-  const { userInfo, token } = useSelector(state => state.auth)
+  const { token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
 
@@ -38,9 +32,8 @@ export const PostCard = ({ userpost }) => {
     username,
     avatar,
     content,
-    likes,
-    comments,
-    createdAt
+
+    comments
   } = userpost
 
   // const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
@@ -59,7 +52,7 @@ export const PostCard = ({ userpost }) => {
     <div className='post'>
       <div className='postHeader'>
         <Link to={`/profile/${username}`} className='mr-auto'>
-          <img src={avatar} className='img-avatar-follow ' />{' '}
+          <img src={avatar} className='img-avatar-follow ' alt='no img found' />{' '}
         </Link>
         <div>
           {' '}
@@ -74,26 +67,6 @@ export const PostCard = ({ userpost }) => {
         {content}
       </p>
       <div className='postFooter'>
-        {/*   NO REASON  */}
-        {/* {isPostAlreadyLiked ? (
-          <>
-            <Button>
-              <MdThumbUp
-                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-              />
-            </Button>
-            <span>{likes?.likeCount} </span>
-          </>
-        ) : (
-          <>
-            <Button>
-              <MdThumbUpOffAlt
-                onClick={() => dispatch(likePost({ postId: _id, token }))}
-              />
-            </Button>
-            <span>{likes?.likeCount} </span>
-          </>
-        )} */}
         {isPostAlreadyBookmarked ? (
           <Button>
             {' '}

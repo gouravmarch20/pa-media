@@ -5,11 +5,10 @@ import {
   DialogActions,
   DialogTitle,
   Input,
-  TextField,
+  TextField
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { editUserProfile, getAllUsers } from '../../features/userSlice'
-
 export const EditProfileModal = ({
   profileData,
   setIsEditModalOpen,
@@ -82,7 +81,6 @@ export const EditProfileModal = ({
                 <TextField
                   id='bio'
                   label='enter your bio'
-                  placeholder='bio'
                   multiline
                   type='text'
                   // className='input-item'
@@ -120,7 +118,9 @@ export const EditProfileModal = ({
             <Button onClick={() => setIsEditModalOpen(false)}>Cancel</Button>
             <Button
               onClick={() => (
-                saveProfileDataHandler(), setIsEditModalOpen(false)
+                saveProfileDataHandler(),
+                // TODO: DRY CHECK ISSUE WARNING
+                setIsEditModalOpen(false)
               )}
             >
               Save

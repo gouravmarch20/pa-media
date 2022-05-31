@@ -13,11 +13,10 @@ export const NewPost = ({ editPostData }) => {
     content: editPostData?.content || ''
   })
 
-  const { token, userInfo } = useSelector(state => state.auth)
+  const { token } = useSelector(state => state.auth)
   useEffect(() => {
     dispatch(getAllUsers())
   }, [])
-  const { allUsers } = useSelector(state => state.users)
 
   const dispatch = useDispatch()
 
@@ -33,21 +32,7 @@ export const NewPost = ({ editPostData }) => {
     dispatch(editPost({ postData, token }))
     setPostContent({ content: '' })
   }
-  const currentUser = allUsers?.find(
-    user => user.username === userInfo.username
-  )
-  // const handleImageChange = e => {
-  //   const file = e.target.files[0]
 
-  //   const Reader = new FileReader()
-  //   Reader.readAsDataURL(file)
-
-  //   Reader.onload = () => {
-  //     if (Reader.readyState === 2) {
-  //       setImage(Reader.result)
-  //     }
-  //   }
-  // }
 
   const submitHandler = async e => {
     e.preventDefault()

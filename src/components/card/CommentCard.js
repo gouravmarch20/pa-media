@@ -1,9 +1,7 @@
-import { Button, Typography } from '@mui/material'
+import {  Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './commentCard.css'
-import { Delete } from '@mui/icons-material'
-import { useDispatch, useSelector } from 'react-redux'
 
 const CommentCard = ({ commmentData }) => {
 

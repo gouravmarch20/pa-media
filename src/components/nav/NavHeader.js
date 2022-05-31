@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './css/navHeader.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from '@mui/material'
 
 import {
   Home,

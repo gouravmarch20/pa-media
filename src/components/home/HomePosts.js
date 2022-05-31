@@ -6,11 +6,8 @@ import { HomePost } from './HomePost'
 
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getHomePost } from '../../helpers/'
-import { HomeChip } from './HomeChip'
 export const HomePosts = () => {
-  const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
-    state => state.posts
-  )
+  const { allPosts } = useSelector(state => state.posts)
   const { allUsers } = useSelector(state => state.users)
 
   const { userInfo, token } = useSelector(state => state.auth)

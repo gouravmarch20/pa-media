@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Button, Typography, Dialog } from '@mui/material'
 
 import {
@@ -62,7 +62,7 @@ export const ProfilePost = ({ userpost }) => {
       <div className='post'>
         <div className='postHeader'>
           <Link to={`/profile/${username}`} className='mr-auto'>
-            <img src={avatar} className='img-avatar-follow ' />{' '}
+            <img src={avatar} className='img-avatar-follow ' alt='no img ' />{' '}
           </Link>
           <p>
             {' '}
