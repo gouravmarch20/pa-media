@@ -3,11 +3,12 @@ import React, { useEffect } from 'react'
 import './css/posts.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { HomePost } from './HomePost'
+import { Oval } from 'react-loader-spinner'
 
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getHomePost } from '../../helpers/'
 export const HomePosts = () => {
-  const { allPosts } = useSelector(state => state.posts)
+  const { allPosts, postStatus } = useSelector(state => state.posts)
   const { allUsers } = useSelector(state => state.users)
 
   const { userInfo, token } = useSelector(state => state.auth)
@@ -24,7 +25,19 @@ export const HomePosts = () => {
   const homePosts = getHomePost(allPosts, currentUser, 'latest')
   return (
     <div>
-      {homePosts && homePosts.length >= 1 ? (
+      {postStatus === 'loading' && (
+        <div className='loader-alignment'>
+          <Oval
+            ariaLabel='loading-indicator'
+            height={100}
+            width={100}
+            strokeWidth={5}
+            color='red'
+            secondaryColor='yellow'
+          />
+        </div>
+      )}
+      {postStatus !== 'loading' && homePosts && homePosts.length >= 1 ? (
         <div>
           {/* <HomeChip postData={homePosts} /> */}
           {homePosts?.map((post, id) => {
@@ -32,19 +45,21 @@ export const HomePosts = () => {
           })}
         </div>
       ) : (
-        <div>
-          <h2
-            className='subheading'
-            style={{
-              width: '70%',
-              fontSize: '2.5rem',
-              textShadow: '  0 0 1px #FF0000'
-            }}
-          >
-            {' '}
-            Your follower not have any post
-          </h2>
-        </div>
+        <>
+          {postStatus !== 'loading' && (
+            <h2
+              className='subheading'
+              style={{
+                width: '70%',
+                fontSize: '2.8rem',
+                textShadow: '  0 0 1px #FF0000'
+              }}
+            >
+              {' '}
+              Your follower not have any post
+            </h2>
+          )}
+        </>
       )}
     </div>
   )

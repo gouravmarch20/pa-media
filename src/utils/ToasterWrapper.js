@@ -4,14 +4,18 @@ import { Toaster } from 'react-hot-toast'
 export const ToasterWrapper = () => {
   return (
     <Toaster
-      position='bottom-left'
       reverseOrder={false}
+      position='bottom-center'
       toastOptions={{
         style: {
-          minWidth: '260px'
+          minWidth: '300px',
+          minHeight: '80px',
+          backgroundColor: '#0D0D0D',
+          color: '#39FF14',
+          fontSize: '1.4rem'
         },
         success: {
-          duration: 1500
+          duration: 1200
         }
       }}
     />

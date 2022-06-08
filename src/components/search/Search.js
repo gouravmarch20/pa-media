@@ -13,7 +13,6 @@ export const Search = () => {
 
   const [name, setName] = useState()
   const { allUsers, userStatus } = useSelector(state => state.users)
-  console.log(userStatus)
 
   const [userSuggestions, setUserSuggestions] = useState(allUsers)
 

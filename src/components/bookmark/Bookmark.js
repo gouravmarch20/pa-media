@@ -2,11 +2,9 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { HomePost } from '../index'
-import {
-  getBookmarkPostsHelper,
- 
-} from '../../helpers'
+import { getBookmarkPostsHelper } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
+import { Oval } from 'react-loader-spinner'
 
 export const Bookmark = () => {
   const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
@@ -29,13 +27,26 @@ export const Bookmark = () => {
 
   return (
     <div>
-      {bookmarkFeedPosts.length === 0 ? (
+      {postStatus === 'loading' && (
+        <div className='loader-alignment'>
+          <Oval
+            ariaLabel='loading-indicator'
+            height={100}
+            width={100}
+            strokeWidth={5}
+            color='red'
+            secondaryColor='yellow'
+          />
+        </div>
+      )}
+
+      { postStatus !== 'loading' && bookmarkFeedPosts.length === 0 ? (
         <h1 className='heading'>Not any Bookmark Posts.</h1>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
           return (
             <div key={id}>
-                <HomePost postData={post} />
+              <HomePost postData={post} />
             </div>
           )
         })

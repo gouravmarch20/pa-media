@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Oval } from 'react-loader-spinner'
 
 import {
   getSingleUser,
@@ -17,7 +18,9 @@ export const Profile = () => {
   const { username } = useParams()
   const dispatch = useDispatch()
   let location = useLocation()
-  const { singleUser, userPosts, allUsers } = useSelector(state => state.users)
+  const { singleUser, userPosts, allUsers, userStatus } = useSelector(
+    state => state.users
+  )
   useEffect(() => {
     dispatch(getSingleUser({ username }))
     dispatch(getAllUsers())
@@ -37,7 +40,21 @@ export const Profile = () => {
 
   return (
     <div className=''>
-      {currentUser && (
+      {console.log(userStatus)}
+
+      {userStatus === 'loading' && (
+        <div className='loader-alignment'>
+          <Oval
+            ariaLabel='loading-indicator'
+            height={100}
+            width={100}
+            strokeWidth={5}
+            color='red'
+            secondaryColor='yellow'
+          />
+        </div>
+      )}
+      {userStatus !== 'loading' && currentUser && (
         <div>
           <ProfileDetails userDetails={currentUser} />
           <div className='profile-posts'>
@@ -46,9 +63,9 @@ export const Profile = () => {
                 return <PostCard userpost={userpost} key={userpost._id} />
               })
             ) : (
-              <Typography variant='h5' style={{ margin: '2vmax' }}>
-                Not any post did by you.
-              </Typography>
+              <p className='subheading' style={{ margin: '2vmax' }}>
+                Not uploaded any post .
+              </p>
             )}
           </div>
         </div>

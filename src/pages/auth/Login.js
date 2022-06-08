@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -26,8 +27,9 @@ export const Login = () => {
   const submitLoginWithCredentials = () => {
     setUsername('gouravm20')
     setPassword('gouravm20@123')
-    // submitLoginFormData()
-    dispatch(loginUser({ username, password }))
+    
+    submitLoginFormData()
+    // dispatch(loginUser({ username, password }))
 
     // plealse login now -> tost
   }
