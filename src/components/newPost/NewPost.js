@@ -53,12 +53,19 @@ export const NewPost = ({ editPostData }) => {
         />
         <Button
           type='submit'
+          variant="contained"
+          color="primary"
           disabled={postContent.content === ''}
           onClick={editPostData ? editPostHandler : createPostHandler}
         >
           {/* <Button disabled={loading} type='submit'> */}
           Post
         </Button>
+
+
+        {/* <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            {isSignup ? 'Sign Up' : 'Sign In'}
+          </Button> */}
       </form>
     </div>
   )

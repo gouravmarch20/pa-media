@@ -28,7 +28,7 @@ const initialState = {
   postError: null,
   isPostModalOpen: false,
   editPostData: {},
-  filterText: 'Recent'
+  filterText: 'Latest'
 }
 
 export const getAllPosts = createAsyncThunk(

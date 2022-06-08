@@ -4,11 +4,12 @@ import './css/posts.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { HomePost } from './HomePost'
 import { Oval } from 'react-loader-spinner'
-
+import { HomeChip } from './HomeChip'
 import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getHomePost } from '../../helpers/'
 export const HomePosts = () => {
-  const { allPosts, postStatus } = useSelector(state => state.posts)
+  const { allPosts, postStatus, filterText } = useSelector(state => state.posts)
+  console.log(filterText)
   const { allUsers } = useSelector(state => state.users)
 
   const { userInfo, token } = useSelector(state => state.auth)
@@ -22,7 +23,7 @@ export const HomePosts = () => {
     dispatch(getAllBookmarkPosts(token))
   }, [])
 
-  const homePosts = getHomePost(allPosts, currentUser, 'latest')
+  const homePosts = getHomePost(allPosts, currentUser, filterText)
   return (
     <div>
       {postStatus === 'loading' && (
@@ -39,7 +40,7 @@ export const HomePosts = () => {
       )}
       {postStatus !== 'loading' && homePosts && homePosts.length >= 1 ? (
         <div>
-          {/* <HomeChip postData={homePosts} /> */}
+          <HomeChip postData={homePosts} />
           {homePosts?.map((post, id) => {
             return <HomePost postData={post} key={id} homeposts />
           })}

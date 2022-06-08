@@ -12,5 +12,11 @@
   justify-content: space-around;
   align-items: center;
 }
+.display-flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 .follow-other-btn {
 }

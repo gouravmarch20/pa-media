@@ -68,21 +68,19 @@ export const PostCard = ({ userpost }) => {
       </p>
       <div className='postFooter'>
         {isPostAlreadyBookmarked ? (
-          <Button>
+          <Button
+            onClick={() => dispatch(removeBookmarkPost({ postId: _id, token }))}
+          >
             {' '}
-            <MdBookmarkAdded
-              onClick={() =>
-                dispatch(removeBookmarkPost({ postId: _id, token }))
-              }
-            />{' '}
+            <MdBookmarkAdded />{' '}
           </Button>
         ) : (
-          <Button>
-            <MdBookmarkBorder
-              onClick={() => {
-                dispatch(bookmarkPost({ postId: _id, token }))
-              }}
-            />
+          <Button
+            onClick={() => {
+              dispatch(bookmarkPost({ postId: _id, token }))
+            }}
+          >
+            <MdBookmarkBorder />
           </Button>
         )}
 

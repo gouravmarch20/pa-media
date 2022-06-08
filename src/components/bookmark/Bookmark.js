@@ -27,7 +27,7 @@ export const Bookmark = () => {
 
   return (
     <div>
-      {postStatus === 'loading' && (
+      {postStatus === 'loading' ? (
         <div className='loader-alignment'>
           <Oval
             ariaLabel='loading-indicator'
@@ -38,9 +38,7 @@ export const Bookmark = () => {
             secondaryColor='yellow'
           />
         </div>
-      )}
-
-      { postStatus !== 'loading' && bookmarkFeedPosts.length === 0 ? (
+      ) : bookmarkFeedPosts.length === 0 ? (
         <h1 className='heading'>Not any Bookmark Posts.</h1>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
@@ -51,6 +49,8 @@ export const Bookmark = () => {
           )
         })
       )}
+
+      {}
     </div>
   )
 }
