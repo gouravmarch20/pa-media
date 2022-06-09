@@ -1,3 +1,11 @@
+/* loader */
+.loader-alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 40vw;
+}
 @import url("./library/var.css");
 @import url("./library/Button.css");
 @import url("./library/Auth.css");

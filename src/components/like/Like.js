@@ -11,8 +11,8 @@ export const Like = () => {
   const { allPosts, bookmarkPosts } = useSelector(
     state => state.posts
   )
-  const { userInfo, token } = useSelector(state => state.auth)
-  const { allUsers } = useSelector(state => state.users)
+  const {  token } = useSelector(state => state.auth)
+  // const { allUsers } = useSelector(state => state.users)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,9 +21,9 @@ export const Like = () => {
     dispatch(getAllBookmarkPosts(token))
   }, [dispatch, token])
 
-  const currentUser = allUsers?.find(
-    user => user.username === userInfo.username
-  )
+  // const currentUser = allUsers?.find(
+  //   user => user.username === userInfo.username
+  // )
   const bookmarkFeedPosts = getBookmarkPostsHelper(allPosts, bookmarkPosts)
 
   return (

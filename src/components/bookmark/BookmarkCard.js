@@ -59,7 +59,7 @@ export const BookmarkCard = ({ postData }) => {
     <div className='post'>
       <div className='postHeader'>
         <Link to={`/profile/${username}`} className='mr-auto'>
-          <img src={avatar} className='img-avatar-follow ' />{' '}
+          <img src={avatar} className='img-avatar-follow ' alt='no img found' />{' '}
         </Link>
         <div>
           {' '}

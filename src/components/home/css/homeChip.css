@@ -1,24 +1,25 @@
 .home-chip-wrapper {
-  margin-top: 1rem;
+  min-height: 8vh;
+  /* background-color: #e03b8b; */
+  background-color: #11144a;
   display: flex;
   align-items: center;
-  gap: 1rem;
+
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .home-chip {
-  background-color: #4d57f8;
+  background-color: #5b65f1;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1.5rem;
-  margin: 1rem;
-  padding: 0.8rem 0.4rem;
+  margin: 1rem 1rem;
+  padding: 0.9rem 0.6rem;
   cursor: pointer;
   border-radius: 1.6rem;
   border: none;
 }
-.home-chip-selected,
-.home-chip:hover {
-  background-color: #51e1ed;
-}
+
 .home-chip-selected {
-  background-color: #e07c24 !important;
+  background-color: #3944F7 !important;
+  font-weight: 500;
 }

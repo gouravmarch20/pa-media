@@ -24,9 +24,9 @@ import {
 import CommentCard from '../card/CommentCard'
 import { addComment } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
-
-export const HomePost = ({ postData , homeposts }) => {
+export const HomePost = ({ postData, homeposts }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const [editPostToggle, setEditPostToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
@@ -72,20 +72,31 @@ export const HomePost = ({ postData , homeposts }) => {
 
         <div>
           {' '}
-          <Link to={`/profile/${username}`} className=''>
+          <Link
+            to={`/profile/${username}`}
+            className='content text-decore-none'
+          >
             {firstName} {lastName}
           </Link>
           <div>@{username}</div>
         </div>
-        {isLoginUserPost && (
-          <Button
-            variant='contained'
-            color='secondary'
-            onClick={() => setEditPostToggle(!editPostToggle)}
-          >
-            <BsThreeDots className='relative' />
-          </Button>
-        )}
+
+        {
+          <div className=''>
+            <Typography variant='body2'>
+              {moment(createdAt).fromNow()}
+            </Typography>
+            {isLoginUserPost && (
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => setEditPostToggle(!editPostToggle)}
+              >
+                <BsThreeDots className='relative' />
+              </Button>
+            )}
+          </div>
+        }
       </div>
       <hr />
       <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
@@ -95,40 +106,36 @@ export const HomePost = ({ postData , homeposts }) => {
       <div className='postFooter'>
         {isPostAlreadyLiked ? (
           <>
-            <Button>
-              <MdThumbUp
-                onClick={() => dispatch(dislikePost({ postId: _id, token }))}
-              />
+            <Button
+              onClick={() => dispatch(dislikePost({ postId: _id, token }))}
+            >
+              <MdThumbUp />
             </Button>
             <span>{likes?.likeCount} </span>
           </>
         ) : (
           <>
-            <Button>
-              <MdThumbUpOffAlt
-                onClick={() => dispatch(likePost({ postId: _id, token }))}
-              />
+            <Button onClick={() => dispatch(likePost({ postId: _id, token }))}>
+              <MdThumbUpOffAlt />
             </Button>
             <span>{likes?.likeCount} </span>
           </>
         )}
 
         {isPostAlreadyBookmarked ? (
-          <Button>
+          <Button
+            onClick={() => dispatch(removeBookmarkPost({ postId: _id, token }))}
+          >
             {' '}
-            <MdBookmarkAdded
-              onClick={() =>
-                dispatch(removeBookmarkPost({ postId: _id, token }))
-              }
-            />{' '}
+            <MdBookmarkAdded />{' '}
           </Button>
         ) : (
-          <Button>
-            <MdBookmarkBorder
-              onClick={() => {
-                dispatch(bookmarkPost({ postId: _id, token }))
-              }}
-            />
+          <Button
+            onClick={() => {
+              dispatch(bookmarkPost({ postId: _id, token }))
+            }}
+          >
+            <MdBookmarkBorder />
           </Button>
         )}
 
@@ -168,7 +175,7 @@ export const HomePost = ({ postData , homeposts }) => {
       </div>
       <div>
         <Dialog
-          className='absolure'
+          className='relative'
           open={editPostToggle}
           onClose={() => setEditPostToggle(!setEditPostToggle)}
         >

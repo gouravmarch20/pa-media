@@ -28,7 +28,7 @@ const initialState = {
   postError: null,
   isPostModalOpen: false,
   editPostData: {},
-  filterText: 'Recent'
+  filterText: 'Latest'
 }
 
 export const getAllPosts = createAsyncThunk(
@@ -120,6 +120,7 @@ export const bookmarkPost = createAsyncThunk(
   async ({ postId, token }, { rejectWithValue }) => {
     try {
       const response = await bookmarkPostService(postId, token)
+      console.log(response)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data)
