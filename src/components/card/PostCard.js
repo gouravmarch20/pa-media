@@ -18,8 +18,7 @@ export const PostCard = ({ userpost }) => {
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
 
-  // const isUserAlreadyFollowing = () =>
-  //   followers?.find(user => user.username === userInfo.username)
+
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
