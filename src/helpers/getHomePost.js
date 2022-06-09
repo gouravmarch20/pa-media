@@ -6,7 +6,7 @@ export const getHomePost = (posts, loggedInUser, filterType) => {
         followingPost => post?.username === followingPost?.username
       )
   )
-  if (filterType === 'Recent') {
+  if (filterType === 'Latest') {
     return filterPost.sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     )

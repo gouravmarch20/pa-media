@@ -1,11 +1,9 @@
-import {  Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './commentCard.css'
 
 const CommentCard = ({ commmentData }) => {
-
-
   return (
     <div className='commentUser'>
       {commmentData.map((comment, index) => {
@@ -24,7 +22,6 @@ const CommentCard = ({ commmentData }) => {
           </div>
         )
       })}
-
     </div>
   )
 }

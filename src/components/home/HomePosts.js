@@ -9,7 +9,6 @@ import { getAllBookmarkPosts, getAllPosts } from '../../features/postSlice'
 import { getHomePost } from '../../helpers/'
 export const HomePosts = () => {
   const { allPosts, postStatus, filterText } = useSelector(state => state.posts)
-  console.log(filterText)
   const { allUsers } = useSelector(state => state.users)
 
   const { userInfo, token } = useSelector(state => state.auth)

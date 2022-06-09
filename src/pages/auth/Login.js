@@ -25,8 +25,8 @@ export const Login = () => {
 
   const submitLoginWithCredentials = () => {
     setUsername('gouravm20')
-    setPassword('gouravm20@123')
-    dispatch(loginUser({ username: 'gouravm20', password :"gouravm20@123"}))
+    setPassword('gouravm20@123A')
+    dispatch(loginUser({ username: 'gouravm20', password :"gouravm20@123A"}))
 
     // dispatch(loginUser({ username, password }))
 

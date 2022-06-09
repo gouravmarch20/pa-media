@@ -8,14 +8,15 @@ import { formatDate } from '../utils/authUtils'
 export const users = [
   {
     _id: uuid(),
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    username: 'adarshbalika',
-    email: 'adarshbalika@gmail.com',
-    password: 'adarshBalika123',
+    firstName: 'Aadi',
+    lastName: 'Shetty',
+    username: 'adarshshetty',
+    email: 'adarshshetty@gmail.com',
+    password: 'adarshshetty123',
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+    avatar:
+      'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
     bio: 'Software Engineer @Microsoft',
     portfolio: 'https://github.com',
     followers: [
@@ -41,8 +42,7 @@ export const users = [
         lastName: 'Gautam',
         username: 'abhishekgautam',
         avatar: 'https://joeschmoe.io/api/v1/james'
-      },
-    
+      }
     ],
     bookmarks: []
   },
@@ -61,10 +61,11 @@ export const users = [
     following: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
       {
         _id: uuid(),
@@ -77,10 +78,11 @@ export const users = [
     followers: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       }
     ],
     bookmarks: []
@@ -96,19 +98,18 @@ export const users = [
     updatedAt: formatDate(),
     avatar: 'https://joeschmoe.io/api/v1/james',
     bio: 'Building Frontend',
-    portfolio: 'https://github.com/AbhishekkGautam',
-    following: [
-    
-    ],
+    portfolio: 'https://abhishekgautam.netlify.app/',
+    following: [],
     followers: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
-    
+
       {
         _id: uuid(),
         firstName: 'Admin',
@@ -136,10 +137,11 @@ export const users = [
     followers: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
       },
       {
         _id: uuid(),
@@ -157,19 +159,27 @@ export const users = [
     lastName: 'mishra',
     username: 'gouravm20',
     email: 'gouravm20@gmail.com',
-    password: 'gouravm20@123',
+    password: 'gouravm20@123A',
     createdAt: formatDate(),
     updatedAt: formatDate(),
     avatar: 'https://joeschmoe.io/api/v1/jana',
     bio: 'Mern stack developer',
-    portfolio: 'https://twitter.com/gouravmarch20',
-    following: [],
+    portfolio: 'https://trixoon.com/',
+    following: [
+      {
+        _id: uuid(),
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar: 'https://joeschmoe.io/api/v1/jeane'
+      }
+    ],
     followers: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
         avatar: 'https://joeschmoe.io/api/v1/jeane'
       },
       {
@@ -181,6 +191,5 @@ export const users = [
       }
     ],
     bookmarks: []
-  },
- 
+  }
 ]

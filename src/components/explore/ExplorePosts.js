@@ -29,7 +29,6 @@ export const ExplorePosts = () => {
           />
         </div>
       )}
-      {console.log(homeShortedPosts)}
       {postStatus !== 'loading' && homeShortedPosts ? (
         homeShortedPosts?.map((post, id) => {
           return (

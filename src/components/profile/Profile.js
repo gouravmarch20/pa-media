@@ -59,25 +59,27 @@ export const Profile = () => {
           />
         </div>
       )}
-      {console.log(currentUser)}
       {userStatus !== 'loading' && currentUser && (
         <div>
           <ProfileDetails userDetails={currentUser} />
-       <div className='profile-posts'>
-            {sortedUserPosts && sortedUserPosts.length > 0 ? (
-              sortedUserPosts.map((userpost, id) => {
+          <div className='profile-posts'>
+            {sortedUserPosts &&
+            sortedUserPosts.length === 0 &&
+            userInfo?.username === username ? (
+              <p className='subheading'>No post uploded</p>
+            ) : sortedUserPosts.length === 0 &&
+              userInfo.username !== username ? (
+              <p className='subheading'>No Posts Available.</p>
+            ) : (
+              sortedUserPosts?.map((post, id) => {
                 return (
                   <div key={id}>
-                    <HomePost postData={userpost} />
+                    <HomePost postData={post} />
                   </div>
                 )
               })
-            ) : (
-              <p className='subheading' style={{ margin: '2vmax' }}>
-                Not uploaded any post .
-              </p>
             )}
-          </div> 
+          </div>
         </div>
       )}
     </div>

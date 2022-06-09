@@ -72,7 +72,7 @@ export const ProfileDetails = ({ userDetails }) => {
       <a href={portfolio} target='_blank' className='text-decore-none text-sm'>
         {' '}
         <span className='content '> Portfolio : </span>{' '}
-        {portfolio === '' ? 'please  fill portfolio link ' : bio}
+        {portfolio === '' ? 'please  fill portfolio link ' : portfolio}
       </a>
 
       <p className='p-10'>

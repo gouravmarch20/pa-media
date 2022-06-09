@@ -120,6 +120,7 @@ export const bookmarkPost = createAsyncThunk(
   async ({ postId, token }, { rejectWithValue }) => {
     try {
       const response = await bookmarkPostService(postId, token)
+      console.log(response)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data)

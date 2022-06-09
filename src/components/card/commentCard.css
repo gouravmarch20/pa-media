@@ -1,28 +1,32 @@
 .commentUser {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   color: rgba(0, 0, 0, 0.507);
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .commentUser > a {
   display: flex;
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: blueviolet;
   align-items: center;
   align-self: flex-start;
   transition: all 0.5s;
 }
 .commentUser img {
-  height: 3vmax;
-  width: 3vmax;
+  height: 4vmax;
+  width: 4vmax;
   margin: 1vmax;
   border-radius: 100%;
   border: 3px solid rgb(255, 201, 201);
 }
 
 .commentUser > a:hover {
-  transform: translateY(-10px);
+ color: blueviolet;
+ text-decoration: underline;
 }
 
 .commentUser > button {

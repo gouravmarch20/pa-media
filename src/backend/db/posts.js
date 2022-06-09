@@ -30,18 +30,20 @@ export const posts = [
         },
         {
           _id: uuid(),
-          firstName: 'Adarsh',
-          lastName: 'Balika',
-          username: 'adarshbalika',
-          avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+          firstName: 'Aadi',
+          lastName: 'Shetty',
+          username: 'adarshshetty',
+          avatar:
+            'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
         }
       ],
       dislikedBy: []
     },
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
-    username: 'adarshbalika',
+    firstName: 'Aadi',
+    lastName: 'Shetty',
+    avatar:
+      'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+    username: 'adarshshetty',
     createdAt: 'May 14 2022',
     updatedAt: formatDate(),
     comments: [
@@ -75,9 +77,9 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: 'Infinity is completely relative depending on the context. .',
+    content: 'Infinity is completely relative depending on the context. ',
     likes: {
-      likeCount: 1,
+      likeCount: 6,
       likedBy: [
         {
           _id: uuid(),
@@ -89,10 +91,11 @@ export const posts = [
       ],
       dislikedBy: []
     },
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
-    username: 'adarshbalika',
+    firstName: 'Aadi',
+    lastName: 'Shetty',
+    avatar:
+      'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+    username: 'adarshshetty',
     createdAt: 'May 15 2022',
     updatedAt: formatDate(),
     comments: [
@@ -140,10 +143,11 @@ export const posts = [
         },
         {
           _id: uuid(),
-          firstName: 'Adarsh',
-          lastName: 'Balika',
-          username: 'adarshbalika',
-          avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+          firstName: 'Aadi',
+          lastName: 'Shetty',
+          username: 'adarshshetty',
+          avatar:
+            'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
         }
       ],
       dislikedBy: []
@@ -155,10 +159,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
         createdAt: new Date('May 16 2022 18:02:30'),
         text: 'Interesting',
         votes: {
@@ -185,16 +190,17 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: 'love to buid quality product !',
+    content: 'Great people never delay their duties !',
     likes: {
       likeCount: 2,
       likedBy: [
         {
           _id: uuid(),
-          firstName: 'Adarsh',
-          lastName: 'Balika',
-          username: 'adarshbalika',
-          avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+          firstName: 'Aadi',
+          lastName: 'Shetty',
+          username: 'adarshshetty',
+          avatar:
+            'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
         }
       ],
       dislikedBy: []
@@ -208,10 +214,11 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
         createdAt: new Date('May 20 2022 18:02:30'),
         text: ' we would like to see !        ',
         votes: {
@@ -238,17 +245,17 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: 'Build in public , lets build together!',
+    content: 'Do you listen music while coding ?',
     likes: {
       likeCount: 1,
       likedBy: [
-    
         {
           _id: uuid(),
-          firstName: 'Adarsh',
-          lastName: 'Balika',
-          username: 'adarshbalika',
-          avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+          firstName: 'Aadi',
+          lastName: 'Shetty',
+          username: 'adarshshetty',
+          avatar:
+            'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
         }
       ],
       dislikedBy: []
@@ -262,10 +269,68 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
-        avatar: 'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
+        createdAt: new Date('June 20 2022 18:02:30'),
+        text: `I'll create dance moves instead of results 😂😂 So, no.`,
+        votes: {
+          upvotedBy: [],
+          downvotedBy: []
+        }
+      },
+      {
+        _id: uuid(),
+        firstName: 'Admin',
+        lastName: 'Kumar',
+        username: 'adminkumar',
+        avatar: 'https://joeschmoe.io/api/v1/jai',
+
+        text:
+          'Sometimes, but when you start doing something challanging you’ll enjoy coding in silent        ',
+        createdAt: new Date('May 21 2022 11:02:30'),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: []
+        }
+      }
+    ],
+    createdAt: 'June 2 2022 16:02:30',
+    updatedAt: formatDate()
+  },
+  {
+    _id: uuid(),
+    content: 'Build in public , lets build together!',
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: 'Aadi',
+          lastName: 'Shetty',
+          username: 'adarshshetty',
+          avatar:
+            'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png'
+        }
+      ],
+      dislikedBy: []
+    },
+
+    firstName: 'gourav',
+    lastName: 'mishra',
+    username: 'gouravm20',
+    avatar: 'https://joeschmoe.io/api/v1/jana',
+
+    comments: [
+      {
+        _id: uuid(),
+        firstName: 'Aadi',
+        lastName: 'Shetty',
+        username: 'adarshshetty',
+        avatar:
+          'https://pbs.twimg.com/profile_images/631330667444334592/tVu8zg2X_400x400.png',
         createdAt: new Date('May 20 2022 18:02:30'),
         text: ' we would like to see !        ',
         votes: {

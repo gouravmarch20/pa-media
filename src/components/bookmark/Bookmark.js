@@ -19,12 +19,12 @@ export const Bookmark = () => {
     dispatch(getAllUsers())
     dispatch(getAllBookmarkPosts(token))
   }, [dispatch, token])
-
   const currentUser = allUsers?.find(
     user => user.username === userInfo.username
   )
   const bookmarkFeedPosts = getBookmarkPostsHelper(allPosts, bookmarkPosts)
-
+  
+  console.log(bookmarkPosts)
   return (
     <div>
       {postStatus === 'loading' ? (
