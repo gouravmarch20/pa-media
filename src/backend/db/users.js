@@ -190,6 +190,9 @@ export const users = [
         avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
-    bookmarks: []
+    //TODO: BOOKMARK 
+    bookmarks: [
+     
+    ]
   }
 ]

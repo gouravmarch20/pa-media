@@ -15,13 +15,8 @@ const initialState = {
   userPosts: [],
   userStatus: 'idle',
   userError: null,
-  isPostModalOpen: false,
   editUserData: {},
-  usersListModal: {
-    open: false,
-    title: '',
-    data: []
-  }
+
 }
 
 export const getAllUsers = createAsyncThunk(
@@ -149,6 +144,7 @@ const userSlice = createSlice({
       state.userError = payload.errors
       toast.error('Some error occured. Try Again.')
     },
+    //TODO: FOLLOW , UNFOLLOW FEATURE
     [followUser.fulfilled]: (state, { payload }) => {
       const { user, followUser } = payload
       state.allUsers = state.allUsers.map(currUser =>

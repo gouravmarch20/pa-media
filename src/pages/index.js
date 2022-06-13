@@ -1,4 +1,4 @@
-export { Home } from './home/Home'
+export { HomePage } from './home/HomePage'
 export { SinglePostPage } from './singlePost/SinglePostPage'
 export { ProfilePage } from './profile/ProfilePage'
 export { Login } from './auth/Login'

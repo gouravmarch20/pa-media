@@ -1,4 +1,4 @@
-export const getUnshortedPost = posts => {}
+
 // DB CONFIG WORK
 export const getSortedPosts = posts => {
   return [...posts].sort(

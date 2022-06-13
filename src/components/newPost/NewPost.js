@@ -27,12 +27,11 @@ export const NewPost = ({ editPostData }) => {
     navigate('/')
   }
 
-  const editPostHandler = () => {
-    let postData = { ...editPostData, content: postContent.content }
-    dispatch(editPost({ postData, token }))
-    setPostContent({ content: '' })
-  }
-
+  // const editPostHandler = () => {
+  //   let postData = { ...editPostData, content: postContent.content }
+  //   dispatch(editPost({ postData, token }))
+  //   setPostContent({ content: '' })
+  // }
 
   const submitHandler = async e => {
     e.preventDefault()
@@ -42,9 +41,6 @@ export const NewPost = ({ editPostData }) => {
     <div className='newPost'>
       <form className='newPostForm' onSubmit={submitHandler}>
         <Typography variant='h3'>New Post</Typography>
-
-        {/* {image && <img src={image} alt='post' />}
-        <input type='file' accept='image/*' onChange={handleImageChange} /> */}
         <input
           type='text'
           placeholder='enter content...'
@@ -53,19 +49,13 @@ export const NewPost = ({ editPostData }) => {
         />
         <Button
           type='submit'
-          variant="contained"
-          color="primary"
+          variant='contained'
+          color='primary'
           disabled={postContent.content === ''}
-          onClick={editPostData ? editPostHandler : createPostHandler}
+          onClick={() => createPostHandler()}
         >
-          {/* <Button disabled={loading} type='submit'> */}
           Post
         </Button>
-
-
-        {/* <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            {isSignup ? 'Sign Up' : 'Sign In'}
-          </Button> */}
       </form>
     </div>
   )

@@ -26,7 +26,7 @@ export const ProfileDetails = ({ userDetails }) => {
     username,
     lastName
   } = userDetails || {}
-
+// user when ever come re-fetch
   useEffect(() => {
     dispatch(getAllPosts())
   }, [dispatch])

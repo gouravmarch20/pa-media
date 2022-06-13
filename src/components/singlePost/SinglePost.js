@@ -18,7 +18,6 @@ export const SinglePost = () => {
   const currentPost = allPosts?.find(post => post.id === postId)
   const updatedPost = currentPost ?? singlePost
 
-  // const updatedPost = currentPost ?? singlePost;
 
   return (
     <div className='singlePost'>

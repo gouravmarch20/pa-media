@@ -5,6 +5,7 @@ import { HomePost } from '../index'
 import { getBookmarkPostsHelper } from '../../helpers'
 import { getAllUsers } from '../../features/userSlice'
 import { Oval } from 'react-loader-spinner'
+// FIXME: IF POST DELETE FROM BOOKMARK issue
 
 export const Bookmark = () => {
   const { allPosts, bookmarkPosts, filterText, postStatus } = useSelector(
@@ -23,8 +24,7 @@ export const Bookmark = () => {
     user => user.username === userInfo.username
   )
   const bookmarkFeedPosts = getBookmarkPostsHelper(allPosts, bookmarkPosts)
-  
-  console.log(bookmarkPosts)
+
   return (
     <div>
       {postStatus === 'loading' ? (
@@ -42,11 +42,7 @@ export const Bookmark = () => {
         <h1 className='heading'>Not any Bookmark Posts.</h1>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
-          return (
-            <div key={id}>
-              <HomePost postData={post} />
-            </div>
-          )
+          return <HomePost postData={post} key={id}  />
         })
       )}
 

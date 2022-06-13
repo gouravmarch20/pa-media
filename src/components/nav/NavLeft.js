@@ -6,7 +6,6 @@ import { BsBookmark } from 'react-icons/bs'
 import { BiTrendingUp } from 'react-icons/bi'
 export const NavLeft = () => {
   return (
-    // <div className=''>
     <div className='navLeft-fixed'>
       <hr />
       <NavLink
@@ -18,7 +17,6 @@ export const NavLeft = () => {
         <i className='navLeft-icon'>
           <BsBookmark />
         </i>
-        {/* <span className='navLeft-link-span'>Bookmark</span> */}
       </NavLink>
       <hr />
       <NavLink
@@ -35,6 +33,5 @@ export const NavLeft = () => {
 
       <hr />
     </div>
-    // </div>
   )
 }

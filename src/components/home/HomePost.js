@@ -58,7 +58,6 @@ export const HomePost = ({ postData, homeposts }) => {
   }
 
   const isPostAlreadyLiked = checkLikeHelper(likes.likedBy, userInfo)
-
   const isPostAlreadyBookmarked = bookmarkPosts?.find(
     bookmarkPostId => bookmarkPostId === _id
   )
@@ -168,18 +167,24 @@ export const HomePost = ({ postData, homeposts }) => {
             {comments?.length > 0 ? (
               <CommentCard commmentData={comments} />
             ) : (
-              <Typography>No comments Yet</Typography>
+              <Typography variant='h4' align='center'>
+                No comments Yet
+              </Typography>
             )}
           </div>
         </Dialog>
       </div>
+
       <div>
         <Dialog
           className='relative'
           open={editPostToggle}
           onClose={() => setEditPostToggle(!setEditPostToggle)}
         >
-          <EditPostModal postData={postData} />
+          <EditPostModal
+            postData={postData}
+            setEditPostToggle={setEditPostToggle}
+          />
         </Dialog>
       </div>
     </div>
