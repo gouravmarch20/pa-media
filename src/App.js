@@ -3,13 +3,11 @@ import './styles/App.css'
 import { ToasterWrapper } from './utils'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Mockman from 'mockman-js'
-import { useSelector } from 'react-redux'
 import { NavHeader, NewPost, Search } from './components/'
-// TODO: LOADER , MODAL FIX BY 
 import {
   BookmarkPage,
   ExplorePage,
-  Home,
+  HomePage,
   Login,
   ProfilePage,
   Signup,
@@ -18,15 +16,13 @@ import {
 import { PrivateRoute } from './routes/PrivateRoute'
 
 const App = () => {
-  // TODO: OPTIMISE AUTH
-  const user = useSelector(state => state)
   return (
     <div>
       <ToasterWrapper />
       <NavHeader />
       <Routes>
         <Route path='/' element={<PrivateRoute />}>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<HomePage />} />
           <Route path='/post/:postId' element={<SinglePostPage />} />
           <Route path='/profile/:username' element={<ProfilePage />} />
           <Route path='/explore' element={<ExplorePage />} />

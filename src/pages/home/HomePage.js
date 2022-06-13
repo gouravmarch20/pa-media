@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
 import { NavLeft, HomePosts, FollowOther } from '../../components'
-export const Home = () => {
+export const HomePage = () => {
   return (
     <div className='navbarLeft-container-wrapper'>
       <div className='nav-left'>

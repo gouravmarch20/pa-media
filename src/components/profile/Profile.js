@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useLocation, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Oval } from 'react-loader-spinner'
 import { HomePost } from '../index'
 import { getSortedPosts } from '../../helpers'
@@ -11,16 +11,13 @@ import {
   resetUserProfile
 } from '../../features/userSlice'
 import { getAllUsers } from '../../features/userSlice'
-import { PostCard } from '../card/PostCard'
 import './profile.css'
 import { ProfileDetails } from './ProfileDetails'
 
 export const Profile = () => {
   const { username } = useParams()
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
-  let location = useLocation()
   const { singleUser, userPosts, allUsers, userStatus } = useSelector(
     state => state.users
   )
@@ -38,7 +35,6 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getUserPostsByUsername({ username }))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, allPosts])
   const currentUser = allUsers?.find(
     user => user.username === singleUser?.username

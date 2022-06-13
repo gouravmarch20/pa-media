@@ -26,7 +26,6 @@ const initialState = {
   bookmarkPosts: [],
   postStatus: 'idle',
   postError: null,
-  isPostModalOpen: false,
   editPostData: {},
   filterText: 'Latest'
 }
@@ -120,7 +119,6 @@ export const bookmarkPost = createAsyncThunk(
   async ({ postId, token }, { rejectWithValue }) => {
     try {
       const response = await bookmarkPostService(postId, token)
-      console.log(response)
       return response.data
     } catch (error) {
       return rejectWithValue(error.response.data)
@@ -204,10 +202,7 @@ const postSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
-    setPostModalOpen: (state, { payload }) => {
-      state.isPostModalOpen = payload.isOpen
-      state.editPostData = payload.editPostData
-    },
+
     setFilterText: (state, { payload }) => {
       state.filterText = payload
     }
@@ -332,5 +327,5 @@ const postSlice = createSlice({
   }
 })
 
-export const { setPostModalOpen, setFilterText } = postSlice.actions
+export const {  setFilterText } = postSlice.actions
 export default postSlice.reducer
