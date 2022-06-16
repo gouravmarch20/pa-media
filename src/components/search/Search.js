@@ -12,7 +12,7 @@ export const Search = () => {
     dispatch(getAllUsers())
   }, [dispatch])
 
-  const [name, setName] = useState()
+  const [name, setName] = useState('')
   const { allUsers, userStatus } = useSelector(state => state.users)
   //FIXME: INITIAL SEARCH --> no user found
   const [userSuggestions, setUserSuggestions] = useState(allUsers)
@@ -64,7 +64,7 @@ export const Search = () => {
                 ))
               ) : (
                 <>
-                  <h2 className='heading text-lg'>No user found</h2>
+                  <h2 className='subheading text-lg'>No user found</h2>
                 </>
               )}
             </div>

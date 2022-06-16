@@ -16,8 +16,9 @@
   text-transform: capitalize;
   margin: 1rem;
   text-align: center;
-  font-family: monospace;
+  font-family: cursive;
 }
+
 .content {
   width: 80%;
   margin: 1rem auto;

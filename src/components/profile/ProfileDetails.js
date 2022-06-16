@@ -26,7 +26,7 @@ export const ProfileDetails = ({ userDetails }) => {
     username,
     lastName
   } = userDetails || {}
-// user when ever come re-fetch
+  // user when ever come re-fetch
   useEffect(() => {
     dispatch(getAllPosts())
   }, [dispatch])
@@ -43,21 +43,23 @@ export const ProfileDetails = ({ userDetails }) => {
         {userInfo.username === username ? (
           <Button
             color='primary'
-            variant='outlined'
+            variant='contained'
             onClick={() => setProfileEditToggle(!profileEditToggle)}
           >
             Edit Profile
           </Button>
         ) : isUserAlreadyFollowing() ? (
           <Button
-            color='primary'
+            color='secondary'
+            variant='contained'
             onClick={() => dispatch(unfollowUser({ followUserId: _id, token }))}
           >
             Unfollow
           </Button>
         ) : (
           <Button
-            color='primary'
+            color='secondary'
+            variant='contained'
             onClick={() => dispatch(followUser({ followUserId: _id, token }))}
           >
             Follow
@@ -107,7 +109,7 @@ export const ProfileDetails = ({ userDetails }) => {
         onClose={() => setFollowingToggle(!followingToggle)}
       >
         <div className='DialogBox'>
-          <Typography variant='h4'>Following</Typography>
+          <p className='heading'>Following</p>
 
           {following && following.length > 0 ? (
             following.map(follow => (
@@ -119,8 +121,8 @@ export const ProfileDetails = ({ userDetails }) => {
               />
             ))
           ) : (
-            <Typography style={{ margin: '2vmax' }}>
-              You're not following anyone
+            <Typography style={{ margin: '2vmax' }} variant='h4' align='center'>
+              Not following anyone
             </Typography>
           )}
         </div>
@@ -131,7 +133,7 @@ export const ProfileDetails = ({ userDetails }) => {
         onClose={() => setFollowersToggle(!followersToggle)}
       >
         <div className='DialogBox'>
-          <Typography variant='h4'>Followers</Typography>
+          <p className='heading'>Followers</p>
 
           {followers && followers.length > 0 ? (
             followers.map(follow => (
@@ -144,8 +146,8 @@ export const ProfileDetails = ({ userDetails }) => {
               />
             ))
           ) : (
-            <Typography style={{ margin: '2vmax' }}>
-              You have no followers
+            <Typography style={{ margin: '2vmax' }} variant='h4' align='center'>
+              Not having any  followers
             </Typography>
           )}
         </div>

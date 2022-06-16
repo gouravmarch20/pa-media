@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 
 import { Delete } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 import './commentVote.css'
 import {
@@ -31,10 +32,12 @@ export const ComentVote = ({ commentData, postId }) => {
 
   return (
     <>
-      <div className='mt-10'>
+      <div className='mt-10 post-home '>
         <div className='flex-row-center-center'>
-          <img className='img-avatar-follow' src={avatar} alt='' />
-          <div className=''>
+          <Link to={`/profile/${username}`}>
+            <img className='img-avatar-follow' src={avatar} alt='' />
+          </Link>
+          <div className='cursor-pointer-none'>
             <p className='text-sm content'>@{username}</p>
 
             <p className='text-sm '>{firstName} </p>
@@ -69,7 +72,7 @@ export const ComentVote = ({ commentData, postId }) => {
           <p
             className='  text-sm text-center '
             style={{
-             width: '50vmin'
+              width: '50vmin'
             }}
           >
             {text}

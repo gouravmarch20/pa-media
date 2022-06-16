@@ -6,6 +6,9 @@
   height: 40vh;
   width: 40vw;
 }
+.cursor-pointer-none {
+  pointer-events: none ;
+}
 @import url("./library/var.css");
 @import url("./library/Button.css");
 @import url("./library/Auth.css");

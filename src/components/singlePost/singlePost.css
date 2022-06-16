@@ -23,7 +23,6 @@
   display: flex;
   flex-direction: column;
   /* background-color: red; */
-
 }
 .post-content {
   cursor: pointer;
@@ -31,4 +30,12 @@
   margin: 0.4rem 0rem;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.singlepost-footer {
+  border-bottom: 1px solid blueviolet;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
