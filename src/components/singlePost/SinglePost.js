@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getSinglePost } from '../../features/postSlice'
+import { getSinglePost, getAllPosts } from '../../features/postSlice'
 import { ComentVote } from './ComentVote'
 import './singlePost.css'
+import { HomePost } from '../home/HomePost'
+
 export const SinglePost = () => {
   const { postId } = useParams()
   const dispatch = useDispatch()
@@ -13,45 +15,33 @@ export const SinglePost = () => {
   )
 
   useEffect(() => {
+    dispatch(getAllPosts())
     dispatch(getSinglePost(postId))
   }, [postId])
   const currentPost = allPosts?.find(post => post.id === postId)
   const updatedPost = currentPost ?? singlePost
 
-
   return (
-    <div className='singlePost'>
+    <div className='singlePost post-home'>
       {singlePostStatus === 'success' && (
         <>
-          <div className='flex-row-center-center'>
-            <div>
-              <Link to={`/profile/${singlePost?.username}`}>
-                <img
-                  className='singlePostAvatar'
-                  src={singlePost?.avatar}
-                  alt=''
-                />
-              </Link>
-            </div>
-            <div>
-              <p> {singlePost?.firstName}</p>
-              <p>@ {singlePost?.username}</p>
-            </div>
-          </div>
+          <div>{<HomePost postData={currentPost} singlePost />}</div>
 
-          <p className='post-content cursor-pointer-none'>
-            {singlePost?.content}
-          </p>
-          <hr />
-          {updatedPost.comments.map(comment => {
-            return (
-              <ComentVote
-                commentData={comment}
-                postId={updatedPost._id}
-                key={comment._id}
-              />
-            )
-          })}
+          {updatedPost.comments.length >= 1 ? (
+            updatedPost.comments.map(comment => {
+              return (
+                <ComentVote
+                  commentData={comment}
+                  postId={updatedPost._id}
+                  key={comment._id}
+                />
+              )
+            })
+          ) : (
+            <h2 className='subheading ' style={{ padding: '1rem' }}>
+              no comment added{' '}
+            </h2>
+          )}
         </>
       )}
     </div>

@@ -165,15 +165,7 @@ export const users = [
     avatar: 'https://joeschmoe.io/api/v1/jana',
     bio: 'Mern stack developer',
     portfolio: 'https://trixoon.com/',
-    following: [
-      {
-        _id: uuid(),
-        firstName: 'Aadi',
-        lastName: 'Shetty',
-        username: 'adarshshetty',
-        avatar: 'https://joeschmoe.io/api/v1/jeane'
-      }
-    ],
+    following: [],
     followers: [
       {
         _id: uuid(),
@@ -190,9 +182,7 @@ export const users = [
         avatar: 'https://joeschmoe.io/api/v1/james'
       }
     ],
-    //TODO: BOOKMARK 
-    bookmarks: [
-     
-    ]
+    //TODO: BOOKMARK
+    bookmarks: []
   }
 ]

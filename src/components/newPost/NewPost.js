@@ -40,7 +40,7 @@ export const NewPost = ({ editPostData }) => {
   return (
     <div className='newPost'>
       <form className='newPostForm' onSubmit={submitHandler}>
-        <Typography variant='h3'>New Post</Typography>
+        <Typography variant='h3' align='center'>New Post</Typography>
         <input
           type='text'
           placeholder='enter content...'

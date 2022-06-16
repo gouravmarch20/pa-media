@@ -42,7 +42,7 @@ export const Bookmark = () => {
         <h1 className='heading'>Not any Bookmark Posts.</h1>
       ) : (
         bookmarkFeedPosts?.map((post, id) => {
-          return <HomePost postData={post} key={id}  />
+          return <HomePost postData={post} key={id} bookmarkPage  />
         })
       )}
 

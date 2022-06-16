@@ -26,13 +26,16 @@ import { addComment } from '../../features/postSlice'
 import { Link, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 
-export const HomePost = ({ postData, homeposts }) => {
+export const HomePost = ({ postData, bookmarkPage, singlePost }) => {
   const [commentToggle, setCommentToggle] = useState(false)
   const [editPostToggle, setEditPostToggle] = useState(false)
   const { userInfo, token } = useSelector(state => state.auth)
   const { bookmarkPosts } = useSelector(state => state.posts)
   const [commentData, setCommentData] = useState({ text: '' })
-  const isLoginUserPost = postData.username === userInfo.username
+  const isLoginUserPost =
+    bookmarkPage !== true &&
+    singlePost !== true &&
+    postData.username === userInfo.username
 
   const navigate = useNavigate()
 
@@ -63,7 +66,7 @@ export const HomePost = ({ postData, homeposts }) => {
   )
 
   return (
-    <div className='post post-home'>
+    <div className={`post-home ${singlePost ? '' : 'post'}`}>
       <div className='postHeader'>
         <Link to={`/profile/${username}`} className=''>
           <img src={avatar} className='img-avatar-follow ' />{' '}
@@ -77,11 +80,11 @@ export const HomePost = ({ postData, homeposts }) => {
           >
             {firstName} {lastName}
           </Link>
-          <div>@{username}</div>
+          <div className='cursor-pointer-none'>@{username}</div>
         </div>
 
         {
-          <div className=''>
+          <div className='cursor-pointer-none'>
             <Typography variant='body2'>
               {moment(createdAt).fromNow()}
             </Typography>
@@ -98,11 +101,17 @@ export const HomePost = ({ postData, homeposts }) => {
         }
       </div>
       <hr />
-      <p className='post-content' onClick={() => navigate(`/post/${id}`)}>
+      <p
+        className={`post-content  ${singlePost ? 'cursor-pointer-none' : ''}`}
+        onClick={() => navigate(`/post/${id}`)}
+        style={{
+          margin: '.5rem'
+        }}
+      >
         {content}
       </p>
-
-      <div className='postFooter'>
+      <hr />
+      <div className={`postFooter  ${singlePost && 'singlepost-footer'}`}>
         {isPostAlreadyLiked ? (
           <>
             <Button
@@ -110,7 +119,7 @@ export const HomePost = ({ postData, homeposts }) => {
             >
               <MdThumbUp />
             </Button>
-            <span>{likes?.likeCount} </span>
+            <span className='like-count'>{likes?.likeCount} </span>
           </>
         ) : (
           <>
