@@ -84,8 +84,8 @@ export const HomePost = ({ postData, bookmarkPage, singlePost }) => {
         </div>
 
         {
-          <div className='cursor-pointer-none'>
-            <Typography variant='body2'>
+          <div>
+            <Typography variant='body2' className='cursor-pointer-none'>
               {moment(createdAt).fromNow()}
             </Typography>
             {isLoginUserPost && (
